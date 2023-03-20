@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/*
+Theme Name: Blog template
+Author: junsan14
+Description: Blogテーマ;
+*/
+@import url("https://fonts.googleapis.com/css2?family=Murecho:wght@300&display=swap");
+body {
+  font-size: 100%;
+  font-family: "Murecho", sans-serif;
+  color: #505A5F;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 10% 10% 0;
+}
+.header_logo img {
+  width: 120px;
+}
+.header_ul {
+  display: flex;
+}
+.header_ul_li {
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.header_ul_li :hover {
+  color: #111;
+}
+
+.main.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+.main .content_title {
+  text-align: center;
+}
+.main .home .kv {
+  height: calc(100vh - 60px);
+  text-align: center;
+  margin-top: 25vh;
+}
+.main .home .kv h2 {
+  font-size: 3em;
+  font-weight: normal;
+}
+.main .home .kv p {
+  font-size: 1.5em;
+  margin-top: 50px;
+}
+.main .articles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.main .articles .article {
+  width: 30%;
+  padding: 0 1%;
+  transition: all 0.5s;
+  box-sizing: border-box;
+}
+.main .articles .article img {
+  width: 100%;
+  height: 50%;
+}
+.main .articles .article_remarks {
+  height: 30%;
+}
+.main .articles .article_remarks_title {
+  font-size: 1.5em;
+  height: 10%;
+}
+.main .articles .article_remarks_text {
+  font-size: 0.8em;
+  height: 20%;
+}
+.main .articles .article_remarks_date {
+  height: 3%;
+  font-size: 0.8em;
+  text-align: right;
+}
+.main .articles .article:hover {
+  transition: all 0.5s;
+  transform: translateY(-5px);
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+  cursor: pointer;
+}
+
+.footer {
+  width: 100%;
+  height: 50px;
+  background: #eee;
+  text-align: center;
+}
