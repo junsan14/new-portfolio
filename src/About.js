@@ -14,7 +14,7 @@ function About() {
                     
             <div className="section_content about-page">
               <h2 className="section_content_title">
-                Biography
+                BIOGRAPHY
               </h2>
               <div className="profile">
                 <div className="profile_icon">
@@ -44,7 +44,7 @@ function About() {
               </div>
 
               <h2 className="section_content_title">
-                Skills
+                SKILL
               </h2>
               <div className="skill">
                 <ul className="skill_tab">

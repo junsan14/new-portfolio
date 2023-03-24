@@ -111,7 +111,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis />
+            <PolarRadiusAxis domain={[0, 3]} />
             <Radar
               name="frontEnd"
               dataKey="A"
@@ -134,7 +134,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis />
+            <PolarRadiusAxis domain={[0, 3]} />
             <Radar
               name="BackEnd"
               dataKey="A"
@@ -157,7 +157,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis />
+            <PolarRadiusAxis domain={[0, 3]} />
             <Radar
               name="BackEnd"
               dataKey="A"
