@@ -1,15 +1,18 @@
-import title_skill from "./images/title_skill.png";
+import title_about from "./images/title_about.png";
 import {Frontgraph,Backgraph,Othergraph} from "./Graph";
 import logo from './images/logo.png';
+import {ScrollRestoration } from 'react-router-dom';
+
 
 function About() {
   return (
     <main className="main wrapper">
+      <ScrollRestoration />
       <div className="about">
           <section className="section">
             <h1 className="section_title">
-              <img className="section_title_en" src={title_skill} />
-              <div className="section_title_jp">技術</div>
+              <img className="section_title_en" src={title_about} />
+              <div className="section_title_jp">紹介</div>
             </h1>
                     
             <div className="section_content about-page">
@@ -59,9 +62,9 @@ function About() {
                       </div>
                       <div className="skill_content_item_desc">
                           <dl>
-                            <dt>5年以上の実務経験あり</dt>
-                            <dd>HTML/CSS/SASS/NativeJS/jQuery</dd>
-                            <dt>1年ほどの実務経験あり</dt>
+                            <dt>3年以上の実務経験あり</dt>
+                            <dd>  HTML/ CSS /SASS/ NativeJS/ jQuery</dd>
+                            <dt>数サイトの実装経験あり</dt>
                             <dd>React.js</dd>
                           </dl>
                       </div>
@@ -72,10 +75,8 @@ function About() {
                       </div>
                       <div className="skill_content_item_desc">
                           <dl>
-                            <dt>5年以上の実務経験あり</dt>
-                            <dd>HTML/CSS/SASS/NativeJS/jQuery</dd>
-                            <dt>1年ほどの実務経験あり</dt>
-                            <dd>React.js</dd>
+                            <dt>数サイトの実装経験あり</dt>
+                            <dd>NativePHP/ Laravel/ mySQL/ firebase</dd>
                           </dl>
                       </div>
                     </div>
@@ -85,10 +86,9 @@ function About() {
                       </div>
                       <div className="skill_content_item_desc">
                           <dl>
-                            <dt>5年以上の実務経験あり</dt>
-                            <dd>HTML/CSS/SASS/NativeJS/jQuery</dd>
-                            <dt>1年ほどの実務経験あり</dt>
-                            <dd>React.js</dd>
+                            <dt>3年以上の実務経験あり</dt>
+                            <dd> Git/ gulp/ webpack/ node.js etc..</dd>
+
                           </dl>
                       </div>
                   </div>

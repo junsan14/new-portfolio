@@ -7,6 +7,7 @@ import {
   RouterProvider,
   Route,
   Link,
+  ScrollRestoration 
 } from "react-router-dom";
 
 import "./styles/style.scss"
@@ -25,6 +26,10 @@ import App from './App';
 
 App();
 
+
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +41,7 @@ const router = createBrowserRouter([
       ),
   },
   {
-    path: "/about",
+    path: "about",
     element:(
       <>
       <Header />
@@ -45,7 +50,7 @@ const router = createBrowserRouter([
       ),
   },
   {
-    path: "/page",
+    path: "page",
     element:(
       <>
       <Header />
@@ -54,7 +59,7 @@ const router = createBrowserRouter([
       ),
   },
   {
-    path: "/contact",
+    path: "contact",
     element:(
       <>
       <Header />
@@ -68,7 +73,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
+      
       <RouterProvider router={router} />
     <Footer />
   </React.StrictMode>

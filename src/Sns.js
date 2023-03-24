@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import $ from 'jquery';
 
 
 function Instagram(){
@@ -20,28 +19,22 @@ function Instagram(){
         setPosted(res.data)
       });
   }, [])
-
-
-    
-    
     //console.log(posted.business_discovery.media)
     const Render = ()=>{
       if(posted){
-     
+
         let posts =posted.business_discovery.media.data;
 
         return(
-          <div className='2'>
+          <React.Fragment>
             {posts.map((post,i) => {
               return(
                 <div className='post' key={i}>
                   <img src={post.media_url}/>
-                  
                 </div>    
               )          
             })}           
-          </div>
-  
+          </React.Fragment>
         )
       }
 

@@ -1,10 +1,5 @@
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+import {Link} from "react-router-dom";
 import About from './About'
 import Page from './Page';
 import Contact from './Contact';
@@ -28,10 +23,10 @@ function Header(){
             <p>junsan14</p>
         </div>
         <ul className="header_ul">
-          <li className="header_ul_li"><Link to="/">HOME</Link></li>
-           <li className="header_ul_li"><Link to="./about" >ABOUT</Link></li>
-           <li className="header_ul_li"><Link to="/page">BLOG</Link></li>
-           <li className="header_ul_li"><Link to="/contact">CONTACT</Link></li>
+          <li className="header_ul_li"><Link to={`/`}>HOME</Link></li>
+           <li className="header_ul_li"><Link to={`/about`} >ABOUT</Link></li>
+           <li className="header_ul_li"><Link to={`/page`}>BLOG</Link></li>
+           <li className="header_ul_li"><Link to={`/contact`}>CONTACT</Link></li>
         </ul>
       </header>
     </aside>

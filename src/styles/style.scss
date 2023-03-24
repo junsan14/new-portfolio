@@ -227,14 +227,28 @@ img{
 
 			}
 			&.sns{
-				& .instagram{
+				display: flex;
+				 .instagram{
 					display: flex;
-					width: 45%;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					width: 60%;
+					margin-right:5%;
 					& .post{
+						width: 40%;
+						height: 300px;
 						& img{
-							width: 200px;
+							height: 100%;
+							object-fit: cover;
+							border-radius: 10px;
+							
 						}
 					}
+				}
+				 .twitter{
+					
+					width:40%;
+					
 				}
 			}
 		}
@@ -242,15 +256,28 @@ img{
 		&_btn{
 			border: 1px solid;
 			border-radius: 40px;
-			padding: 8px 25px;
 			text-align: center;
 			float: right;
 			transition: .5s ease;
+			position: relative;
+			width: 100px;
+			height: 35px;
 			&:hover{
 				background: #fff;
 				border-radius: 40px;
 				transition: .5s ease;
 			
+			}
+			a{
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				top:0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				
 			}
 		}
 	}
@@ -291,14 +318,16 @@ img{
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%,-50%);
+					
 				}
 				h2{
-					font-size: 1.0em;
+					font-size: 1.5em;
 					margin-bottom: 30px;
 					letter-spacing: 5px;
 				}
 				p{
-					font-size: .7em;
+					width: 100%;
+					font-size: 1.2em;
 					line-height: 20px;
 					letter-spacing: 2px;
 	
@@ -422,26 +451,26 @@ img{
 					pointer-events: none;
 					opacity: 0;
 					top:0;
+					left: 0s;
 					transition: .5s all;
-
 					display: flex;
 					flex-wrap: wrap;
 					align-items: center;
-					justify-content: space-between;
+					justify-content: center;
 					&.show{
 						opacity: 1;
 						transition: .5s all;
 						pointer-events: auto;
 					}
 					&_graph{
-						width: 60%;
+						width: 80%;
 						@include mq(tab){
 							width: 100%;
 	
 						}
 					}
 					&_desc{
-						width: 40%;
+						width: 50%;
 						@include mq(tab){
 							width: 100%;
 						}

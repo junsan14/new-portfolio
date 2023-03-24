@@ -4,9 +4,67 @@ import React, { PureComponent } from 'react';
 import { Radar, RadarChart,Legend, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 
+const enginerSkill = [
+  {
+    subject: 'HTML/CSS/SASS',
+    A: 3,
+    fullMark: 3,
+  },
+  {
+    subject: 'JavaScript/jQuery',
+    A: 3,
+    fullMark: 3,
+  },
+  {
+    subject: 'React.js',
+    A: 2,
+    fullMark: 3,
+  },
+  {
+    subject: 'React Native',
+    A: 1,
+    fullMark: 3,
+  },
+  {
+    subject: 'Vue.js',
+    A: 1,
+    fullMark: 3,
+  },
+  {
+    subject: 'PHP',
+    A: 1.5,
+    fullMark: 3,
+  },
+  {
+    subject: 'Laravel',
+    A: 2,
+    fullMark: 3,
+  },
+  {
+    subject: 'CMS/WordPress連携',
+    A: 1.5,
+    fullMark: 3,
+  },
+  {
+    subject: 'SNS api 連携',
+    A: 2,
+    fullMark: 3,
+  },
+  {
+    subject: 'Database/mySQL firebase',
+    A: 2,
+    fullMark: 3,
+  },
+];
+
 const frontSkill = [
     {
-      subject: 'HTML/CSS',
+      subject: 'HTML',
+      A: 3,
+      fullMark: 3,
+    },
+    {
+      subject: 'CSS/SASS',
       A: 3,
       fullMark: 3,
     },
@@ -16,42 +74,43 @@ const frontSkill = [
       fullMark: 3,
     },
     {
-      subject: 'PHP/Laravel',
-      A: 1,
+      subject: 'jQuery',
+      A: 3,
       fullMark: 3,
     },
     {
-      subject: 'mySQL',
-      A: 1,
-      fullMark: 3,
-    },
-    {
-      subject: '環境構築',
+      subject: 'React',
       A: 2,
       fullMark: 3,
     },
+    {
+      subject: 'Vue',
+      A: 1,
+      fullMark: 3,
+    },
+
   ];
 
 
 const backSkill = [
   {
     subject: 'PHP',
-    A: 1.0,
+    A: 2,
     fullMark: 3,
   },
   {
     subject: 'Laravel',
-    A: 1.5,
+    A: 3,
     fullMark: 3,
   },
   {
     subject: 'WordPress',
-    A: 1.5,
+    A: 2,
     fullMark: 3,
   },
   {
     subject: 'mySQL',
-    A: 1.5,
+    A: 2,
     fullMark: 3,
   },
   {
@@ -65,17 +124,17 @@ const backSkill = [
 const otherSkill = [
   {
     subject: 'Git',
-    A: 2.5,
+    A: 3,
     fullMark: 3,
   },
   {
     subject: 'gulp',
-    A: 2.5,
+    A: 3,
     fullMark: 3,
   },
   {
     subject: 'webpack',
-    A: 2.5,
+    A: 2,
     fullMark: 3,
   },
   {
@@ -103,10 +162,11 @@ const otherSkill = [
   function Frontgraph(){
     return (
 
-        <ResponsiveContainer width="100%" height={500} >
+        <ResponsiveContainer width="100%" height={400}>
           <RadarChart
-            outerRadius={150}
-            data={frontSkill}
+            outerRadius="80%"
+ 
+            data={enginerSkill}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
@@ -126,7 +186,7 @@ const otherSkill = [
   function Backgraph(){
     return (
 
-        <ResponsiveContainer width="100%" height={500} >
+        <ResponsiveContainer width="100%" height={400}>
           <RadarChart
             outerRadius={150}
             data={backSkill}
@@ -149,10 +209,12 @@ const otherSkill = [
   function Othergraph(){
     return (
 
-        <ResponsiveContainer width="100%" height={500} >
+        <ResponsiveContainer width="100%" height={400} >
           <RadarChart
             outerRadius={150}
             data={otherSkill}
+            width={600}
+            height={500}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
