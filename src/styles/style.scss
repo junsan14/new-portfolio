@@ -10,7 +10,7 @@ Description: Blogテーマ;
 
 $breakpoint: (
   sp: 'screen and (max-width: 767px)',
-  tab: 'screen and (min-width: 768px)',
+  tab: 'screen and (max-width: 1025px)',
   pc: 'screen and (min-width: 1025px)'
 );
 
@@ -44,10 +44,10 @@ img{
 }
 
 .aside{
-	width: 20%;
+	width: 15%;
 	position: fixed;
 	right: 0;
-	@include mq(sp){
+	@include mq(tab){
 		width: 100%;
 		right: 0px;
 		z-index: 10;
@@ -88,7 +88,7 @@ img{
 		justify-content:space-between;
 		align-items:center;
 		margin: auto 0;
-		@include mq(sp){
+		@include mq(tab){
 			opacity: 0;
 			pointer-events: none;
 			transition: .5s ease;
@@ -135,9 +135,9 @@ img{
 }
 
 .main{ 
-	width: 80%;
+	width: 85%;
 	background: $background-color;
-	@include mq(sp){
+	@include mq(tab){
 		width: 100%;
 	}
 	//共通
@@ -151,17 +151,33 @@ img{
 	& .section{
 		margin: 90px 0;
 		&_title{
+			position: relative;
 			text-align: center;
-			font-size: 2em;
-			letter-spacing: 10px;
-			margin-bottom: 50px;
-			@include mq(sp){
-				font-size: 1em;
-				letter-spacing: 3px;
+			margin-bottom: 100px;
+			&_en{
+				width: auto;
+				height: 170px;
+				@include mq(sp){
+					height: 100px;
+				}
+			}
+			&_jp{
+
+				font-size: 3em;
+				text-align: center;
+				margin-top: -70px;
+				margin-left: 50px;
+				letter-spacing: 50px;
 			}
 		}
 
 		&_content{
+			&_title{
+				text-align: center;
+				font-size: 2em;
+				margin-bottom: 80px;
+				margin-top: 80px;
+			}
 			&.posts{
 					display: flex;
 					justify-content:space-between;
@@ -221,6 +237,21 @@ img{
 				}
 			}
 		}
+
+		&_btn{
+			border: 1px solid;
+			border-radius: 40px;
+			padding: 8px 25px;
+			text-align: center;
+			float: right;
+			transition: .5s ease;
+			&:hover{
+				background: #fff;
+				border-radius: 40px;
+				transition: .5s ease;
+			
+			}
+		}
 	}
 }
 
@@ -273,6 +304,153 @@ img{
 				}
 			}
 		}
+}
+
+
+.about{
+	&-page{
+		
+		 .profile{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			@include mq(sp){
+				flex-direction: column;
+			}
+			&_icon{
+				width: 30%;
+				text-align: center;
+				margin-bottom: 50px;
+				@include mq(sp){
+					width: 100%;
+				}
+				&_img{
+					width: 200px;
+					text-align: center;
+					margin-bottom: 40px;
+
+					@include mq(sp){
+						width: 150px;
+					}
+				}
+				p:nth-child(1){
+					margin-bottom: 10px;
+				}
+				p:nth-child(2){
+					font-size: 0.8em;
+					margin-bottom: 10px;
+				}
+				p:nth-child(3){
+					font-size: 0.8em;
+					margin-bottom: 10px;
+				}
+			}
+			&_biography{
+				width: 70%;
+				@include mq(sp){
+					width: 100%;
+				}
+				dl{
+					width: 100%;
+					display: flex;
+					flex-wrap: wrap;
+					dt{
+						width: 10%;
+						padding: 15px 0;
+					}
+					dd{
+						width: 90%;
+						padding: 15px 0;
+					}
+				}
+			}
+		}
+
+		.skill{
+			&_tab{
+				display: flex;
+				width: 80%;
+				justify-content: space-between;
+				margin: 0 auto;
+				font-size: 1.4em;
+				@include mq(sp){
+					width: 100%;
+				}
+		
+				&_li{
+					cursor: pointer;
+					padding: 10px 0;
+					transition: .5s all;
+					border-radius: 1px;
+					text-align: center;
+					border: 1px solid;
+					width: calc(100% / 3);
+					&:hover{
+						background:#fff;
+						transition: .5s all;
+						transform: translateY(-2px);
+					}
+				}
+
+			}
+			&_content{
+				position: relative;
+				
+				&:before{
+					padding-top: 80%;
+					content: "";
+					display: block;
+				}
+				&_item{
+					position: absolute;
+					margin: 0 auto;
+					pointer-events: none;
+					opacity: 0;
+					top:0;
+					transition: .5s all;
+
+		
+					&.show{
+						display: flex;
+						opacity: 1;
+						flex-wrap: wrap;
+						align-items: center;
+						justify-content: space-between;
+						transition: .5s all;
+				
+					}
+					&_graph{
+						width: 60%;
+						@include mq(tab){
+							width: 100%;
+	
+						}
+					}
+					&_desc{
+						width: 40%;
+						@include mq(tab){
+							width: 100%;
+						}
+						dl{
+							width: 100%;
+							display: flex;
+							flex-wrap: wrap;
+							dt{
+								width: 50%;
+								padding: 15px 0;
+							}
+							dd{
+								width: 50%;
+								padding: 15px 0;
+							}
+						}
+					}
+				}
+			}
+
+			}
+			
+	}
 }
 
 
