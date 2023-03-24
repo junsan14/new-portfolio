@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -19,7 +20,7 @@ import Page from './Page';
 import Contact from './Contact';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import particlesJS from 'particles.js'
+
 
 
 App();
