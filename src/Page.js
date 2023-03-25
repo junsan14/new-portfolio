@@ -1,21 +1,23 @@
-import {PageBlog} from './Blog';
-import $ from 'jquery';
+import {FetchPageData} from './Fetchblog';
+import {ScrollRestoration } from 'react-router-dom';
 
 
-
-function Page(){
-
-	PageBlog();
-    console.log()
-	return(
-      <div className="content">
-	        <h1 className="content_title">BLOG</h1>
-      		<div className="page">
-      			
-      		</div> 
-      </div> 
-		);
-}
+function Page() {
+	return (
+	  <main className="main wrapper">
+		<ScrollRestoration />
+		<div className="page">
+			<section className="section">
+			  <div className="section_content page_content">
+				<FetchPageData />
+			  </div>
+			</section>
+		</div>
+	  </main>
+  
+	 
+	);
+  }
 
 
 export default Page;

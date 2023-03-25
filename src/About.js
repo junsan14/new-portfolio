@@ -1,27 +1,44 @@
 import title_about from "./images/title_about.png";
-import {Frontgraph,Backgraph,Othergraph} from "./Graph";
+import {SkillGraph,Backgraph,Othergraph} from "./Graph";
 import logo from './images/logo.png';
 import {ScrollRestoration } from 'react-router-dom';
-
+import $ from 'jquery';
 
 function About() {
+
+  $(function(){
+    $('.js-tab-front').on('click', ()=>{
+      $('.js-content').removeClass("show")
+      $('.js-content-front').addClass("show");
+    })
+    $('.js-tab-back').on('click', ()=>{
+      $('.js-content').removeClass("show")
+      $('.js-content-back').addClass("show");
+    })
+    $('.js-tab-other').on('click', ()=>{
+      $('.js-content').removeClass("show")
+      $('.js-content-other').addClass("show");
+    })
+  })
+
+
   return (
     <main className="main wrapper">
       <ScrollRestoration />
       <div className="about">
           <section className="section">
             <h1 className="section_title">
-              <img className="section_title_en" src={title_about} />
+              <img className="section_title_en" src={title_about} alt="" />
               <div className="section_title_jp">紹介</div>
             </h1>
                     
-            <div className="section_content about-page">
+            <div className="section_content about_content">
               <h2 className="section_content_title">
                 BIOGRAPHY
               </h2>
               <div className="profile">
                 <div className="profile_icon">
-                  <img src={logo} className="profile_icon_img"/>
+                  <img src={logo} className="profile_icon_img" alt="" />
                   <div className="profile_icon_desc">
                     <p>junsan14</p>
                     <p>現:WEBディレクター&エンジニア</p>
@@ -51,14 +68,14 @@ function About() {
               </h2>
               <div className="skill">
                 <ul className="skill_tab">
-                  <li className="skill_tab_li js-tab-front">FrontEnd</li>
+                  <li className="skill_tab_li js-tab-front">Engineer Skill</li>
                   <li className="skill_tab_li js-tab-back">BackEnd</li>
                   <li className="skill_tab_li js-tab-other">Others</li>
                 </ul>
                 <div className="skill_content">
                     <div className="skill_content_item js-content js-content-front show">
                       <div className="skill_content_item_graph">
-                        <Frontgraph />
+                        <SkillGraph />
                       </div>
                       <div className="skill_content_item_desc">
                           <dl>

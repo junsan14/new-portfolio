@@ -12,10 +12,6 @@ function custom_theme_setup() {
 }
 
 
-
-
-
-
 add_editor_style( 'style.css' );
 
 

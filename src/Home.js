@@ -1,6 +1,6 @@
 
 import Instagram from './Sns';
-import {FetchBlogHome} from './Blog'; 
+import {FetchSixPost} from './Fetchblog'; 
 import {ScrollRestoration } from 'react-router-dom';
 import title_about from "./images/title_about.png";
 import title_blog from "./images/title_blog.png";
@@ -8,9 +8,7 @@ import title_sns from "./images/title_sns.png";
 import twitter_png from "./images/twitter.png";
 import {Link} from "react-router-dom";
 
-
 function Home() {
-
 
   return (
     <main className="main wrapper">
@@ -25,29 +23,32 @@ function Home() {
           </div>
           <section className="section">
             <h2 className="section_title">
-              <img className="section_title_en" src={title_about} />
+              <img className="section_title_en" src={title_about} alt="" />
               <div className="section_title_jp">紹介</div>
             </h2>
             
             <div className="section_content about">
              
             </div>
-            <div className="section_btn">
-               <Link to={`./about`}>DETAILS</Link>
+            <div className="section_btn btn">
+               <Link to={`/about`}>詳細</Link>
             </div>
           </section>
           <section className="section">
             <h2 className="section_title">
-              <img className="section_title_en" src={title_blog} />
-              <div className="section_title_jp">記事</div>
+              <img className="section_title_en" src={title_blog} alt="" />
+              <div className="section_title_jp">新着</div>
             </h2>
             <div className="section_content posts">
-              <FetchBlogHome />
+              <FetchSixPost />
+            </div>
+            <div className="section_btn btn">
+               <Link to={`/blog`}>一覧</Link>
             </div>
           </section>
           <section className="section">
             <h2 className="section_title">
-              <img className="section_title_en" src={title_sns} />
+              <img className="section_title_en" src={title_sns} alt="" />
               <div className="section_title_jp">投稿</div>
             </h2>
 
@@ -56,7 +57,7 @@ function Home() {
                 <Instagram />
               </div>
               <div className="twitter">
-                <img src={twitter_png} />
+                <img src={twitter_png} alt="" />
               </div>
             </div>
           </section>

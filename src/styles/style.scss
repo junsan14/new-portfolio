@@ -1,6 +1,6 @@
 
 /*
-Theme Name: Blog template
+Theme Name: blog-template
 Author: junsan14
 Description: Blogテーマ;
 */
@@ -28,8 +28,6 @@ body{
   font-family: 'Murecho', sans-serif;
   color: #505A5F;
 
-
-
 }
 a{
   color: #333;
@@ -52,13 +50,17 @@ img{
 		width: 100%;
 		right: 0px;
 		z-index: 10;
-		height: 80px;
-	
+		height: 60px;
+		
 		& .toggle-sp{
 			position: relative;
-			width: 80px;
-			height: 80px;
-			-webkit-overflow-scrolling: touch;
+			width: 100%;
+			height: 100%;
+			background: rgba(#fff, .4);
+
+			&:hover{
+				cursor: pointer;
+			}
 			:nth-child(1){
 				position: absolute;
 				right: 20px;
@@ -66,6 +68,7 @@ img{
 				background-color: black;
 				width: 40px;
 				height: 1px;
+				transition: .5s ease;
 			}
 			:nth-child(2){
 				position: absolute;
@@ -74,6 +77,7 @@ img{
 				background-color: black;
 				width: 40px;
 				height: 1px;
+				transition: .5s ease;
 			}
 			:nth-child(3){
 				position: absolute;
@@ -82,13 +86,29 @@ img{
 				background-color: black;
 				width: 40px;
 				height: 1px;
+				transition: .5s ease;
+			}
+			&.show{
+				background: rgba(#fff, 1);
+				:nth-child(1){
+					transform: rotate(-45deg) translateY(15px);
+					transition: .5s ease;
+				}
+				:nth-child(2){
+					transition: .5s ease;
+					opacity: 0;
+				}
+				:nth-child(3){
+
+					transform: rotate(45deg) translateY(-15px);
+					transition: .5s ease;
+				}
 			}
 		}
 	}
 	.header{
 		justify-content:space-between;
 		align-items:center;
-		margin: auto 0;
 		@include mq(tab){
 			opacity: 0;
 			pointer-events: none;
@@ -105,36 +125,31 @@ img{
 			}
 		}
 		&_logo{
-			padding-top: 80px;
+			margin-top: 80px;
 			text-align: center;
-
 			width: 100%;
 
-			img{
-				width: 90px;
-				text-align: center;
-				
-
-			}
+			
 		}
-		&_name{
-			text-align: center;
-			margin-bottom: 50px;
-		}
+		
 		&_ul{
+			height: 80%;
 			text-align: center;
-
+			position: relative;
+			top: 20%;
 			&_li{
-				margin: 50px 0px;
+				padding: 30px 0px;
 				font-size: 1.5em;
 				:hover{
 					color: #111;
 				}
+				
 			}
 		}
 	}
 }
 
+//共通
 .main{ 
 	width: 85%;
 	background: $background-color;
@@ -158,17 +173,21 @@ img{
 			&_en{
 				width: auto;
 				height: 170px;
-				@include mq(sp){
+				@include mq(tab){
+					max-width:90%;
+					width: auto;
 					height: 100px;
 				}
 			}
 			&_jp{
-
 				font-size: 3em;
 				text-align: center;
 				margin-top: -70px;
 				margin-left: 50px;
 				letter-spacing: 50px;
+				@include mq(tab){
+					font-size: 2.0em;
+				}
 			}
 		}
 
@@ -178,82 +197,149 @@ img{
 				font-size: 2em;
 				margin-bottom: 80px;
 				margin-top: 80px;
-			}
-			&.posts{
-					display: flex;
-					justify-content:space-between;
-					flex-wrap: wrap;
-					.article{
-						&:nth-child(n){
-							width: calc(100%/3 - 20px);
-							transition: all .5s;
-							box-sizing: border-box;
-							@include mq(sp){
-								width: 100%;
-							}
-						}
-						
-						& img{
-						  width: 100%;
-							height: 50%;
-						}
-						&_remarks{
-							
-							&_title{
-								font-size: 1.3em;
-								margin-top: 20px;
-								margin-bottom: 30px;
-								height: 50px;
-								
-							}
-							&_text{
-								font-size: 0.1em;
 				
-							
-							}
-							&_date{
-						
-								font-size: 0.8em;
-								text-align: right;
-							}
-						}
-						&:hover{
-							transition: all .5s;
-							transform: translateY(-5px);
-							filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
-							cursor: pointer;
-						}
-					}
+			}
+		}
+
+	}
+}
+
+//HOME
+.home{
+		.kv{
+			height:100vh; 
+			position: relative;
+			text-align: center;
+			width: 100%;
+			&_text{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 100%;
+			}
+			h2{
+				font-size: 3em;
+				margin-bottom: 50px;
+				letter-spacing: 8px;
+			}
+			p{
+				font-size: 1.5em;
+				line-height: 60px;
+				letter-spacing: 8px;
 
 			}
-			&.sns{
-				display: flex;
-				 .instagram{
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					width: 60%;
-					margin-right:5%;
-					& .post{
-						width: 40%;
-						height: 300px;
-						& img{
-							height: 100%;
-							object-fit: cover;
-							border-radius: 10px;
-							
-						}
-					}
+		}
+
+		@include mq(tab){
+			.kv{
+				height:calc(100vh - 80px); 
+				position: relative;
+				text-align: center;
+				&_text{
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+					
 				}
-				 .twitter{
-					
-					width:40%;
-					
+				h2{
+					font-size: 1.5em;
+					margin-bottom: 30px;
+					letter-spacing: 5px;
+				}
+				p{
+					width: 100%;
+					font-size: 1.2em;
+					line-height: 40px;
+					letter-spacing: 2px;
+	
 				}
 			}
 		}
 
-		&_btn{
+		& .posts{
+			display: flex;
+			justify-content:space-between;
+			flex-wrap: wrap;
+			.article{
+		
+				&:nth-child(n){
+					width: 48%;
+					height: 600px;
+					transition: all .5s;
+					box-sizing: border-box;
+					
+					@include mq(sp){
+						width: 100%;
+					}
+				}			
+				& img{
+				  	width: 100%;
+					height: 50%;
+					object-fit: cover;
+				}
+				&_remarks{		
+					&_title{
+						font-size: 1.5em;
+						margin: 20px 0 10px 5px;
+						min-height: 55px;
+					
+						@include mq(tab){
+							margin-bottom: 0;
+							font-size: 1.0em;
+				
+						}
+						
+					}
+					&_text{
+						font-size: 1.0em;
+						padding-left: 20px;
+						padding-right: 20px;
+						min-height: 120px;
+						@include mq(tab){
+							font-size: .8em;
+						}
+					}
+					&_date{
+						font-size: 0.8em;
+						text-align: right;
+					}
+				}
+				&:hover{
+					transition: all .5s;
+					transform: translateY(-5px);
+					filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+					cursor: pointer;
+				}
+			}
+
+		}
+		& .sns{
+		display: flex;
+		 .instagram{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 60%;
+			margin-right:5%;
+			& .post{
+				width: 40%;
+				height: 300px;
+				& img{
+					height: 100%;
+					object-fit: cover;
+					border-radius: 10px;
+					
+				}
+			}
+		}
+		 .twitter{		
+			width:40%;			
+		}
+		}
+
+		& .btn{
 			border: 1px solid;
 			border-radius: 40px;
 			text-align: center;
@@ -280,66 +366,11 @@ img{
 				
 			}
 		}
-	}
-}
-
-//HOME
-.home{
-		.kv{
-			height:100vh; 
-			position: relative;
-			text-align: center;
-			&_text{
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%,-50%);
-			}
-			h2{
-				font-size: 3em;
-				margin-bottom: 50px;
-				letter-spacing: 8px;
-			}
-			p{
-				font-size: 1.5em;
-				line-height: 60px;
-				letter-spacing: 8px;
-
-			}
-		}
-
-		@include mq(sp){
-			.kv{
-				height:calc(100vh - 80px); 
-				position: relative;
-				text-align: center;
-				&_text{
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%,-50%);
-					
-				}
-				h2{
-					font-size: 1.5em;
-					margin-bottom: 30px;
-					letter-spacing: 5px;
-				}
-				p{
-					width: 100%;
-					font-size: 1.2em;
-					line-height: 20px;
-					letter-spacing: 2px;
-	
-				}
-			}
-		}
 }
 
 //About
 .about{
-	&-page{
-		
+	&_content{
 		 .profile{
 			display: flex;
 			justify-content: center;
@@ -351,7 +382,7 @@ img{
 				width: 30%;
 				text-align: center;
 				margin-bottom: 50px;
-				@include mq(sp){
+				@include mq(tab){
 					width: 100%;
 				}
 				&_img{
@@ -365,6 +396,7 @@ img{
 				}
 				p:nth-child(1){
 					margin-bottom: 10px;
+					
 				}
 				p:nth-child(2){
 					font-size: 0.8em;
@@ -377,7 +409,7 @@ img{
 			}
 			&_biography{
 				width: 70%;
-				@include mq(sp){
+				@include mq(tab){
 					width: 100%;
 				}
 				dl{
@@ -412,8 +444,12 @@ img{
 				display: flex;
 				width: 80%;
 				justify-content: space-between;
-				margin: 0 auto;
+				
 				font-size: 1.4em;
+				margin: 0 auto 60px auto ;
+				@include mq(tab){
+					width: 100%;
+				}
 				@include mq(sp){
 					width: 100%;
 				}
@@ -422,14 +458,16 @@ img{
 					cursor: pointer;
 					padding: 10px 0;
 					transition: .5s all;
-					border-radius: 1px;
+					border-radius: 2px;
+					border-width: thin;
 					text-align: center;
-					border: 1px solid;
+					border: 1px solid rgba(#111,.3);
 					width: calc(100% / 3);
+
 					&:hover{
 						background:#fff;
 						transition: .5s all;
-						transform: translateY(-2px);
+						transform: translateY(-1px);
 					}
 				}
 
@@ -464,10 +502,20 @@ img{
 					}
 					&_graph{
 						width: 80%;
+						
 						@include mq(tab){
-							width: 100%;
+							width: 80%;
+							tspan{
+								font-size: 0.7em;
+							}
 	
 						}
+					}
+					.custom-tooltip{
+						background:rgba(#eee,.8);
+						padding: 20px;
+						border-radius: 1px;
+						border: 1px solid rgba(#eee,.8);
 					}
 					&_desc{
 						width: 50%;
@@ -506,7 +554,98 @@ img{
 	}
 }
 
+//blog
+.blog{
+	&_content{
+		display: flex;
+		justify-content:space-between;
+		flex-wrap: wrap;
+		.article{
 
+			&:nth-child(n){
+				width: 48%;
+				height: 600px;
+				transition: all .5s;
+				box-sizing: border-box;
+				
+				@include mq(sp){
+					width: 100%;
+				}
+			}			
+			& img{
+				width: 100%;
+				height: 50%;
+				object-fit: cover;
+			}
+			&_remarks{		
+				&_title{
+					font-size: 1.5em;
+					margin: 20px 0 10px 5px;
+					min-height: 55px;
+				
+					@include mq(tab){
+						margin-bottom: 0;
+						font-size: 1.0em;
+			
+					}
+					
+				}
+				&_text{
+					font-size: 1.0em;
+					padding-left: 20px;
+					padding-right: 20px;
+					min-height: 120px;
+					@include mq(tab){
+						font-size: .8em;
+					}
+				}
+				&_date{
+					font-size: 0.8em;
+					text-align: right;
+				}
+			}
+			&:hover{
+				transition: all .5s;
+				transform: translateY(-5px);
+				filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+				cursor: pointer;
+			}
+		}
+	}
+}
+//Page
+
+.page{
+	&_content{
+		.article{
+			&_date{
+				font-size: .8em;
+				&_publish{
+					text-align: right;
+					margin-bottom: 5px;
+				}
+				&_update{
+					text-align: right;
+				}
+			}
+			&_content{
+				font-size: 1.1em;
+				margin-top: 50px;
+				line-height: 30px;
+				ol{
+					list-style-type:i;
+					margin: 10px 0 10px 40px;
+				}
+				p{
+					.marker{
+						background:linear-gradient(transparent 60%, #ff6 60%);
+						
+					}
+				}
+			}
+		}
+	}
+}
 
 .footer{
 	width: 80%;
@@ -516,7 +655,7 @@ img{
 	line-height:50px;
 	text-align: center;
 
-	@include mq(sp){
+	@include mq(tab){
 		width: 100%;
 	}
 }

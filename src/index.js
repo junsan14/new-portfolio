@@ -4,10 +4,7 @@ import ReactDOM from 'react-dom/client';
 
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-  ScrollRestoration 
+  RouterProvider, 
 } from "react-router-dom";
 
 import "./styles/style.scss"
@@ -17,17 +14,10 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
 import About from './About';
+import Blog from './Blog';
 import Page from './Page';
 import Contact from './Contact';
 import reportWebVitals from './reportWebVitals';
-import App from './App';
-
-
-
-App();
-
-
-
 
 
 const router = createBrowserRouter([
@@ -50,11 +40,11 @@ const router = createBrowserRouter([
       ),
   },
   {
-    path: "page",
+    path: "blog",
     element:(
       <>
       <Header />
-      <Page />
+      <Blog />
       </>
       ),
   },
@@ -67,19 +57,29 @@ const router = createBrowserRouter([
       </>
       ),
   },
+  {
+    path: "blog/page/:id",
+    element:(
+      <>
+      <Header />
+      <Page />
+      </>
+      ),
+  },
 ]);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-      
-      <RouterProvider router={router} />
-    <Footer />
-  </React.StrictMode>
+      <>      
+        <RouterProvider router={router} />
+        <Footer />
+      </>
+
 );
 
-
+<React.StrictMode>
+</React.StrictMode>
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,58 +1,43 @@
 
 
-import React, { PureComponent } from 'react';
-import { Radar, RadarChart,Legend, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { Radar, RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 
 const enginerSkill = [
   {
-    subject: 'HTML/CSS/SASS',
+    subject: 'CODING',
+    A: 4.5,
+    fullMark: 5,
+  },
+  {
+    subject: 'FrontEnd',
+    A: 4,
+    fullMark: 5,
+  },
+  {
+    subject: 'BackEnd',
+    A: 2,
+    fullMark: 3,
+  },
+  {
+    subject: 'Mobile App',
+    A: 2,
+    fullMark: 3,
+  },
+  {
+    subject: 'CMS',
+    A: 2.5,
+    fullMark: 3,
+  },
+  {
+    subject: 'Database',
+    A: 2,
+    fullMark: 3,
+  },
+  {
+    subject: 'SNS API',
     A: 3,
-    fullMark: 3,
-  },
-  {
-    subject: 'JavaScript/jQuery',
-    A: 3,
-    fullMark: 3,
-  },
-  {
-    subject: 'React.js',
-    A: 2,
-    fullMark: 3,
-  },
-  {
-    subject: 'React Native',
-    A: 1,
-    fullMark: 3,
-  },
-  {
-    subject: 'Vue.js',
-    A: 1,
-    fullMark: 3,
-  },
-  {
-    subject: 'PHP',
-    A: 1.5,
-    fullMark: 3,
-  },
-  {
-    subject: 'Laravel',
-    A: 2,
-    fullMark: 3,
-  },
-  {
-    subject: 'CMS/WordPress連携',
-    A: 1.5,
-    fullMark: 3,
-  },
-  {
-    subject: 'SNS api 連携',
-    A: 2,
-    fullMark: 3,
-  },
-  {
-    subject: 'Database/mySQL firebase',
-    A: 2,
     fullMark: 3,
   },
 ];
@@ -149,8 +134,11 @@ const otherSkill = [
     if (active) {
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${label} : ${payload[0].value}`}</p>
-          <p className="intro"></p>
+          <p className="label">
+
+            {getIntroOfPage(label)}
+          </p>
+
         
         </div>
       );
@@ -158,25 +146,50 @@ const otherSkill = [
   
     return null;
   }
+  const getIntroOfPage = (label) => {
+    if (label === 'CODING') {
+      return "HTML,SASS使用歴10年以上";
+    }
+    if (label === 'FrontEnd') {
+      return "JavaScript, jQueryに使用問題なし。Frameworkは主にReactを使用しています。";
+    }
+    if (label === 'BackEnd') {
+      return "使用経験はPHPのみ。Nativeも仕様書を見ながら使用可能ではあるが、WEBアプリを構築するときはLaravelを使用しています";
+    }
+    if (label === 'CMS') {
+      return 'CMSの組み込みWordPressのみ経験。最近はPHP書き込みよりAPIでの実装が多いです。';
+    }
+    if (label === 'Mobile App') {
+      return 'React Nativeを用いて一度だけアプリDEMOを作成した経験あり';
+    }
+    if (label === 'Database') {
+      return '基本使用するのはmySQL,一度だけfirebaseを使用したことがあります';
+    }
+    if (label === 'SNS API') {
+      return 'このWEBページもそうですが、TwitterやInstagramの実装経験あり';
+    }
+    
+    return '';
+  };
 
-  function Frontgraph(){
+  function SkillGraph(){
     return (
 
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart
-            outerRadius="80%"
+            outerRadius={150}
  
             data={enginerSkill}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 3]} />
+            <PolarRadiusAxis domain={[0, 5]} />
             <Radar
               name="frontEnd"
               dataKey="A"
-              stroke="#8884d8"
-              fill="#8884d8"
+              stroke="#111"
+              fill="#eee"
               fillOpacity={0.6}
             />
           </RadarChart>
@@ -231,4 +244,4 @@ const otherSkill = [
         </ResponsiveContainer>
     )
   }
-export {Frontgraph, Backgraph,Othergraph};
+export {SkillGraph, Backgraph,Othergraph};

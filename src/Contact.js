@@ -8,7 +8,7 @@ function Contact() {
       <div className="about">
           <section className="section">
             <h1 className="section_title">
-              <img className="section_title_en" src={title_contact} />
+              <img className="section_title_en" src={title_contact} alt=""/>
               <div className="section_title_jp">問合せ</div>
             </h1>
                     
