@@ -151,7 +151,12 @@ const otherSkill = [
       return "HTML,SASS使用歴10年以上";
     }
     if (label === 'FrontEnd') {
-      return "JavaScript, jQueryに使用問題なし。Frameworkは主にReactを使用しています。";
+      return (
+        <>
+          JavaScript, jQueryに使用問題なし <br/>
+          Frameworkは主にReactを使用しています。
+        </>
+      );
     }
     if (label === 'BackEnd') {
       return "使用経験はPHPのみ。Nativeも仕様書を見ながら使用可能ではあるが、WEBアプリを構築するときはLaravelを使用しています";
@@ -177,7 +182,7 @@ const otherSkill = [
 
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart
-            outerRadius={150}
+            outerRadius="60%"
  
             data={enginerSkill}
           >

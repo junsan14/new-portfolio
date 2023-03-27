@@ -1,12 +1,13 @@
 
 import Instagram from './Sns';
-import {FetchSixPost} from './Fetchblog'; 
+import {FetchThreePost} from './Fetchblog'; 
 import {ScrollRestoration } from 'react-router-dom';
 import title_about from "./images/title_about.png";
 import title_blog from "./images/title_blog.png";
 import title_sns from "./images/title_sns.png";
 import twitter_png from "./images/twitter.png";
 import {Link} from "react-router-dom";
+import {SkillGraph} from './Graph';
 
 function Home() {
 
@@ -28,7 +29,7 @@ function Home() {
             </h2>
             
             <div className="section_content about">
-             
+              <SkillGraph />
             </div>
             <div className="section_btn btn">
                <Link to={`/about`}>詳細</Link>
@@ -40,7 +41,7 @@ function Home() {
               <div className="section_title_jp">新着</div>
             </h2>
             <div className="section_content posts">
-              <FetchSixPost />
+              <FetchThreePost />
             </div>
             <div className="section_btn btn">
                <Link to={`/blog`}>一覧</Link>

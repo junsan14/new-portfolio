@@ -6,20 +6,7 @@ import $ from 'jquery';
 
 function About() {
 
-  $(function(){
-    $('.js-tab-front').on('click', ()=>{
-      $('.js-content').removeClass("show")
-      $('.js-content-front').addClass("show");
-    })
-    $('.js-tab-back').on('click', ()=>{
-      $('.js-content').removeClass("show")
-      $('.js-content-back').addClass("show");
-    })
-    $('.js-tab-other').on('click', ()=>{
-      $('.js-content').removeClass("show")
-      $('.js-content-other').addClass("show");
-    })
-  })
+  graphShow();
 
 
   return (
@@ -74,16 +61,15 @@ function About() {
                 </ul>
                 <div className="skill_content">
                     <div className="skill_content_item js-content js-content-front show">
-                      <div className="skill_content_item_graph">
+                      <div className="skill_content_item_graph skill_graph">
                         <SkillGraph />
                       </div>
-                      <div className="skill_content_item_desc">
-                          <dl>
-                            <dt>3年以上の実務経験あり</dt>
-                            <dd>  HTML/ CSS /SASS/ NativeJS/ jQuery</dd>
-                            <dt>数サイトの実装経験あり</dt>
-                            <dd>React.js</dd>
-                          </dl>
+                      <div className="skill_content_item_des skill_desc">
+                         <p>5: 使用に問題なし</p>
+                         <p>4: 使用に問題なし</p>
+                         <p>3: 使用に問題なし</p>
+                         <p>2: 使用に問題なし</p>
+                         <p>1: 使用に問題なし</p>
                       </div>
                     </div>
                     <div className="skill_content_item js-content js-content-back">
@@ -118,6 +104,24 @@ function About() {
       </div>
     </main>
   );
+}
+
+
+function graphShow(){
+  $(function(){
+    $('.js-tab-front').on('click', ()=>{
+      $('.js-content').removeClass("show")
+      $('.js-content-front').addClass("show");
+    })
+    $('.js-tab-back').on('click', ()=>{
+      $('.js-content').removeClass("show")
+      $('.js-content-back').addClass("show");
+    })
+    $('.js-tab-other').on('click', ()=>{
+      $('.js-content').removeClass("show")
+      $('.js-content-other').addClass("show");
+    })
+  })
 }
 
 export default About;

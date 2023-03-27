@@ -1,5 +1,6 @@
 import title_contact from './images/title_contact.png';
 import {ScrollRestoration } from 'react-router-dom';
+import Form from './Form';
 
 function Contact() {
   return (
@@ -12,10 +13,8 @@ function Contact() {
               <div className="section_title_jp">問合せ</div>
             </h1>
                     
-            <div className="section_content about-page">
-              <h2 className="section_content_title">
-                BIOGRAPHY
-              </h2>
+            <div className="section_content contact_content">
+              <Form />
             </div>
           </section>
       </div>

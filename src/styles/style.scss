@@ -27,6 +27,9 @@ body{
   font-size: 100%;
   font-family: 'Murecho', sans-serif;
   color: #505A5F;
+ &.noscroll{
+	overflow: hidden;
+  }
 
 }
 a{
@@ -46,6 +49,8 @@ img{
 	width: 15%;
 	position: fixed;
 	right: 0;
+	height: 100%;
+	top: 0;
 	@include mq(tab){
 		width: 100%;
 		right: 0px;
@@ -107,8 +112,10 @@ img{
 		}
 	}
 	.header{
-		justify-content:space-between;
+		justify-content:center;
 		align-items:center;
+		display: flex;
+		height: 100%;
 		@include mq(tab){
 			opacity: 0;
 			pointer-events: none;
@@ -133,10 +140,10 @@ img{
 		}
 		
 		&_ul{
-			height: 80%;
+			height: 100%;
 			text-align: center;
 			position: relative;
-			top: 20%;
+			top: 10%;
 			&_li{
 				padding: 30px 0px;
 				font-size: 1.5em;
@@ -176,7 +183,7 @@ img{
 				@include mq(tab){
 					max-width:90%;
 					width: auto;
-					height: 100px;
+					height: 80px;
 				}
 			}
 			&_jp{
@@ -187,6 +194,9 @@ img{
 				letter-spacing: 50px;
 				@include mq(tab){
 					font-size: 2.0em;
+					letter-spacing: 25px;
+					margin-left: 25px;
+					margin-top: -50px;
 				}
 			}
 		}
@@ -199,6 +209,45 @@ img{
 				margin-top: 80px;
 				
 			}
+		}
+		.skill_graph{
+			width: 100%;
+			
+			@include mq(tab){
+				width: 100%;
+				tspan{
+					font-size: 0.7em;
+				}
+
+			}
+		}
+		.custom-tooltip{
+			background:rgba(#eee,.8);
+			padding: 20px;
+			line-height: 30px;
+			border-radius: 1px;
+			border: 1px solid rgba(#eee,.8);
+			@include mq(tab){
+				line-height: 20px;
+				font-size: .8em;
+				padding: 10px;
+			}
+		}
+		.skill_desc{
+			width: 100%;
+			font-size: .8em;
+			margin-top: -100px;
+			text-align: right;
+			@include mq(tab){
+				width: 100%;
+				font-size: .5em;
+				
+			}
+			p{
+				padding-top: 3px;
+				letter-spacing: 1px;
+			}
+			
 		}
 
 	}
@@ -446,12 +495,11 @@ img{
 				justify-content: space-between;
 				
 				font-size: 1.4em;
-				margin: 0 auto 60px auto ;
-				@include mq(tab){
-					width: 100%;
-				}
+				margin: 0 auto 30px auto ;
+				
 				@include mq(sp){
 					width: 100%;
+					margin: 0 auto 0 auto ;
 				}
 		
 				&_li{
@@ -468,6 +516,9 @@ img{
 						background:#fff;
 						transition: .5s all;
 						transform: translateY(-1px);
+					}
+					@include mq(tab){
+						font-size: .7em;
 					}
 				}
 
@@ -500,52 +551,7 @@ img{
 						transition: .5s all;
 						pointer-events: auto;
 					}
-					&_graph{
-						width: 80%;
-						
-						@include mq(tab){
-							width: 80%;
-							tspan{
-								font-size: 0.7em;
-							}
-	
-						}
-					}
-					.custom-tooltip{
-						background:rgba(#eee,.8);
-						padding: 20px;
-						border-radius: 1px;
-						border: 1px solid rgba(#eee,.8);
-					}
-					&_desc{
-						width: 50%;
-						@include mq(tab){
-							width: 100%;
-						}
-						dl{
-							width: 100%;
-							display: flex;
-							flex-wrap: wrap;
-							dt{
-								width: 50%;
-								padding: 15px 0;
-								@include mq(tab){
-									width: 100%;
-									padding:0;
-								}
-							}
-							dd{
-								width: 50%;
-								padding: 15px 0;
-								@include mq(tab){
-									width: 100%;
-									padding:5px 0 20px 20px;
-									font-size: .9em;
-									line-height: 1.5em;
-								}
-							}
-						}
-					}
+					
 				}
 			}
 
@@ -642,11 +648,79 @@ img{
 						
 					}
 				}
+				.markup-area{
+					background: #fff;
+					width: 100%;
+					line-height: 0;
+					font-size: .8em;
+					margin-bottom: 40px;
+					position: relative;
+					code{
+						line-height: 25px;
+					}
+					&-copy{
+						position:absolute;
+						line-height: 5px;
+						top:0;
+						right: 10px;
+						background: #eee;
+						border: 1px solid;
+						border-radius: 100px;
+						text-align: center;
+						&:hover{
+							cursor: pointer;
+							background: yellow;
+						}
+						
+						
+					}
+				}
+				
 			}
 		}
 	}
 }
 
+
+//Contact
+.contact{
+	&_content{
+		.form_control{
+			width:80%;
+			margin: 0 auto;
+			@include mq(tab){
+				width: 100%;
+				font-size: .8em;
+			}
+			&_item{
+				display: flex;
+				margin: 30px auto 30px auto;
+			
+				label{
+					width: 20%;
+				}
+				&_input{
+					
+					width: 80%;
+					height: auto;
+					min-height: 40px;
+					background: rgba(#fff,1);
+					@include mq(tab){
+						min-height: 30px;
+						font-size:16px;
+					}
+				}
+				&_submit{
+					float:right;
+					margin-top: 50px;
+					border: 1px solid rgba(#111,.3);
+					border-radius: 3px;
+					padding: 10px 20px 10px 20px;
+				}
+			}
+		}
+	}
+}
 .footer{
 	width: 80%;
 	height: 50px;

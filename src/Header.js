@@ -5,38 +5,7 @@ import {useState } from "react";
 
 
 function Header(){
-  const [loadState, setLoadState]= useState(false);
-  console.log(loadState)
-  $(function(){
-    if(!loadState){
-      console.log("header読み込み")
-      let $header = $('.js-header');
-      let $toggleBtn = $('.js-toggle-sp');
-      let $headerlist = $('.js-header-ul-li');
-    
-        $toggleBtn.on('click', ()=>{       
-          if($header.hasClass('show')){
-            $header.removeClass('show');
-            $toggleBtn.removeClass('show');
-            console.log($header.hasClass('show'))
-          }else{
-            $header.addClass('show');
-            $toggleBtn.addClass('show');
-            console.log($header.hasClass('show'))
-          }
-    
-        })
-        $headerlist.on('click',()=>{
-          $header.removeClass('show');
-          $toggleBtn.removeClass('show');
-        })
-        setLoadState(true);
-    }
-
-
-
-  })
-
+  SpMenuShow();
   return(
     <aside className="aside">
       <div className="toggle-sp js-toggle-sp">
@@ -58,7 +27,42 @@ function Header(){
 
 }
 
+function SpMenuShow(){
+  const [loadState, setLoadState]= useState(false);
+  console.log(loadState)
+  $(function(){
+    if(!loadState){
+   
+      let $header = $('.js-header');
+      let $toggleBtn = $('.js-toggle-sp');
+      let $headerlist = $('.js-header-ul-li');
+    
+        $toggleBtn.on('click', ()=>{       
+          if($header.hasClass('show')){
+            $header.removeClass('show');
+            $toggleBtn.removeClass('show');
+            $("body").removeClass('noscroll');
+            console.log($header.hasClass('show'))
+          }else{
+            $header.addClass('show');
+            $toggleBtn.addClass('show');
+            $("body").addClass('noscroll');
+            console.log($header.hasClass('show'))
+          }
+    
+        })
+        $headerlist.on('click',()=>{
+          $header.removeClass('show');
+          $toggleBtn.removeClass('show');
+          $("body").removeClass('noscroll');
+        })
+        setLoadState(true);
+    }
 
+
+
+  })
+}
 
 export default Header;
 

@@ -3,7 +3,7 @@ import axios from "axios";
 import noImg from './images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
-
+import $ from 'jquery';
 
 function FetchAllPost() {
   const [data, setData] = useState([]);
@@ -56,12 +56,12 @@ function FetchAllPost() {
 }
 
 
-function FetchSixPost() {
+function FetchThreePost() {
   const [data, setData] = useState([]);
   
    useEffect(() => {
    axios
-     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?_embed")
+     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?per_page=4&_embed")
      .then(response => setData(response.data))
      .catch(error => console.log(error));
   }, []);
@@ -109,6 +109,36 @@ function FetchSixPost() {
 
 
 function FetchPageData(){
+  $(function(){
+
+    let $markupElements = $(".language-markup");
+
+    $markupElements.each((i,ele)=>{
+      //console.log(ele)
+     $(ele).css("position", "relative")
+     $(ele).wrap(
+      `<div class="markup-area">
+      </div>
+      `
+     );
+     $(ele).append(
+      `
+      <div class="markup-area-copy">
+       <p>copy</p>
+      </div>
+      `
+     );
+      
+     });
+     $(".markup-area-copy").on("click", function(){
+      let that = $(this)
+      
+      let copiedText =that.children("code").text();
+      console.log($(this).children("code"))
+      that.children(".markup-area-copy").text("copied")
+      return navigator.clipboard.writeText(copiedText);
+    })
+  })
    const [data, setData] = useState();
    const {id} = useParams();
    useEffect(() => {
@@ -163,4 +193,4 @@ function FetchPageData(){
 
 
 
-export {FetchAllPost,FetchSixPost,FetchPageData};
+export {FetchAllPost,FetchThreePost,FetchPageData};
