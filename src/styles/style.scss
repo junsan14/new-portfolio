@@ -638,6 +638,11 @@ img{
 				font-size: 1.1em;
 				margin-top: 50px;
 				line-height: 30px;
+				@include mq(tab){
+					font-size: 0.8em;
+					line-height: 23px;
+				}
+
 				ol{
 					list-style-type:i;
 					margin: 10px 0 10px 40px;
@@ -648,15 +653,29 @@ img{
 						
 					}
 				}
+				img{
+					width: 30%;
+					height: auto;
+					text-align: center;
+					@include mq(tab){
+						width: 80%;
+					}		
+				}
+	
 				.markup-area{
-					background: #fff;
+					background: rgba(#fff,1);
 					width: 100%;
 					line-height: 0;
 					font-size: .8em;
 					margin-bottom: 40px;
 					position: relative;
+					overflow-x: scroll;
 					code{
-						line-height: 25px;
+						line-height: 20px;
+						display: block;
+						width: 100%;
+						max-height: 300px;
+						
 					}
 					&-copy{
 						position:absolute;
