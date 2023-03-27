@@ -137,11 +137,15 @@ function FetchPageData(){
       
      });
      $(".markup-area-copy").on("click", function(){
-      
-      let copiedText = $(this).prev().text();
-      $(this).children("p").text("copied")
-      console.log($(this).prev().text())
-      //that.children(".markup-area-copy").text("copied")
+      let that = $(this);
+      let copiedText = that.prev().text();
+      that.children("p").text("copied");
+      that.addClass("copied");
+      //console.log(that.prev().text())
+      setTimeout(()=>{
+      that.children("p").text("copy"); 
+      that.removeClass("copied");
+      },3000)
       return navigator.clipboard.writeText(copiedText);
     })
   })

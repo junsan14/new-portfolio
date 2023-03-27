@@ -21,31 +21,37 @@ function About() {
                     
             <div className="section_content about_content">
               <h2 className="section_content_title">
-                BIOGRAPHY
+                PROFILE
               </h2>
               <div className="profile">
                 <div className="profile_icon">
                   <img src={logo} className="profile_icon_img" alt="" />
                   <div className="profile_icon_desc">
-                    <p>junsan14</p>
+                    <p >junsan14</p>
                     <p>現:WEBディレクター&エンジニア</p>
                     <p>元:リゾートホテルマン</p>
+                  </div>
+                  <div className="profile_icon_desc">
+                    <p>好きなもの</p>
+                    <p>バスケットボール,Apple製品,ドラクエ,自然､海,お酒</p>
+
+                    
                   </div>
                 </div>
                 <div className="profile_biography">
                   <dl>
                     <dt>1992</dt>
-                    <dd>大阪で生まれ、18年間大阪で過ごす</dd>
+                    <dd>大阪で生まれ､高校卒業まで大阪で過ごす</dd>
                     <dt>2011</dt>
-                    <dd>東日本大震災で東北の大学を受験できず、東京に進学</dd>
+                    <dd>東京の私立に入学､工学部情報システム専攻</dd>
                     <dt>2014</dt>
-                    <dd>3年間工学科に在籍するも、馴染めず奨学金無償で留学できる国際教養学部へ転学</dd>
+                    <dd>留学の思いを捨てきれず､奨学金無償取得可能な新学部へ転部</dd>
                     <dt>2016</dt>
-                    <dd>ロンドンに2年弱在籍し、日本の言語、文化交流のコミュニティ設立</dd>
+                    <dd>ロンドンに無事留学し、日本の言語、文化交流のコミュニティJLCE設立しながら2年弱滞在</dd>
                     <dt>2018</dt>
                     <dd>卒業後、サービス業に強い憧れがあり当時知名度を爆発的に伸ばしていた星野リゾートに入社、4年間河口湖のほとりで過ごす</dd>
                     <dt>2022</dt>
-                    <dd>やはりホテル業は将来への不安も大きいため、東京へ戻りWEB業界への転職に至る</dd>
+                    <dd>将来への不安や働き方などの理由から転職し､東京へ戻りWEBディレクター兼エンジニアとして活動</dd>
                   </dl>
                 </div>
               </div>

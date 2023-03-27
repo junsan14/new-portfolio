@@ -114,8 +114,7 @@ img{
 	.header{
 		justify-content:center;
 		align-items:center;
-		display: flex;
-		height: 100%;
+		
 		@include mq(tab){
 			opacity: 0;
 			pointer-events: none;
@@ -140,10 +139,9 @@ img{
 		}
 		
 		&_ul{
-			height: 100%;
+
 			text-align: center;
-			position: relative;
-			top: 10%;
+			padding-top: 10%;
 			&_li{
 				padding: 30px 0px;
 				font-size: 1.5em;
@@ -151,6 +149,22 @@ img{
 					color: #111;
 				}
 				
+			}
+		}
+		&_sns{
+			display: flex;
+			margin-top: 100px;
+			justify-content: center;
+			a{
+				width: 40%;
+				text-align: center;
+				@include mq(tab){
+					width: 15%;
+				}
+				img{
+					text-align: center;
+					width: 30px;
+				}
 			}
 		}
 	}
@@ -423,6 +437,7 @@ img{
 		 .profile{
 			display: flex;
 			justify-content: center;
+			align-items: center;
 			flex-wrap: wrap;
 			@include mq(sp){
 				flex-direction: column;
@@ -430,31 +445,36 @@ img{
 			&_icon{
 				width: 30%;
 				text-align: center;
-				margin-bottom: 50px;
+				
 				@include mq(tab){
 					width: 100%;
+					margin-bottom: 50px;
 				}
 				&_img{
-					width: 200px;
+					width: 120px;
 					text-align: center;
-					margin-bottom: 40px;
+					margin-bottom: 20px;
 
 					@include mq(sp){
 						width: 150px;
 					}
 				}
-				p:nth-child(1){
-					margin-bottom: 10px;
-					
+				&_desc{
+					margin: 0 auto;
+					width: 80%;
+					margin-bottom: 20px;
+					p{	
+						&:nth-child(1){
+							font-size: 1.1em;
+							margin-bottom: 10px;	
+						}
+						font-size: 0.8em;
+						margin-bottom: 10px;
+						line-height: 20px;
+					}
 				}
-				p:nth-child(2){
-					font-size: 0.8em;
-					margin-bottom: 10px;
-				}
-				p:nth-child(3){
-					font-size: 0.8em;
-					margin-bottom: 10px;
-				}
+
+				
 			}
 			&_biography{
 				width: 70%;
@@ -679,16 +699,22 @@ img{
 					}
 					&-copy{
 						position:absolute;
-						line-height: 5px;
-						top:0;
+						line-height: 0px;
+						top:20px;
 						right: 10px;
 						background: #eee;
-						border: 1px solid;
-						border-radius: 100px;
+						border: 1px solid rgba(#111,.4);
+						border-radius: 10px;
+						padding: 15px 15px;
 						text-align: center;
+						transition: .5s ease;
+						&.copied{
+							opacity: .5;
+						}
 						&:hover{
 							cursor: pointer;
-							background: yellow;
+							background: #fff;
+							transition: .5s ease;
 						}
 						
 						

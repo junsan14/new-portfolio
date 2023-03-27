@@ -2,7 +2,8 @@
 import {Link} from "react-router-dom";
 import $ from 'jquery';
 import {useState } from "react";
-
+import twitter from './images/twitter_icon.png';
+import instagram from './images/instagram_icon.png';
 
 function Header(){
   SpMenuShow();
@@ -20,6 +21,14 @@ function Header(){
            <li className="header_ul_li js-header-ul-li"><Link to="/blog">BLOG</Link></li>
            <li className="header_ul_li js-header-ul-li"><Link to="/contact">CONTACT</Link></li>
         </ul>
+        <div className="header_sns">
+          <a href="https://twitter.com/junsan_junsan14" target="_blank">
+            <img src={twitter} alt="" />
+          </a>
+          <a href="https://www.instagram.com/junsan_junsan14/">
+            <img src={instagram} alt="" target="_blank" />
+          </a>
+        </div>
       </header>
     </aside>
    
