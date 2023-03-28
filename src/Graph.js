@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { Radar, RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { Radar, Text,RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 
 const enginerSkill = [
@@ -31,7 +31,7 @@ const enginerSkill = [
     fullMark: 3,
   },
   {
-    subject: 'Database',
+    subject: 'DB',
     A: 2,
     fullMark: 3,
   },
@@ -167,7 +167,7 @@ const otherSkill = [
     if (label === 'Mobile App') {
       return 'React Nativeを用いて一度だけアプリDEMOを作成した経験あり';
     }
-    if (label === 'Database') {
+    if (label === 'DB') {
       return '基本使用するのはmySQL,一度だけfirebaseを使用したことがあります';
     }
     if (label === 'SNS API') {
@@ -181,15 +181,21 @@ const otherSkill = [
     return (
 
         <ResponsiveContainer width="100%" height={400}>
+  
           <RadarChart
-            outerRadius="60%"
- 
+            outerRadius="80%"
+            legendType="line"
             data={enginerSkill}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
+            <PolarAngleAxis dataKey="subject" 
+              style={{
+            
+
+            }}/>
             <PolarRadiusAxis domain={[0, 5]} />
+
             <Radar
               name="frontEnd"
               dataKey="A"
@@ -197,6 +203,7 @@ const otherSkill = [
               fill="#eee"
               fillOpacity={0.6}
             />
+            <Text  width={100} />
           </RadarChart>
         </ResponsiveContainer>
     )

@@ -2,7 +2,7 @@ import React, {useEffect, useState } from "react";
 import axios from "axios";
 import noImg from './images/no_image.png'
 import parse from 'html-react-parser';
-import {Link,useParams} from "react-router-dom";
+import {Link,useParams,useLocation} from "react-router-dom";
 import $ from 'jquery';
 
 function FetchAllPost() {
@@ -77,17 +77,24 @@ function FetchThreePost() {
     if(data){
       return(
         <>
-          {data.map((item,i) => {
+          {data.map((item,i,data) => {
+            //console.log(i>0?data[i-1]:"なし")
           let date = new Date(item.date).getFullYear()+ "/" 
           +new Date(item.date).getMonth().toString().padStart(2, '0')+ "/" 
           +new Date(item.date).getDate().toString().padStart(2, '0')+ "　"
           +new Date(item.date).getHours().toString().padStart(2, '0')+ ":"
           +new Date(item.date).getMinutes().toString().padStart(2, '0');   
           let thumbnail = item["_embedded"]["wp:featuredmedia"]?item["_embedded"]["wp:featuredmedia"][0]["source_url"]:noImg;
-
+          let prevId = 40;
+          let nextId = 30;
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/page/${item.id}`}>
+                <Link to={`/blog/page/${item.id}`} 
+                      state={{ 
+                        prevId: prevId,
+                        nextId: nextId
+                      }}
+                >
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{item.title.rendered}</h3>
@@ -115,8 +122,8 @@ function FetchThreePost() {
 
 
 function FetchPageData(){
-  $(function(){
 
+  $(function(){
     let $markupElements = $(".language-markup");
 
     $markupElements.each((i,ele)=>{
@@ -148,7 +155,10 @@ function FetchPageData(){
       },3000)
       return navigator.clipboard.writeText(copiedText);
     })
-  })
+  });
+
+   let { state } = useLocation(); 
+
    const [data, setData] = useState();
    const {id} = useParams();
    useEffect(() => {
@@ -156,10 +166,10 @@ function FetchPageData(){
      .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts/" +id)
      .then(response => setData(response.data))
      .catch(error => console.log(error));
-  }, []);
+  }, [id]);
 
 
-
+  
   const Render = ()=>{
     if(data){
       let publishDate = new Date(data.date).getFullYear()+ "/" 
@@ -172,7 +182,46 @@ function FetchPageData(){
           +new Date(data.modified).getDate().toString().padStart(2, '0')+ " "
           +new Date(data.modified).getHours().toString().padStart(2, '0')+ ":"
           +new Date(data.modified).getMinutes().toString().padStart(2, '0'); 
-        
+          
+      let prevPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:"";
+      let nextPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:"";
+      console.log(prevPost)
+
+      const PrevPost = ()=>{
+        if(prevPost){
+          return(
+                <div className="article" id={prevPost.id} >
+                      <Link to={`/blog/page/${prevPost.id}`}                      
+                      > 
+                        <p>PREV</p>
+                        <img src={prevPost.img.src} alt="" />
+                        <div className="article_remarks">
+                          <h3 className="article_remarks_title">{prevPost.title}</h3>  
+                        </div>
+                      </Link>
+                </div>
+          )
+        }
+      }
+      const NextPost = ()=>{
+        if(nextPost){
+          return(
+                <div className="article" id={nextPost.id} >
+                      <Link to={`/blog/page/${nextPost.id}`}                      
+                      > 
+                        <div className="article_image">
+                          <p>NEXT</p>
+                          <img src={nextPost.img.src} alt="" />
+                        </div>
+                        <div className="article_remarks">
+                          <h3 className="article_remarks_title">{nextPost.title}</h3>  
+                         </div>
+                      </Link>
+                </div>
+          )
+        }
+      }
+
       return(
         <>
               <h1 className="section_content_title">{data.title.rendered}</h1>
@@ -189,6 +238,15 @@ function FetchPageData(){
                         {parse(data.content["rendered"])}
 
                 </div>
+              </div>
+              <div className="close_published_posts">
+                  <div className="close_published_posts_prev">
+                    <PrevPost />
+                  </div>
+       
+                  <div className="close_published_posts_next">
+                    <NextPost />
+                  </div>
               </div>
                    
                 

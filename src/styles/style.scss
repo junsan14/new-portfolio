@@ -114,12 +114,13 @@ img{
 	.header{
 		justify-content:center;
 		align-items:center;
-		
+		margin-top: 100px;
 		@include mq(tab){
 			opacity: 0;
 			pointer-events: none;
 			transition: .5s ease;
 			z-index: 0;
+			margin-top: 0px;
 			&.show{
 				
 				opacity: 1;
@@ -170,6 +171,33 @@ img{
 	}
 }
 
+.modal{
+	position: fixed;
+	top:-60px;
+	width: 100%;
+	height: 60px;
+	background:rgba(#111,0.2);
+	z-index: 40;
+	opacity: 0;
+	transition: .5s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&.show{
+		transition: .5s ease;
+		transform: translateY(60px);
+		opacity: 1;
+	}
+	&_msg{
+		text-align: center;
+		font-size: 1.2em;
+		width: 80%;
+		@include mq(tab){
+			font-size: 0.8em;
+		}
+		
+	}
+}
 //共通
 .main{ 
 	width: 85%;
@@ -226,14 +254,22 @@ img{
 		}
 		.skill_graph{
 			width: 100%;
-			
+			font-size: 1.8em;
 			@include mq(tab){
 				width: 100%;
-				tspan{
-					font-size: 0.7em;
-				}
+				
 
 			}
+		}
+			
+		
+		.recharts-polar-angle-axis-tick-value{
+			font-size: 1.1em;
+			@include mq(sp){
+				font-size: .5em;
+				margin-left:200px;
+			}
+		
 		}
 		.custom-tooltip{
 			background:rgba(#eee,.8);
@@ -480,7 +516,9 @@ img{
 				width: 70%;
 				@include mq(tab){
 					width: 100%;
+					
 				}
+				
 				dl{
 					width: 100%;
 					display: flex;
@@ -722,6 +760,51 @@ img{
 				}
 				
 			}
+		}
+		.close_published_posts{
+			margin-top: 50px;
+			display: flex;
+			justify-content: space-between;
+			
+			
+			&_prev, &_next{
+				width: 45%;
+				
+				padding: 20px 5px;
+				height: auto;
+				.article a{
+					display: flex;
+					position: relative;
+					justify-content: center;
+					.article_image{
+						width: 50%;
+						position:absolute;
+						p{
+							position: relative;
+							top:10px;
+							left: 10px;
+							background:rgba(#111,.5);
+							color: white;
+							padding: 5px 10px;
+						}
+						img{
+							height: 100%;
+							
+							
+						}
+					}
+					
+					.article_remarks{
+						width: 50%;
+						
+						padding:5px 5px;
+						background:rgba(#111,.5);
+						color: white;
+				}
+				}
+				
+			}
+			
 		}
 	}
 }
