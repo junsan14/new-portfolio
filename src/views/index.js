@@ -16,7 +16,7 @@ import Home from './views/pages/Home';
 import About from './views/pages/About';
 import Blog from './views/pages/Blog';
 import Page from './views/pages/Page';
-import Contact from './views/pages/Contact';
+import Contact from './views/Contact';
 import reportWebVitals from './reportWebVitals';
 
 

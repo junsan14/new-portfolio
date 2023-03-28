@@ -1,4 +1,4 @@
-import {FetchPageData} from './Fetchblog';
+import {FetchPageData} from '../components/FetchBlog';
 import {ScrollRestoration } from 'react-router-dom';
 
 

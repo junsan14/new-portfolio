@@ -7,71 +7,71 @@ import { Radar, Text,RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusA
 const enginerSkill = [
   {
     subject: 'CODING',
-    A: 4.5,
+    A: 4.0,
     fullMark: 5,
   },
   {
     subject: 'FrontEnd',
-    A: 4,
+    A: 3.2,
     fullMark: 5,
   },
   {
     subject: 'BackEnd',
-    A: 2,
-    fullMark: 3,
+    A: 2.4,
+    fullMark: 5,
   },
   {
     subject: 'Mobile App',
-    A: 2,
-    fullMark: 3,
+    A: 1,
+    fullMark: 5,
   },
   {
     subject: 'CMS',
     A: 2.5,
-    fullMark: 3,
+    fullMark: 5,
   },
   {
     subject: 'DB',
     A: 2,
-    fullMark: 3,
+    fullMark: 5,
   },
   {
     subject: 'SNS API',
     A: 3,
-    fullMark: 3,
+    fullMark: 5,
   },
 ];
 
 const frontSkill = [
     {
-      subject: 'HTML',
-      A: 3,
-      fullMark: 3,
-    },
-    {
-      subject: 'CSS/SASS',
-      A: 3,
-      fullMark: 3,
+      subject: 'HTML/CSS/SASS',
+      A: 4,
+      fullMark: 5,
     },
     {
       subject: 'JavaScript',
-      A: 3,
-      fullMark: 3,
+      A: 4,
+      fullMark: 5,
     },
     {
       subject: 'jQuery',
-      A: 3,
-      fullMark: 3,
+      A: 4,
+      fullMark: 5,
+    },
+    {
+      subject: 'Google App Script',
+      A: 4,
+      fullMark: 5,
     },
     {
       subject: 'React',
-      A: 2,
-      fullMark: 3,
+      A: 2.5,
+      fullMark: 5,
     },
     {
-      subject: 'Vue',
+      subject: 'React Native',
       A: 1,
-      fullMark: 3,
+      fullMark: 5,
     },
 
   ];
@@ -81,51 +81,66 @@ const backSkill = [
   {
     subject: 'PHP',
     A: 2,
-    fullMark: 3,
+    fullMark: 5,
   },
   {
     subject: 'Laravel',
-    A: 3,
-    fullMark: 3,
+    A: 2.5,
+    fullMark: 5,
   },
   {
     subject: 'WordPress',
-    A: 2,
-    fullMark: 3,
+    A: 2.5,
+    fullMark: 5,
   },
   {
     subject: 'mySQL',
     A: 2,
-    fullMark: 3,
+    fullMark: 5,
   },
   {
     subject: 'firebase',
-    A: 1,
-    fullMark: 3,
+    A: 1.5,
+    fullMark: 5,
+  },
+  {
+    subject: 'SNS API',
+    A: 3,
+    fullMark: 5,
   },
 ];
 
 
 const otherSkill = [
   {
+    subject: 'PSD',
+    A: 2.5,
+    fullMark: 5,
+  },
+  {
+    subject: 'XD',
+    A: 3.5,
+    fullMark: 5,
+  },
+  {
+    subject: 'AI',
+    A: 2,
+    fullMark: 5,
+  },
+  {
     subject: 'Git',
-    A: 3,
-    fullMark: 3,
+    A: 3.5,
+    fullMark: 5,
   },
   {
     subject: 'gulp',
-    A: 3,
-    fullMark: 3,
+    A: 3.5,
+    fullMark: 5,
   },
   {
     subject: 'webpack',
-    A: 2,
-    fullMark: 3,
-  },
-  {
-    subject: 'node.js',
-    A: 1.5,
-    fullMark: 3,
+    A: 2.5,
+    fullMark: 5,
   },
 
 ];
@@ -135,15 +150,11 @@ const otherSkill = [
       return (
         <div className="custom-tooltip">
           <p className="label">
-
             {getIntroOfPage(label)}
-          </p>
-
-        
+          </p>  
         </div>
       );
-    }
-  
+    } 
     return null;
   }
   const getIntroOfPage = (label) => {
@@ -177,27 +188,19 @@ const otherSkill = [
     return '';
   };
 
-  function SkillGraph(){
+  function EnginerSkillGraph(){
     return (
-
-        <ResponsiveContainer width="100%" height={400}>
-  
+        <ResponsiveContainer width="100%" height={400}> 
           <RadarChart
             outerRadius="80%"
-            legendType="line"
             data={enginerSkill}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
-            <PolarAngleAxis dataKey="subject" 
-              style={{
-            
-
-            }}/>
+            <PolarAngleAxis dataKey="subject" />
             <PolarRadiusAxis domain={[0, 5]} />
-
             <Radar
-              name="frontEnd"
+              name="jun"
               dataKey="A"
               stroke="#111"
               fill="#eee"
@@ -208,52 +211,73 @@ const otherSkill = [
         </ResponsiveContainer>
     )
   }
-  function Backgraph(){
+  function FrontSKillGraph(){
     return (
 
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart
-            outerRadius={150}
+            outerRadius="80%"
+            data={frontSkill}
+          >
+            <Tooltip content={<CustomTooltip />}/>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="subject" />
+            <PolarRadiusAxis domain={[0, 5]} />
+            <Radar
+              name="jun"
+              dataKey="A"
+              stroke="#111"
+              fill="#eee"
+              fillOpacity={0.6}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+    )
+  }
+  function BackSKillGraph(){
+    return (
+
+        <ResponsiveContainer width="100%" height={400} >
+          <RadarChart
+            outerRadius="80%"
             data={backSkill}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 3]} />
+            <PolarRadiusAxis domain={[0, 5]} />
             <Radar
-              name="BackEnd"
+              name="jun"
               dataKey="A"
-              stroke="#8884d8"
-              fill="#8884d8"
+              stroke="#111"
+              fill="#eee"
               fillOpacity={0.6}
             />
           </RadarChart>
         </ResponsiveContainer>
     )
   }
-  function Othergraph(){
-    return (
 
+  function OtherSkillGraph(){
+    return (
         <ResponsiveContainer width="100%" height={400} >
           <RadarChart
-            outerRadius={150}
+            outerRadius="80%"
             data={otherSkill}
-            width={600}
-            height={500}
           >
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 3]} />
+            <PolarRadiusAxis domain={[0, 5]} />
             <Radar
-              name="BackEnd"
+              name="jun"
               dataKey="A"
-              stroke="#8884d8"
-              fill="#8884d8"
+              stroke="#111"
+              fill="#eee"
               fillOpacity={0.6}
             />
           </RadarChart>
         </ResponsiveContainer>
     )
   }
-export {SkillGraph, Backgraph,Othergraph};
+export {EnginerSkillGraph,FrontSKillGraph,BackSKillGraph,OtherSkillGraph};

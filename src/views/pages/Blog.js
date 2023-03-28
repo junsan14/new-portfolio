@@ -1,6 +1,6 @@
-import {FetchAllPost} from './Fetchblog';
+import {FetchAllPost} from '../components/FetchBlog';
 import {ScrollRestoration } from 'react-router-dom';
-import title_blog from "./images/title_blog.png";
+import title_blog from "../../images/title_blog.png";
 
 function Blog() {
 

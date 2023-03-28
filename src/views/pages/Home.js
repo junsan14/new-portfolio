@@ -1,13 +1,12 @@
+import {ScrollRestoration,Link } from 'react-router-dom';
+import Instagram from '../components/FetchSns';
+import {FetchThreePost} from '../components/FetchBlog'; 
+import {EnginerSkillGraph} from '../components/GetSkillGraph';
 
-import Instagram from './Sns';
-import {FetchThreePost} from './Fetchblog'; 
-import {ScrollRestoration } from 'react-router-dom';
-import title_about from "./images/title_about.png";
-import title_blog from "./images/title_blog.png";
-import title_sns from "./images/title_sns.png";
-import twitter_png from "./images/twitter.png";
-import {Link} from "react-router-dom";
-import {SkillGraph} from './Graph';
+import title_about from "../../images/title_about.png";
+import title_blog from "../../images/title_blog.png";
+import title_sns from "../../images/title_sns.png";
+import twitter_png from "../../images/twitter.png";
 
 function Home() {
 
@@ -29,7 +28,7 @@ function Home() {
             </h2>
             
             <div className="section_content about">
-              <SkillGraph />
+              <EnginerSkillGraph />
             </div>
             <div className="section_btn btn">
                <Link to={`/about`}>詳細</Link>

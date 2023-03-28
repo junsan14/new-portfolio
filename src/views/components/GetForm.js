@@ -12,9 +12,9 @@ function Form(){
     const { register, watch,formState: { errors }, handleSubmit} = useForm();
     const onSubmit = data => console.log(data);
     const form = useRef();
-    let serviceId = "service_ehcksjv";
-    let templateId ="template_uvlkfhi";
-    let publicKey = "_qlN8XKCOpAu0Bu82" ;
+    let serviceId = process.env.REACT_APP_emailjs_service_id_KEY;
+    let templateId =process.env.REACT_APP_emailjs_template_id_KEY;
+    let publicKey = process.env.REACT_APP_emailjs_public_KEY ;
     const sendEmail = (e) => {
         e.preventDefault();
     

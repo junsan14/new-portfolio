@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
 import axios from "axios";
-import noImg from './images/no_image.png'
+import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams,useLocation} from "react-router-dom";
 import $ from 'jquery';

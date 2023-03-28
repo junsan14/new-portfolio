@@ -1,6 +1,6 @@
-import title_about from "./images/title_about.png";
-import {SkillGraph,Backgraph,Othergraph} from "./Graph";
-import logo from './images/logo.png';
+import title_about from "../../images/title_about.png";
+import {FrontSKillGraph,BackSKillGraph,OtherSkillGraph} from "../components/GetSkillGraph";
+import logo from '../../images/logo.png';
 import {ScrollRestoration } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -68,7 +68,7 @@ function About() {
                 <div className="skill_content">
                     <div className="skill_content_item js-content js-content-front show">
                       <div className="skill_content_item_graph skill_graph">
-                        <SkillGraph />
+                        <FrontSKillGraph />
                       </div>
                       <div className="skill_content_item_des skill_desc">
                          <p>5: 使用に問題なし</p>
@@ -79,8 +79,8 @@ function About() {
                       </div>
                     </div>
                     <div className="skill_content_item js-content js-content-back">
-                      <div className="skill_content_item_graph">
-                        <Backgraph />
+                      <div className="skill_content_item_graph skill_graph">
+                        <BackSKillGraph />
                       </div>
                       <div className="skill_content_item_desc">
                           <dl>
@@ -90,8 +90,8 @@ function About() {
                       </div>
                     </div>
                     <div className="skill_content_item js-content js-content-other">
-                      <div className="skill_content_item_graph">
-                        <Othergraph />
+                      <div className="skill_content_item_graph skill_graph">
+                        <OtherSkillGraph />
                       </div>
                       <div className="skill_content_item_desc">
                           <dl>
