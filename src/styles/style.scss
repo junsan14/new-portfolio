@@ -252,21 +252,18 @@ img{
 				
 			}
 		}
-		.skill_graph{
+	}
+	.skill_graph{
+		width: 100%;
+		font-size: 1.8em;
+		@include mq(tab){
 			width: 100%;
-			font-size: 1.8em;
-			@include mq(tab){
-				width: 100%;
-				
-
-			}
 		}
-			
-		
+	
 		.recharts-polar-angle-axis-tick-value{
-			font-size: 1.1em;
+			font-size: 0.6em;
 			@include mq(sp){
-				font-size: .5em;
+				font-size: .3em;
 				margin-left:200px;
 			}
 		
@@ -283,24 +280,10 @@ img{
 				padding: 10px;
 			}
 		}
-		.skill_desc{
-			width: 100%;
-			font-size: .8em;
-			margin-top: -100px;
-			text-align: right;
-			@include mq(tab){
-				width: 100%;
-				font-size: .5em;
-				
-			}
-			p{
-				padding-top: 3px;
-				letter-spacing: 1px;
-			}
-			
-		}
-
 	}
+			
+		
+		
 }
 
 //HOME
@@ -609,11 +592,28 @@ img{
 						transition: .5s all;
 						pointer-events: auto;
 					}
+					&_desc{
+						width: 100%;
+						font-size: .7em;
+						margin-top: -100px;
+						text-align: right;
+						@include mq(tab){
+							width: 100%;
+							font-size: .4em;
+							
+						}
+						p{
+							padding-top: 3px;
+							letter-spacing: 1px;
+						}
+						
+					}
 					
 				}
 			}
 
 			}
+		
 			
 	}
 }
@@ -765,41 +765,54 @@ img{
 			margin-top: 50px;
 			display: flex;
 			justify-content: space-between;
-			
+			flex-wrap: wrap;
 			
 			&_prev, &_next{
 				width: 45%;
-				
 				padding: 20px 5px;
 				height: auto;
+				@include mq(sp){
+					width: 100%;
+				}
 				.article a{
 					display: flex;
-					position: relative;
+					width: 100%;
 					justify-content: center;
 					.article_image{
-						width: 50%;
-						position:absolute;
+						width: 45%;
+						position:relative;
 						p{
-							position: relative;
-							top:10px;
+							position: absolute;
+							top:5px;
 							left: 10px;
 							background:rgba(#111,.5);
 							color: white;
+							width: auto;
 							padding: 5px 10px;
 						}
 						img{
-							height: 100%;
+							max-width:100%;
+							height: auto;
 							
 							
 						}
+						
 					}
 					
 					.article_remarks{
-						width: 50%;
+						width: 55%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						font-size: 0.8em;
+						padding: 0px 10px;
+						background:rgba(#111,.1);
+						color: #111;
+
+						@include mq(sp){
+							font-size: 1.0em;
+						}
 						
-						padding:5px 5px;
-						background:rgba(#111,.5);
-						color: white;
 				}
 				}
 				

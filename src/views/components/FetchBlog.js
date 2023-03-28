@@ -5,6 +5,20 @@ import parse from 'html-react-parser';
 import {Link,useParams,useLocation} from "react-router-dom";
 import $ from 'jquery';
 
+
+function formatDate(date){
+  let formatDate = new Date(date).getFullYear()+ "/" 
+          +(new Date(date).getMonth()+1).toString().padStart(2, '0')+ "/" 
+          +new Date(date).getDate().toString().padStart(2, '0')+ " "
+          +new Date(date).getHours().toString().padStart(2, '0')+ ":"
+          +new Date(date).getMinutes().toString().padStart(2, '0'); 
+  return formatDate;
+}
+
+function getThumbnail(item){
+  return item["_embedded"]["wp:featuredmedia"]?item["_embedded"]["wp:featuredmedia"][0]["source_url"]:noImg;
+}
+
 function FetchAllPost() {
   const [data, setData] = useState([]);
    useEffect(() => {
@@ -20,18 +34,9 @@ function FetchAllPost() {
       return(
         <>
           {data.map((item,i) => {
-          let publishDate = new Date(item.date).getFullYear()+ "/" 
-            +(new Date(item.date).getMonth()+1).toString().padStart(2, '0')+ "/" 
-            +new Date(item.date).getDate().toString().padStart(2, '0')+ " "
-            +new Date(item.date).getHours().toString().padStart(2, '0')+ ":"
-            +new Date(item.date).getMinutes().toString().padStart(2, '0'); 
-          let upadtedate = new Date(item.modified).getFullYear()+ "/" 
-            +(new Date(item.modified).getMonth()+1).toString().padStart(2, '0')+ "/" 
-            +new Date(item.modified).getDate().toString().padStart(2, '0')+ " "
-            +new Date(item.modified).getHours().toString().padStart(2, '0')+ ":"
-            +new Date(item.modified).getMinutes().toString().padStart(2, '0');   
-          let thumbnail = item["_embedded"]["wp:featuredmedia"]?item["_embedded"]["wp:featuredmedia"][0]["source_url"]:noImg;
-
+          let publishDate = formatDate(item.date);
+          let upadtedate = formatDate(item.modified); 
+          let thumbnail = getThumbnail(item)
             return(
               <div className="article" id={item.id} key={item.id}>
                 <Link to={`/blog/page/${item.id}`}>
@@ -45,7 +50,6 @@ function FetchAllPost() {
                         更新日:　{upadtedate}<br/>
                         公開日:　{publishDate}<br/>
                     </p>
-
                   </div>
                 </Link>
               </div>
@@ -64,7 +68,6 @@ function FetchAllPost() {
 
 function FetchThreePost() {
   const [data, setData] = useState([]);
-  
    useEffect(() => {
    axios
      .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?per_page=4&_embed")
@@ -79,22 +82,11 @@ function FetchThreePost() {
         <>
           {data.map((item,i,data) => {
             //console.log(i>0?data[i-1]:"なし")
-          let date = new Date(item.date).getFullYear()+ "/" 
-          +new Date(item.date).getMonth().toString().padStart(2, '0')+ "/" 
-          +new Date(item.date).getDate().toString().padStart(2, '0')+ "　"
-          +new Date(item.date).getHours().toString().padStart(2, '0')+ ":"
-          +new Date(item.date).getMinutes().toString().padStart(2, '0');   
-          let thumbnail = item["_embedded"]["wp:featuredmedia"]?item["_embedded"]["wp:featuredmedia"][0]["source_url"]:noImg;
-          let prevId = 40;
-          let nextId = 30;
+          let date = formatDate(item.date);
+          let thumbnail = getThumbnail(item);
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/page/${item.id}`} 
-                      state={{ 
-                        prevId: prevId,
-                        nextId: nextId
-                      }}
-                >
+                <Link to={`/blog/page/${item.id}`} >
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{item.title.rendered}</h3>
@@ -122,7 +114,7 @@ function FetchThreePost() {
 
 
 function FetchPageData(){
-
+  //記事のスタイル装飾
   $(function(){
     let $markupElements = $(".language-markup");
 
@@ -158,7 +150,6 @@ function FetchPageData(){
   });
 
    let { state } = useLocation(); 
-
    const [data, setData] = useState();
    const {id} = useParams();
    useEffect(() => {
@@ -172,29 +163,21 @@ function FetchPageData(){
   
   const Render = ()=>{
     if(data){
-      let publishDate = new Date(data.date).getFullYear()+ "/" 
-          +(new Date(data.date).getMonth()+1).toString().padStart(2, '0')+ "/" 
-          +new Date(data.date).getDate().toString().padStart(2, '0')+ " "
-          +new Date(data.date).getHours().toString().padStart(2, '0')+ ":"
-          +new Date(data.date).getMinutes().toString().padStart(2, '0'); 
-      let upadtedate = new Date(data.modified).getFullYear()+ "/" 
-          +(new Date(data.modified).getMonth()+1).toString().padStart(2, '0')+ "/" 
-          +new Date(data.modified).getDate().toString().padStart(2, '0')+ " "
-          +new Date(data.modified).getHours().toString().padStart(2, '0')+ ":"
-          +new Date(data.modified).getMinutes().toString().padStart(2, '0'); 
-          
-      let prevPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:"";
-      let nextPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:"";
+      let publishDate = formatDate(data.date);
+      let upadtedate = formatDate(data.modified);
+      let prevPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
+      let nextPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
       console.log(prevPost)
 
       const PrevPost = ()=>{
         if(prevPost){
           return(
                 <div className="article" id={prevPost.id} >
-                      <Link to={`/blog/page/${prevPost.id}`}                      
-                      > 
-                        <p>PREV</p>
-                        <img src={prevPost.img.src} alt="" />
+                      <Link to={`/blog/page/${prevPost.id}`} >
+                        <div className="article_image">
+                          <p>PREV</p>
+                          <img src={prevPost.img.src} alt="" />
+                        </div>
                         <div className="article_remarks">
                           <h3 className="article_remarks_title">{prevPost.title}</h3>  
                         </div>
@@ -206,20 +189,25 @@ function FetchPageData(){
       const NextPost = ()=>{
         if(nextPost){
           return(
-                <div className="article" id={nextPost.id} >
-                      <Link to={`/blog/page/${nextPost.id}`}                      
-                      > 
-                        <div className="article_image">
-                          <p>NEXT</p>
-                          <img src={nextPost.img.src} alt="" />
-                        </div>
-                        <div className="article_remarks">
-                          <h3 className="article_remarks_title">{nextPost.title}</h3>  
-                         </div>
-                      </Link>
-                </div>
+            <div className="article" id={nextPost.id} >
+            <Link to={`/blog/page/${nextPost.id}`} >
+              <div className="article_image">
+                <p>NEXT</p>
+                <img src={nextPost.img.src} alt="" />
+              </div>
+              <div className="article_remarks">
+                <h3 className="article_remarks_title">{nextPost.title}</h3>  
+              </div>
+            </Link>
+      </div>
+                
           )
         }
+      }
+
+      const RelatedPosts = ()=>{
+
+        
       }
 
       return(
@@ -236,7 +224,6 @@ function FetchPageData(){
                 </div>
                 <div className="article_content">    
                         {parse(data.content["rendered"])}
-
                 </div>
               </div>
               <div className="close_published_posts">
@@ -253,15 +240,13 @@ function FetchPageData(){
         </>
 
       )
-            }
+    }
     
   }
    return (
       <Render />
     
    )
-
-   //console.log((data.content))
 
 }
 

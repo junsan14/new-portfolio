@@ -1,6 +1,6 @@
 import title_contact from '../../images/title_contact.png';
 import {ScrollRestoration } from 'react-router-dom';
-import Form from '../components/Form';
+import Form from '../components/GetForm';
 
 function Contact() {
   return (
