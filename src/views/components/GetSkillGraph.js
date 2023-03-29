@@ -159,18 +159,21 @@ const otherSkill = [
   }
   const getIntroOfPage = (label) => {
     if (label === 'CODING') {
-      return "HTML,SASS使用歴10年以上";
+      return "HTML,CSS使用歴10年ほど､問題なく使用可能レベル";
     }
     if (label === 'FrontEnd') {
       return (
         <>
-          JavaScript, jQueryに使用問題なし <br/>
-          Frameworkは主にReactを使用しています。
+          JavaScript, jQueryやGoogle Apps Scriptをメインに使用｡ <br/>
+          Frameworkは主にReactを使用しています。環境はgulpがメイン｡
         </>
       );
     }
     if (label === 'BackEnd') {
-      return "使用経験はPHPのみ。Nativeも仕様書を見ながら使用可能ではあるが、WEBアプリを構築するときはLaravelを使用しています";
+      return (
+        <>
+        </>
+      )
     }
     if (label === 'CMS') {
       return 'CMSの組み込みWordPressのみ経験。最近はPHP書き込みよりAPIでの実装が多いです。';

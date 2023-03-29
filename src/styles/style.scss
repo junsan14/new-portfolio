@@ -281,6 +281,7 @@ img{
 			padding: 20px;
 			line-height: 30px;
 			border-radius: 1px;
+			font-size: .5em;
 			border: 1px solid rgba(#eee,.8);
 			@include mq(tab){
 				line-height: 20px;
@@ -433,8 +434,14 @@ img{
 				min-width: calc(100% / 3);
 				margin-right:20px;
 				position: relative;
+				&:hover{
+					transition: all .5s;
+					transform: translateY(-5px);
+					filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+					cursor: pointer;
+				}
 				&_image{
-					
+					filter: brightness(100%);
 					width: 100%;
 					height: 350px;
 					object-fit: cover;
@@ -594,9 +601,8 @@ img{
 				display: flex;
 				width: 80%;
 				justify-content: space-between;
-				
 				font-size: 1.4em;
-				margin: 0 auto 30px auto ;
+				margin: 0 auto 80px auto ;
 				
 				@include mq(sp){
 					width: 100%;
@@ -612,11 +618,17 @@ img{
 					text-align: center;
 					border: 1px solid rgba(#111,.3);
 					width: calc(100% / 3);
-
+					
+					
 					&:hover{
 						background:#fff;
 						transition: .5s all;
-						transform: translateY(-1px);
+						
+					}
+					&:focus{
+						background:#fff;
+						transition: .5s all;
+						transform: translateY(-2px);
 					}
 					@include mq(tab){
 						font-size: .7em;
@@ -628,11 +640,11 @@ img{
 				position: relative;
 				
 				&:before{
-					padding-top: 80%;
+					padding-top: 60vh;
 					content: "";
 					display: block;
 					@include mq(tab){
-						padding-top: 100vh;
+						padding-top: 60vh;
 					}
 				}
 				&_item{
@@ -774,8 +786,15 @@ img{
 				width: 45%;
 				padding: 20px 5px;
 				height: auto;
+				transition: all .5s;
 				@include mq(sp){
 					width: 100%;
+				}
+				&:hover{
+					transition: all .5s;
+					transform: translateY(-5px);
+					filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+					cursor: pointer;
 				}
 				.article a{
 					display: flex;
@@ -796,6 +815,7 @@ img{
 						img{
 							max-width:100%;
 							height: auto;
+							max-height: 120px;
 							
 							
 						}

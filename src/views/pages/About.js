@@ -61,9 +61,9 @@ function About() {
               </h2>
               <div className="skill">
                 <ul className="skill_tab">
-                  <li className="skill_tab_li js-tab-front">FrontEnd</li>
-                  <li className="skill_tab_li js-tab-back">BackEnd</li>
-                  <li className="skill_tab_li js-tab-other">Adobe/Tools</li>
+                  <li className="skill_tab_li js-tab-front" tabindex="-1">FrontEnd</li>
+                  <li className="skill_tab_li js-tab-back" tabindex="-1">BackEnd</li>
+                  <li className="skill_tab_li js-tab-other" tabindex="-1">Adobe/Tools</li>
                 </ul>
                 <div className="skill_content">
                     <div className="skill_content_item js-content js-content-front show">
@@ -116,6 +116,8 @@ function About() {
 function graphShow(){
   $(function(){
     $('.js-tab-front').on('click', ()=>{
+      console.log($(this))
+      $(this).css("background", "white")
       $('.js-content').removeClass("show")
       $('.js-content-front').addClass("show");
     })

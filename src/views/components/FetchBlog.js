@@ -175,7 +175,7 @@ function FetchPageData(){
                 <div className="article" id={prevPost.id} >
                       <Link to={`/blog/page/${prevPost.id}`} >
                         <div className="article_image">
-                          <p>PREV</p>
+                          <p>前の記事</p>
                           <img src={prevPost.img.src?prevPost.img.src:noImg} alt="" />
                         </div>
                         <div className="article_remarks">
@@ -192,7 +192,7 @@ function FetchPageData(){
             <div className="article" id={nextPost.id} >
             <Link to={`/blog/page/${nextPost.id}`} >
               <div className="article_image">
-                <p>NEXT</p>
+                <p>次の記事</p>
                 <img src={nextPost.img.src?nextPost.img.src:noImg}  alt="" />
               </div>
               <div className="article_remarks">
