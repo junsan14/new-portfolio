@@ -54,8 +54,12 @@ function Home() {
 
             <div className="section_content sns js-sns">
               <div className="instagram">
+                <div className="instagram_wrapper">
                 <Instagram />
+                </div>
+                
               </div>
+              
               <div className="twitter">
                 <img src={twitter_png} alt="" />
               </div>

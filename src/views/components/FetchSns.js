@@ -1,9 +1,25 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-
+import $ from 'jquery';
 
 function Instagram(){
 
+
+  $(function(){
+    let $wrapper = $(".instagram_wrapper");
+    let i = 1;
+    const scroll = ()=>{
+      let wrapperX = $wrapper.offset().left;
+      $wrapper.css("right", i);
+      i= i+5;
+      console.log(i)
+    }
+
+     
+      
+
+    
+  })
   const [posted,setPosted] = useState("");
   useEffect(()=>{
     const user_name = "junsan_junsan14" //ビジネスorクリエイターアカウントの必要あり
@@ -20,22 +36,25 @@ function Instagram(){
         setPosted(res.data)
       });
   }, [])
-    //console.log(posted.business_discovery.media)
+    
     const Render = ()=>{
       if(posted){
 
         let posts =posted.business_discovery.media.data;
-
+        
         return(
-          <React.Fragment>
+          <>
             {posts.map((post,i) => {
+              console.log(posts)
               return(
                 <div className='post' key={i}>
-                  <img src={post.media_url} alt=""/>
+                  <a href={post.permalink}>
+                    <img src={post.media_url} alt=""/>
+                  </a>
                 </div>    
               )          
             })}           
-          </React.Fragment>
+          </>
         )
       }
 

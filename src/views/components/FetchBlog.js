@@ -167,7 +167,7 @@ function FetchPageData(){
       let upadtedate = formatDate(data.modified);
       let prevPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
       let nextPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
-      console.log(prevPost)
+
 
       const PrevPost = ()=>{
         if(prevPost){
@@ -176,7 +176,7 @@ function FetchPageData(){
                       <Link to={`/blog/page/${prevPost.id}`} >
                         <div className="article_image">
                           <p>PREV</p>
-                          <img src={prevPost.img.src} alt="" />
+                          <img src={prevPost.img.src?prevPost.img.src:noImg} alt="" />
                         </div>
                         <div className="article_remarks">
                           <h3 className="article_remarks_title">{prevPost.title}</h3>  
@@ -193,7 +193,7 @@ function FetchPageData(){
             <Link to={`/blog/page/${nextPost.id}`} >
               <div className="article_image">
                 <p>NEXT</p>
-                <img src={nextPost.img.src} alt="" />
+                <img src={nextPost.img.src?nextPost.img.src:noImg}  alt="" />
               </div>
               <div className="article_remarks">
                 <h3 className="article_remarks_title">{nextPost.title}</h3>  
