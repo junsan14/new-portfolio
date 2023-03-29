@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import $ from 'jquery';
+import heart from '../../images/heart.png';
 
 function Instagram(){
 
@@ -44,12 +45,17 @@ function Instagram(){
         
         return(
           <>
-            {posts.map((post,i) => {
-              console.log(posts)
+            {posts.map((post,i,ary) => {
+              console.log(ary)
               return(
                 <div className='post' key={i}>
                   <a href={post.permalink}>
-                    <img src={post.media_url} alt=""/>
+                    <img src={post.media_url} alt="" className="post_image" />
+                    <div className="post_desc">
+                      <img src={heart} alt="" className="post_desc_heart" />
+                      <span className="post_desc_caption">{post.caption}</span>
+                      <span className="post_desc_like-count">{post.like_count}</span>
+                    </div>
                   </a>
                 </div>    
               )          

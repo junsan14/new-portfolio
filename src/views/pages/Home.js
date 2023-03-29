@@ -27,7 +27,7 @@ function Home() {
               <div className="section_title_jp">紹介</div>
             </h2>
             
-            <div className="section_content about">
+            <div className="section_content about skill_graph">
               <EnginerSkillGraph />
             </div>
             <div className="section_btn btn">

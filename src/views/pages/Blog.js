@@ -13,8 +13,8 @@ function Blog() {
                 <img className="section_title_en" src={title_blog} alt="" />
                 <div className="section_title_jp">記事</div>
                 </h1>
-                <div className="section_content blog_content">
-                <FetchAllPost />
+                <div className="section_content posts">
+                  <FetchAllPost />
                 </div>
             </section>
 		</div>
