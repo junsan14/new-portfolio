@@ -94,7 +94,7 @@ function FetchThreePost() {
                         {item.excerpt.rendered.replace(/(<([^>]+)>)/gi, '')}
                     </p>
                     <p className="article_remarks_date">
-                        公開日:　{date}<br/>
+                        {date}<br/>
                     </p>
 
                   </div>
@@ -128,7 +128,7 @@ function FetchPageData(){
      );
      $(ele).append(
       `
-      <div class="markup-area-copy" id=${i}>
+      <div class="markup-area-copy btn" id=${i}>
        <p>copy</p>
       </div>
       `
@@ -165,9 +165,9 @@ function FetchPageData(){
     if(data){
       let publishDate = formatDate(data.date);
       let upadtedate = formatDate(data.modified);
-      let prevPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
-      let nextPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
-
+      let prevPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
+      let nextPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
+      console.log(data)
 
       const PrevPost = ()=>{
         if(prevPost){
