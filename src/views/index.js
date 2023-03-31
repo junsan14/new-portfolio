@@ -15,6 +15,7 @@ import Footer from './views/components/Footer';
 import Home from './views/pages/Home';
 import About from './views/pages/About';
 import Blog from './views/pages/Blog';
+import Categorypost from './views/pages/Categorypost';
 import Page from './views/pages/Page';
 import Contact from './views/Contact';
 import reportWebVitals from './reportWebVitals';
@@ -63,6 +64,15 @@ const router = createBrowserRouter([
       <>
       <Header />
       <Page />
+      </>
+      ),
+  },
+  {
+    path: "blog/:category",
+    element:(
+      <>
+      <Header />
+      <Categorypost />
       </>
       ),
   },

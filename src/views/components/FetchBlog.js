@@ -112,7 +112,35 @@ function FetchThreePost() {
    )
 }
 
+function FetchSearchedPost(){
+  const [data, setData] = useState([]);
+  const [searchword, setSearchword] = useState([]);
 
+   useEffect(() => {
+   axios
+     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?search=" + searchword)
+     .then(response => setData(response.data))
+     .catch(error => console.log(error));
+  }, [searchword]);
+
+  console.log(data)
+
+  return(
+    <>
+    <input type="text" className="search_input" placeholder="記事検索ワード" onChange={(e)=>setSearchword(e.target.value)} />
+    </>
+  )
+}
+function FetchCategoryPost(){
+   let { state } = useLocation(); 
+   const [data, setData] = useState();
+   const {category} = useParams();
+   return(
+    <>
+    categoryFetch
+    </>
+   )
+}
 function FetchPageData(){
   //記事のスタイル装飾
   $(function(){
@@ -250,4 +278,4 @@ function FetchPageData(){
 
 }
 
-export {FetchAllPost,FetchThreePost,FetchPageData};
+export {FetchAllPost,FetchThreePost,FetchSearchedPost,FetchCategoryPost,FetchPageData};

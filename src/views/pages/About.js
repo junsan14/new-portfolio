@@ -45,13 +45,13 @@ function About() {
                     <dt>2011</dt>
                     <dd>東京の私立に入学､工学部情報システム専攻</dd>
                     <dt>2014</dt>
-                    <dd>留学の思いを捨てきれず､奨学金無償取得可能な新学部へ転部</dd>
+                    <dd>留学への強い憧れから､奨学金無償取得可能な新学部へ転部</dd>
                     <dt>2016</dt>
-                    <dd>ロンドンに無事留学し、日本の言語、文化交流のコミュニティJLCE設立しながら2年弱滞在</dd>
+                    <dd>ロンドンに留学し、日本の言語、文化交流のコミュニティJLCE設立しながら2年弱滞在</dd>
                     <dt>2018</dt>
-                    <dd>卒業後、サービス業に強い憧れがあり当時知名度を爆発的に伸ばしていた星野リゾートに入社、4年間河口湖のほとりで過ごす</dd>
+                    <dd>帰国後、当時知名度が伸びていた星野リゾートに入社、4年間河口湖のほとりで過ごす</dd>
                     <dt>2022</dt>
-                    <dd>将来への不安や働き方などの理由から転職し､東京へ戻りWEBディレクター兼エンジニアとして活動</dd>
+                    <dd>将来への不安や働き方などの理由から転職し､WEBディレクター兼エンジニアとして東京で活動</dd>
                   </dl>
                 </div>
               </div>
@@ -60,7 +60,7 @@ function About() {
                 SKILL
               </h2>
               <div className="skill">
-                <ul className="skill_tab">
+                <ul className="skill_tab tab">
                   <li className="skill_tab_li js-tab-front" tabIndex="-1">FrontEnd</li>
                   <li className="skill_tab_li js-tab-back" tabIndex="-1">BackEnd</li>
                   <li className="skill_tab_li js-tab-other" tabIndex="-1">Adobe/Tools</li>
