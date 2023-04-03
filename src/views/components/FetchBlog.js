@@ -1,9 +1,10 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams,useLocation} from "react-router-dom";
 import $ from 'jquery';
+
 
 
 function formatDate(date){
@@ -21,18 +22,24 @@ function getThumbnail(item){
 
 function FetchAllPost() {
   const [data, setData] = useState([]);
-   useEffect(() => {
-   axios
-     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?_embed")
-     .then(response => setData(response.data))
-     .catch(error => console.log(error));
-  }, []);
+  const [searchword, setSearchword] = useState([]);
 
+   useEffect(() => {
+    /*
+    axios
+    .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?_embed")
+    .then(response => setData(response.data))
+    .catch(error => console.log(error));
+    */
+   console.log(data)
+   
+  }, [searchword]);
 
   const Render = ()=>{
     if(data){
       return(
         <>
+       
           {data.map((item,i) => {
           let publishDate = formatDate(item.date);
           let upadtedate = formatDate(item.modified); 
@@ -61,7 +68,11 @@ function FetchAllPost() {
     }
   }
    return (
+    <>
+    <FetchSearchedPost setSearchword={setSearchword} setData={setData} />
     <Render />
+    </>
+   
    )
 }
 
@@ -112,25 +123,25 @@ function FetchThreePost() {
    )
 }
 
-function FetchSearchedPost(){
-  const [data, setData] = useState([]);
-  const [searchword, setSearchword] = useState([]);
+
+function FetchSearchedPost(props){
+  const [text,setText] = useState("");
 
    useEffect(() => {
    axios
-     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?search=" + searchword)
-     .then(response => setData(response.data))
+     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?search=" + props.searchword)
+     .then(response => props.setData(response.data))
      .catch(error => console.log(error));
-  }, [searchword]);
-
-  console.log(data)
-
+     console.log(props.data)
+  }, [text]);
+  props.setSearchword(text);
   return(
     <>
-    <input type="text" className="search_input" placeholder="記事検索ワード" onChange={(e)=>setSearchword(e.target.value)} />
+    <input type="text" className="search_input" placeholder="記事検索ワード" onChange={(e)=>setText(e.target.value)} />
     </>
   )
 }
+
 function FetchCategoryPost(){
    let { state } = useLocation(); 
    const [data, setData] = useState();
@@ -180,6 +191,7 @@ function FetchPageData(){
    let { state } = useLocation(); 
    const [data, setData] = useState();
    const {id} = useParams();
+
    useEffect(() => {
    axios
      .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts/" +id)
