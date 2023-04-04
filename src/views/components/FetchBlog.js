@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
-import {Link,useParams,useLocation} from "react-router-dom";
+import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
 
 
@@ -22,24 +22,31 @@ function getThumbnail(item){
 
 function FetchAllPost() {
   const [data, setData] = useState([]);
-  const [searchword, setSearchword] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  const [category, setCategory] = useState('')
 
    useEffect(() => {
-    /*
+    let fetchURL = "https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?_embed";
+    if(keyword && category){
+      fetchURL +=  "&search=" + keyword  + "&categories=" + category;
+    }else if(keyword){
+      fetchURL +=  "&search=" + keyword;
+    }else if(category){
+      fetchURL += "&categories=" + category;
+    }
+    console.log(fetchURL)
     axios
-    .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?_embed")
+    .get(fetchURL)
     .then(response => setData(response.data))
     .catch(error => console.log(error));
-    */
-   console.log(data)
    
-  }, [searchword]);
+  }, [keyword,category]);
 
   const Render = ()=>{
-    if(data){
+    console.log(data)
+    if(data.length >0){
       return(
-        <>
-       
+        <>  
           {data.map((item,i) => {
           let publishDate = formatDate(item.date);
           let upadtedate = formatDate(item.modified); 
@@ -55,7 +62,6 @@ function FetchAllPost() {
                     </p>
                     <p className="article_remarks_date">
                         更新日:　{upadtedate}<br/>
-                        公開日:　{publishDate}<br/>
                     </p>
                   </div>
                 </Link>
@@ -65,16 +71,31 @@ function FetchAllPost() {
         </>
 
       )
+    }else{
+      return(
+        <p>{keyword}の検索では記事がありません</p>
+      )
     }
   }
    return (
     <>
-    <FetchSearchedPost setSearchword={setSearchword} setData={setData} />
+    <ul className="category_tab tab"> 
+      <li className="category_tab_li" tabIndex="-1" value="" onClick={(e)=>setCategory("")}>ALL</li>      
+      <li className="category_tab_li" tabIndex="-1" value="17" onClick={(e)=>setCategory(e.target.value)}>CODING</li>   
+      <li className="category_tab_li" value="18" onClick={(e)=>setCategory(e.target.value)} tabIndex="-1">FRONT END</li>
+      <li className="category_tab_li" tabIndex="-1">BACK END</li>
+      <li className="category_tab_li" tabIndex="-1">DAILY LIFE</li>
+      <li className="category_tab_li" tabIndex="-1">OTHERS</li>
+    </ul>
+    <div className="search_area">
+      <input type="text" className="search_area_input" placeholder="記事検索ワード" onChange={(e)=>setKeyword(e.target.value)} />
+    </div>
     <Render />
     </>
    
    )
 }
+
 
 
 function FetchThreePost() {
@@ -124,34 +145,8 @@ function FetchThreePost() {
 }
 
 
-function FetchSearchedPost(props){
-  const [text,setText] = useState("");
 
-   useEffect(() => {
-   axios
-     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?search=" + props.searchword)
-     .then(response => props.setData(response.data))
-     .catch(error => console.log(error));
-     console.log(props.data)
-  }, [text]);
-  props.setSearchword(text);
-  return(
-    <>
-    <input type="text" className="search_input" placeholder="記事検索ワード" onChange={(e)=>setText(e.target.value)} />
-    </>
-  )
-}
 
-function FetchCategoryPost(){
-   let { state } = useLocation(); 
-   const [data, setData] = useState();
-   const {category} = useParams();
-   return(
-    <>
-    categoryFetch
-    </>
-   )
-}
 function FetchPageData(){
   //記事のスタイル装飾
   $(function(){
@@ -188,7 +183,7 @@ function FetchPageData(){
     })
   });
 
-   let { state } = useLocation(); 
+   //let { state } = useLocation(); 
    const [data, setData] = useState();
    const {id} = useParams();
 
@@ -245,10 +240,7 @@ function FetchPageData(){
         }
       }
 
-      const RelatedPosts = ()=>{
-
-        
-      }
+      
 
       return(
         <>
@@ -290,4 +282,4 @@ function FetchPageData(){
 
 }
 
-export {FetchAllPost,FetchThreePost,FetchSearchedPost,FetchCategoryPost,FetchPageData};
+export {FetchAllPost,FetchThreePost,FetchPageData};

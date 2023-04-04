@@ -158,34 +158,101 @@ const otherSkill = [
     return null;
   }
   const getIntroOfPage = (label) => {
-    if (label === 'CODING') {
-      return "HTML,CSS使用歴10年ほど､問題なく使用可能レベル";
-    }
-    if (label === 'FrontEnd') {
-      return (
-        <>
-          JavaScript, jQueryやGoogle Apps Scriptをメインに使用｡ <br/>
-          Frameworkは主にReactを使用しています。環境はgulpがメイン｡
-        </>
-      );
-    }
-    if (label === 'BackEnd') {
-      return (
-        <>
-        </>
-      )
-    }
-    if (label === 'CMS') {
-      return 'CMSの組み込みWordPressのみ経験。最近はPHP書き込みよりAPIでの実装が多いです。';
-    }
-    if (label === 'Mobile App') {
-      return 'React Nativeを用いて一度だけアプリDEMOを作成した経験あり';
-    }
-    if (label === 'DB') {
-      return '基本使用するのはmySQL,一度だけfirebaseを使用したことがあります';
-    }
-    if (label === 'SNS API') {
-      return 'このWEBページもそうですが、TwitterやInstagramの実装経験あり';
+    switch(label){
+      case "CODING":
+        return(
+          <>
+           HTML5/CSS3/SASS<br/>
+           レスポンシブ/疑似要素/ポジション/transition/animation/filter
+          </>
+        );
+      case "FrontEnd":
+        return(
+          <>
+          JS Native/jQuery/Google Apps Script/ React <br/>
+          タブ/ アコーディオン/ スライダー/ プルダウン/ イベント処理/ 非同期処理/ SPA <br />
+          
+          </>
+        );
+      case "BackEnd":
+        return (
+          <>
+            PHP/ Laravel<br />
+            ユーザー登録処理/ バリデーション";
+          </>
+        );
+      case "CMS":
+        return(
+          <>
+            Wordpress<br />
+            自作テーマ/REST API連携
+          </>
+  
+        );
+      case "Mobile App":
+        return(
+          <>
+            React Native<br />
+            
+          </>
+        );
+      case "DB":
+        return(
+          <>
+            mySQL/ firebase<br />
+            
+          </>
+        );
+      case "SNS API":
+        return(
+          <>
+            Twitter/ Instagram<br />
+            
+          </>
+        );
+      case "HTML/CSS/SASS":
+        return(
+          <>
+            <br />
+            
+          </>
+        );
+      case "JavaScript":
+        return(
+          <>
+            <br />
+            
+          </>
+        );
+      case "jQuery":
+        return(
+          <>
+            <br />
+            
+          </>
+        );
+      case "Google App Script":
+        return(
+          <>
+            <br />
+            
+          </>
+        );
+      case "React":
+        return(
+          <>
+            <br />
+            
+          </>
+        );
+      case "HTML/":
+        return(
+          <>
+            <br />
+            
+          </>
+        );
+      default:
     }
     
     return '';
@@ -194,7 +261,7 @@ const otherSkill = [
   function EnginerSkillGraph(){
     return (
         <ResponsiveContainer width="100%" height={400}> 
-          <RadarChart
+          <RadarChart cx="50%" cy="50%"
             outerRadius="80%"
             data={enginerSkill}
           >

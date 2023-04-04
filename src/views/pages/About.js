@@ -71,11 +71,11 @@ function About() {
                         <FrontSKillGraph />
                       </div>
                       <div className="skill_content_item_desc skill_desc">
-                         <p>5: 使用に問題なし</p>
-                         <p>4: 使用に問題なし</p>
-                         <p>3: 使用に問題なし</p>
-                         <p>2: 使用に問題なし</p>
-                         <p>1: 使用に問題なし</p>
+                         <p>5: わからないことはない</p>
+                         <p>4: ほぼ使用に問題なし</p>
+                         <p>3: 数サイトへの実装経験あり</p>
+                         <p>2: リファレンスみながらゆっくり実装可能</p>
+                         <p>1: 少し触れたレベル</p>
                       </div>
                     </div>
                     <div className="skill_content_item js-content js-content-back">
