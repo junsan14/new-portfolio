@@ -9,7 +9,7 @@ function Form(){
     const [address,setAddress]=useState("");
     const [subject,setSubject]=useState("");
     const [content,setContent]=useState("");
-    //const { register, watch,formState: { errors }, handleSubmit} = useForm();
+    const { register, watch,formState: { errors }, handleSubmit} = useForm();
     //const onSubmit = data => console.log(data);
     const form = useRef();
     let serviceId = process.env.REACT_APP_emailjs_service_id_KEY;

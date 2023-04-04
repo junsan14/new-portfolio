@@ -163,7 +163,7 @@ function FetchPageData(){
      $(ele).append(
       `
       <div class="markup-area-copy">
-       <div class="markup-area-copy_text"> copy</div>
+       <div class="markup-area-copy_text">copy</div>
       </div>
       `
      );
@@ -210,7 +210,7 @@ function FetchPageData(){
                 <div className="article" id={prevPost.id} >
                       <Link to={`/blog/page/${prevPost.id}`} >
                         <div className="article_image">
-                          <p>前の記事</p>
+                          <p>関連投稿</p>
                           <img src={prevPost.img.src?prevPost.img.src:noImg} alt="" />
                         </div>
                         <div className="article_remarks">
@@ -227,7 +227,7 @@ function FetchPageData(){
             <div className="article" id={nextPost.id} >
             <Link to={`/blog/page/${nextPost.id}`} >
               <div className="article_image">
-                <p>次の記事</p>
+                <p>関連投稿</p>
                 <img src={nextPost.img.src?nextPost.img.src:noImg}  alt="" />
               </div>
               <div className="article_remarks">
