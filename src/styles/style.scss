@@ -383,10 +383,10 @@ img{
 			cursor: pointer;
 			padding: 10px 0;
 			transition: .5s all;
-		
+			font-size: .8em;
 			text-align: center;
 			border-bottom: 1px solid rgba(#111,.2);
-			width: calc(100% / 6 - 4px);
+			width: calc(100% / 7 - 4px);
 			margin-bottom: 30px;
 			background:rgba(#eee,.3);
 			@include mq(tab){
@@ -516,13 +516,18 @@ img{
 				display: flex;
 				animation :infinity-scroll-left 20s infinite linear 0.5s both;
 			
-				
+				@include mq(tab){
+					animation :infinity-scroll-left 10s infinite linear 0.5s both;
+				}
 			}
 			& .post{
 				width: calc(100% /3);
-				min-width: calc(100% / 3);
+				
 				margin-right:20px;
 				position: relative;
+				@include mq(tab){
+					width: 80%;
+				}
 				&:hover{
 					transition: all .5s;
 					transform: translateY(-5px);
@@ -532,11 +537,13 @@ img{
 				&_image{
 					filter: brightness(100%);
 					width: 100%;
-					height: 350px;
+					height: 100%;
 					object-fit: cover;
 					border-radius: 3px;
 					@include mq(tab){
-						height: 250px;
+						height: 100%;
+						width: 100%;
+						margin-right: 300px;
 					}
 				}
 				&_desc{
@@ -572,7 +579,8 @@ img{
 			}
 		}
 		 .twitter{		
-			width:300px;
+			text-align: center;
+			
 			margin: 0px auto;	
 				
 		}
@@ -765,6 +773,7 @@ img{
 				@include mq(tab){
 					font-size: 0.8em;
 					line-height: 23px;
+					width: 100%;
 				}
 
 				ol{
@@ -785,44 +794,94 @@ img{
 						width: 80%;
 					}		
 				}
+				h1 {
+					padding: 0.5em;/*文字周りの余白*/
+					background: #eee;/*背景色*/
+					border-left: solid 5px rgba(#111,.1);/*左線（実線 太さ 色）*/
+					font-size: 1.2em;
+					@include mq(tab){
+						
+					}
+				}
+				h2 {
+					position: relative;
+					margin-top: 60px;
+					padding-left: 30px;
+					font-size: 1.1em;
+					
+					&:before{
+						position: absolute;
+						content: '';
+						bottom: -3px;
+						left: 0;
+						width: 0;
+						height: 0;
+						border: none;
+						border-left: solid 15px transparent;
+						border-bottom: solid 15px rgba(#111,.5);
+					}
+					&:after{
+						position: absolute;
+						content: '';
+						bottom: -3px;
+						left: 15px;
+						width: 100%;
+						border-bottom: solid 3px rgba(#111,.5);
+					}
+				}
+				p{
+					margin-left: 20px;
+					margin-top: 20px;
+					@include mq(tab){
+						margin-left: 5px;
+					}
+				}
 	
-				.markup-area{
+				pre{
 					background: rgba(#fff,1);
 					width: 80%;
 					line-height: 0;
-					font-size: .9em;
-					margin-top: 40px;
-					margin-bottom: 40px;
-					position: relative;
-					overflow-x: scroll;
-					padding: 20px;
-					
+					margin-block-start: 300px;
+					margin: 40px 20px;
+					max-height: 300px;
 					@include mq(tab){
 						width: 100%;
+						margin: 40px 5px;
 					}
 					code{
 						line-height: 20px;
 						display: block;
 						width: 100%;
+						height: auto;
 						max-height: 300px;
+						overflow-x: scroll;
+						position: relative;
+						font-size: .9em;
+						padding: 20px;
 						
 					}
-					&-copy, .btn{
-						position:absolute;
-						line-height: 0px;
-						top:0;
-						right: 20px;
-						background: #eee;
-						padding: 15px 15px;
-						text-align: center;
+					
+					.markup-area-copy{
+						position: absolute;						
+						top:-21px;
+						right: 0px;						
+						background: rgba(#111,.4);					
 						transition: .5s ease;
+						border:$no-focus-style;	
+						background: #fff;	
+						width: auto;
+						height: auto;
+						padding: 10px;
+						text-align: center;
+									
 						&.copied{
 							opacity: .5;
 						}
 						&:hover{
 							cursor: pointer;
-							background: #fff;
 							transition: .5s ease;
+							border: $focus-style;
+							
 						}
 						
 						
@@ -832,16 +891,16 @@ img{
 			}
 		}
 		.close_published_posts{
-			margin-top: 200px;
+			margin-top: 100px;
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
 			
 			&_prev, &_next{
 				width: 45%;
-				padding: 20px 5px;
-				height: auto;
-				min-height: 300px;
+				
+				max-height: 100px;
+				
 				transition: all .5s;
 				@include mq(sp){
 					width: 100%;
@@ -857,7 +916,7 @@ img{
 					width: 100%;
 					justify-content: center;
 					.article_image{
-						width: 45%;
+						width: 30%;
 						position:relative;
 						p{
 							position: absolute;
@@ -869,9 +928,10 @@ img{
 							padding: 5px 10px;
 						}
 						img{
-							max-width:100%;
+							width: 100%;
 							height: auto;
 							max-height: 120px;
+						    
 							
 							
 						}
@@ -879,7 +939,7 @@ img{
 					}
 					
 					.article_remarks{
-						width: 55%;
+						width: 65%;
 						display: flex;
 						justify-content: center;
 						align-items: center;

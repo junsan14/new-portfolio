@@ -1,5 +1,5 @@
 import {ScrollRestoration,Link } from 'react-router-dom';
-import Instagram from '../components/FetchSns';
+import {Instagram,Twitter} from '../components/FetchSns';
 import {FetchThreePost} from '../components/FetchBlog'; 
 import {EnginerSkillGraph} from '../components/GetSkillGraph';
 
@@ -53,15 +53,15 @@ function Home() {
             </h2>
 
             <div className="section_content sns js-sns">
-              <div className="instagram">
-                <div className="instagram_wrapper">
+              <div className="instagram js-instagram">
+                <div className="instagram_wrapper js-instagram-wrapper">
                 <Instagram />
                 </div>
                 
               </div>
               
               <div className="twitter">
-                <img src={twitter_png} alt="" />
+                <Twitter />
               </div>
             </div>
           </section>

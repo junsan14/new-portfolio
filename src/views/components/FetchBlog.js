@@ -48,7 +48,7 @@ function FetchAllPost() {
       return(
         <>  
           {data.map((item,i) => {
-          let publishDate = formatDate(item.date);
+          //let publishDate = formatDate(item.date);
           let upadtedate = formatDate(item.modified); 
           let thumbnail = getThumbnail(item)
             return(
@@ -56,9 +56,9 @@ function FetchAllPost() {
                 <Link to={`/blog/page/${item.id}`}>
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
-                    <h3 className="article_remarks_title">{item.title.rendered}</h3>
+                    <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
                     <p className="article_remarks_text">
-                        {item.excerpt.rendered.replace(/(<([^>]+)>)/gi, '')}
+                        {parse(item.excerpt.rendered)}
                     </p>
                     <p className="article_remarks_date">
                         更新日:　{upadtedate}<br/>
@@ -80,12 +80,13 @@ function FetchAllPost() {
    return (
     <>
     <ul className="category_tab tab"> 
-      <li className="category_tab_li" tabIndex="-1" value="" onClick={(e)=>setCategory("")}>ALL</li>      
+      <li className="category_tab_li" tabIndex="-1" value="" onClick={(e)=>setCategory("")}>ALL</li>
+      <li className="category_tab_li" tabIndex="-1" value="9" onClick={(e)=>setCategory(e.target.value)}>DIRECTION</li>       
       <li className="category_tab_li" tabIndex="-1" value="17" onClick={(e)=>setCategory(e.target.value)}>CODING</li>   
-      <li className="category_tab_li" value="18" onClick={(e)=>setCategory(e.target.value)} tabIndex="-1">FRONT END</li>
-      <li className="category_tab_li" tabIndex="-1">BACK END</li>
-      <li className="category_tab_li" tabIndex="-1">DAILY LIFE</li>
-      <li className="category_tab_li" tabIndex="-1">OTHERS</li>
+      <li className="category_tab_li" tabIndex="-1" value="18" onClick={(e)=>setCategory(e.target.value)}>FRONT END</li>
+      <li className="category_tab_li" tabIndex="-1" value="19" onClick={(e)=>setCategory(e.target.value)}>BACK END</li>
+      <li className="category_tab_li" tabIndex="-1" value="16" onClick={(e)=>setCategory(e.target.value)}>DAILY LIFE</li>
+      <li className="category_tab_li" tabIndex="-1" value="15" onClick={(e)=>setCategory(e.target.value)}>OTHERS</li>
     </ul>
     <div className="search_area">
       <input type="text" className="search_area_input" placeholder="記事検索ワード" onChange={(e)=>setKeyword(e.target.value)} />
@@ -121,10 +122,10 @@ function FetchThreePost() {
                 <Link to={`/blog/page/${item.id}`} >
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
-                    <h3 className="article_remarks_title">{item.title.rendered}</h3>
-                    <p className="article_remarks_text">
-                        {item.excerpt.rendered.replace(/(<([^>]+)>)/gi, '')}
-                    </p>
+                    <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
+                    <div className="article_remarks_text">
+                        {parse(item.excerpt.rendered)}
+                    </div>
                     <p className="article_remarks_date">
                         {date}<br/>
                     </p>
@@ -156,14 +157,13 @@ function FetchPageData(){
       //console.log(ele)
      $(ele).css("position", "relative")
      $(ele).wrap(
-      `<div class="markup-area" id=${i}>
-      </div>
+      `
       `
      );
      $(ele).append(
       `
-      <div class="markup-area-copy btn" id=${i}>
-       <p>copy</p>
+      <div class="markup-area-copy">
+       <div class="markup-area-copy_text"> copy</div>
       </div>
       `
      );
@@ -172,11 +172,11 @@ function FetchPageData(){
      $(".markup-area-copy").on("click", function(){
       let that = $(this);
       let copiedText = that.prev().text();
-      that.children("p").text("copied");
+      that.children("div").text("copied");
       that.addClass("copied");
       //console.log(that.prev().text())
       setTimeout(()=>{
-      that.children("p").text("copy"); 
+      that.children("div").text("copy"); 
       that.removeClass("copied");
       },3000)
       return navigator.clipboard.writeText(copiedText);
@@ -214,7 +214,7 @@ function FetchPageData(){
                           <img src={prevPost.img.src?prevPost.img.src:noImg} alt="" />
                         </div>
                         <div className="article_remarks">
-                          <h3 className="article_remarks_title">{prevPost.title}</h3>  
+                          <h3 className="article_remarks_title">{parse(prevPost.title)}</h3>  
                         </div>
                       </Link>
                 </div>
@@ -222,7 +222,7 @@ function FetchPageData(){
         }
       }
       const NextPost = ()=>{
-        if(nextPost){
+        if(nextPost){console.log(nextPost)
           return(
             <div className="article" id={nextPost.id} >
             <Link to={`/blog/page/${nextPost.id}`} >
@@ -231,7 +231,7 @@ function FetchPageData(){
                 <img src={nextPost.img.src?nextPost.img.src:noImg}  alt="" />
               </div>
               <div className="article_remarks">
-                <h3 className="article_remarks_title">{nextPost.title}</h3>  
+                <h3 className="article_remarks_title">{parse(nextPost.title)}</h3>  
               </div>
             </Link>
       </div>
@@ -244,7 +244,7 @@ function FetchPageData(){
 
       return(
         <>
-              <h1 className="section_content_title">{data.title.rendered}</h1>
+              <h1 className="section_content_title">{parse(data.title.rendered)}</h1>
               <div className="article" id={data.id} key={data.id}>
                 <div className="article_date">
                     <p className="article_date_publish">

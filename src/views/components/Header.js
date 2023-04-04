@@ -22,10 +22,10 @@ function Header(){
            <li className="header_ul_li js-header-ul-li"><Link to="/contact">CONTACT</Link></li>
         </ul>
         <div className="header_sns">
-          <a href="https://twitter.com/junsan_junsan14" target="_blank">
+          <a href="https://twitter.com/junsan_junsan14" target="_blank" rel="noopener noreferrer">
             <img src={twitter} alt="" />
           </a>
-          <a href="https://www.instagram.com/junsan_junsan14/">
+          <a href="https://www.instagram.com/junsan_junsan14/" rel="noopener noreferrer">
             <img src={instagram} alt="" target="_blank" />
           </a>
         </div>

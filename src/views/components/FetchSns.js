@@ -1,26 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import $ from 'jquery';
+
 import heart from '../../images/heart.png';
 
 function Instagram(){
 
 
-  $(function(){
-    let $wrapper = $(".instagram_wrapper");
-    let i = 1;
-    const scroll = ()=>{
-      let wrapperX = $wrapper.offset().left;
-      $wrapper.css("right", i);
-      i= i+5;
-      console.log(i)
-    }
-
-     
-      
-
-    
-  })
   const [posted,setPosted] = useState("");
   useEffect(()=>{
     const user_name = "junsan_junsan14" //ビジネスorクリエイターアカウントの必要あり
@@ -67,15 +52,18 @@ function Instagram(){
     }
    
 
-
-
 return(
   <Render />
 )
+ 
+}
 
-
-
-    
+function Twitter(){
+  return(
+    <div>
+      <p>Twitter API停止中のため準備中です｡</p>
+    </div>
+  )
 }
 
 
@@ -83,7 +71,7 @@ return(
 
 
 
-export default Instagram;
+export　{Instagram,Twitter};
 
 
 
