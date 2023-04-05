@@ -41,17 +41,17 @@ function About() {
                 <div className="profile_biography">
                   <dl>
                     <dt>1992</dt>
-                    <dd>大阪で生まれ､高校卒業まで大阪で過ごす</dd>
+                    <dd>大阪で生まれ､高校卒業まで過ごす</dd>
                     <dt>2011</dt>
-                    <dd>東京の私立に入学､工学部情報システム専攻</dd>
+                    <dd>大学入学を機に上京､工学部情報システム専攻</dd>
                     <dt>2014</dt>
                     <dd>留学への強い憧れから､奨学金無償取得可能な新学部へ転部</dd>
                     <dt>2016</dt>
-                    <dd>ロンドンに留学し、日本の言語、文化交流のコミュニティJLCE設立しながら2年弱滞在</dd>
+                    <dd>ロンドンに留学し、日本の言語/文化交流のコミュニティ JLCE設立し2年弱滞在</dd>
                     <dt>2018</dt>
                     <dd>帰国後、当時知名度が伸びていた星野リゾートに入社、4年間河口湖のほとりで過ごす</dd>
                     <dt>2022</dt>
-                    <dd>将来への不安や働き方などの理由から転職し､WEBディレクター兼エンジニアとして東京で活動</dd>
+                    <dd>不規則な勤務にやや疲れ転職を決意､WEBディレクター兼エンジニアとして東京で活動</dd>
                   </dl>
                 </div>
               </div>
@@ -71,34 +71,35 @@ function About() {
                         <FrontSKillGraph />
                       </div>
                       <div className="skill_content_item_desc skill_desc">
-                         <p>5: わからないことはない</p>
-                         <p>4: ほぼ使用に問題なし</p>
-                         <p>3: 数サイトへの実装経験あり</p>
-                         <p>2: リファレンスみながらゆっくり実装可能</p>
-                         <p>1: 少し触れたレベル</p>
+                         <p>5: どんな処理もすぐに策考案可能</p>
+                         <p>4: 実務経験が豊富にあり､人に指南可能</p>
+                         <p>3: 1人でリファレンスみながら実装可能</p>
+                         <p>2: 基本的な処理の理解あるが､1人では対応困難</p>
+                         <p>1: 少し触れたレベルで､スキル向上の余地が多くあり</p>
                       </div>
                     </div>
                     <div className="skill_content_item js-content js-content-back">
                       <div className="skill_content_item_graph skill_graph">
                         <BackSKillGraph />
                       </div>
-                      <div className="skill_content_item_desc">
-                          <dl>
-                            <dt>数サイトの実装経験あり</dt>
-                            <dd>NativePHP/ Laravel/ mySQL/ firebase</dd>
-                          </dl>
+                      <div className="skill_content_item_desc skill_desc">
+                         <p>5: どんな処理もすぐに策考案可能</p>
+                         <p>4: 実務経験が豊富にあり､人に指南可能</p>
+                         <p>3: 1人でリファレンスみながら実装可能</p>
+                         <p>2: 基本的な処理の理解あるが､1人では対応困難</p>
+                         <p>1: 少し触れたレベルで､スキル向上の余地が多くあり</p>
                       </div>
                     </div>
                     <div className="skill_content_item js-content js-content-other">
                       <div className="skill_content_item_graph skill_graph">
                         <OtherSkillGraph />
                       </div>
-                      <div className="skill_content_item_desc">
-                          <dl>
-                            <dt>3年以上の実務経験あり</dt>
-                            <dd> Git/ gulp/ webpack/ node.js etc..</dd>
-
-                          </dl>
+                      <div className="skill_content_item_desc skill_desc">
+                         <p>5: どんな処理もすぐに策考案可能</p>
+                         <p>4: 実務経験が豊富にあり､人に指南可能</p>
+                         <p>3: 1人でリファレンスみながら実装可能</p>
+                         <p>2: 基本的な処理の理解あるが､1人では対応困難</p>
+                         <p>1: 少し触れたレベルで､スキル向上の余地が多くあり</p>
                       </div>
                   </div>
                 </div>
@@ -116,7 +117,7 @@ function About() {
 function graphShow(){
   $(function(){
     $('.js-tab-front').on('click', ()=>{
-      console.log($(this))
+      //console.log($(this))
       $(this).css("background", "white")
       $('.js-content').removeClass("show")
       $('.js-content-front').addClass("show");

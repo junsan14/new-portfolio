@@ -6,7 +6,7 @@ import {EnginerSkillGraph} from '../components/GetSkillGraph';
 import title_about from "../../images/title_about.png";
 import title_blog from "../../images/title_blog.png";
 import title_sns from "../../images/title_sns.png";
-import twitter_png from "../../images/twitter.png";
+
 
 function Home() {
 

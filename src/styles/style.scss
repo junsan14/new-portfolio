@@ -380,19 +380,27 @@ img{
 		}
 
 		li{
+			counter-increment: li;
 			cursor: pointer;
 			padding: 10px 0;
 			transition: .5s all;
 			font-size: .8em;
 			text-align: center;
 			border-bottom: 1px solid rgba(#111,.2);
-			width: calc(100% / 7 - 4px);
+			width: calc(100% / 5 - 4px);
 			margin-bottom: 30px;
 			background:rgba(#eee,.3);
 			@include mq(tab){
-				width: calc(100% / 3 - 1px);
+				width: calc(100% / 5 - 1px);
 				padding: 5px 0;
 				font-size: .7em;
+			}
+
+			&.skill_tab_li{
+				width: calc(100% / 3 - 4px);
+				@include mq(tab){
+					width: calc(100% / 3 - 1px);
+				}
 			}
 			
 			
@@ -497,32 +505,25 @@ img{
 		}
 
 		
-		& .sns{
-		
+		& .sns{	
 		 .instagram{
-			
-			
 			overflow-x: hidden;
 			position: relative;
 			width: 100%;
 			height: 500px;
 			
-			&_wrapper{
-		
-				width: 100%;
-				
+			&_wrapper{		
+				width: 100%;				
 				justify-content: space-between;
 				position:absolute;
 				display: flex;
-				animation :infinity-scroll-left 20s infinite linear 0.5s both;
-			
+				animation :infinity-scroll-left 20s infinite linear 0.5s both;			
 				@include mq(tab){
 					animation :infinity-scroll-left 10s infinite linear 0.5s both;
 				}
 			}
 			& .post{
-				width: calc(100% /3);
-				
+				width: calc(100% /3);				
 				margin-right:20px;
 				position: relative;
 				@include mq(tab){
@@ -668,18 +669,15 @@ img{
 				}
 			}
 		}
-
-		.skill{
-			
+		.skill{			
 			&_content{
-				position: relative;
-				
+				position: relative;				
 				&:before{
-					padding-top: 60vh;
+					padding-top: 100vh;
 					content: "";
 					display: block;
 					@include mq(tab){
-						padding-top: 60vh;
+						padding-top: 100vh;
 					}
 				}
 				&_item{
@@ -700,17 +698,18 @@ img{
 						pointer-events: auto;
 					}
 					&_desc{
-						width: 100%;
+						width: 50%;
 						font-size: .7em;
-						margin-top: -100px;
-						text-align: right;
+						margin-left:55%;
+						
 						@include mq(tab){
 							width: 100%;
-							font-size: .4em;
-							
+							font-size: .7em;
+							margin-left:5%;
 						}
 						p{
 							padding-top: 3px;
+							margin-top: 4px;
 							letter-spacing: 1px;
 						}
 						
@@ -798,10 +797,27 @@ img{
 				h1 {
 					padding: 0.5em;/*文字周りの余白*/
 					background: #eee;/*背景色*/
-					border-left: solid 5px rgba(#111,.1);/*左線（実線 太さ 色）*/
+					//border-left: solid 5px rgba(#111,.1);/*左線（実線 太さ 色）*/
 					font-size: 1.2em;
-					@include mq(tab){
-						
+					position: relative;
+					padding-left: 40px;
+					@include mq(sp){
+						padding-left: 25px;
+					}
+					&:before{
+						position: absolute;
+						content: '';
+						background-image: url("../images/question_icon.png");
+						background-size: 100%;
+						background-repeat: no-repeat;
+						top: 0px;
+						left: 10px;
+						width: 20px;
+						height:40px;
+						@include mq(sp){
+							left: 0px;
+						}
+
 					}
 				}
 				h2 {
@@ -809,25 +825,25 @@ img{
 					margin-top: 60px;
 					padding-left: 30px;
 					font-size: 1.1em;
-					
+					padding: 0.5em;/*文字周りの余白*/
+					background: #eee;/*背景色*/
+					padding-left: 40px;
+					@include mq(sp){
+						padding-left: 25px;
+					}
 					&:before{
 						position: absolute;
 						content: '';
-						bottom: -3px;
-						left: 0;
-						width: 0;
-						height: 0;
-						border: none;
-						border-left: solid 15px transparent;
-						border-bottom: solid 15px rgba(#111,.5);
-					}
-					&:after{
-						position: absolute;
-						content: '';
-						bottom: -3px;
-						left: 15px;
-						width: 100%;
-						border-bottom: solid 3px rgba(#111,.5);
+						background-image: url("../images/answer_icon.png");
+						background-size: 100%;
+						background-repeat: no-repeat;
+						top: 0;
+						left: 10px;
+						width: 20px;
+						height:40px;
+						@include mq(sp){
+							left: 0px;
+						}
 					}
 				}
 				p{

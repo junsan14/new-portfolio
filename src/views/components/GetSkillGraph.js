@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { Radar, Text,RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { Radar,RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 
 const enginerSkill = [
@@ -89,7 +89,7 @@ const backSkill = [
     fullMark: 5,
   },
   {
-    subject: 'WordPress',
+    subject: 'Wordpress',
     A: 2.5,
     fullMark: 5,
   },
@@ -104,7 +104,7 @@ const backSkill = [
     fullMark: 5,
   },
   {
-    subject: 'SNS API',
+    subject: 'API',
     A: 3,
     fullMark: 5,
   },
@@ -162,38 +162,32 @@ const otherSkill = [
       case "CODING":
         return(
           <>
-           HTML5/CSS3/SASS<br/>
-           レスポンシブ/疑似要素/ポジション/transition/animation/filter
+           HTML5/ CSS3/ SASS/ Responsive<br/>
           </>
         );
       case "FrontEnd":
         return(
           <>
-          JS Native/jQuery/Google Apps Script/ React <br/>
-          タブ/ アコーディオン/ スライダー/ プルダウン/ イベント処理/ 非同期処理/ SPA <br />
-          
+          JS/ jQuery/ Google Apps Script/ React <br/>  
           </>
         );
       case "BackEnd":
         return (
           <>
             PHP/ Laravel<br />
-            ユーザー登録処理/ バリデーション";
           </>
         );
       case "CMS":
         return(
           <>
             Wordpress<br />
-            自作テーマ/REST API連携
           </>
   
         );
       case "Mobile App":
         return(
           <>
-            React Native<br />
-            
+            React Native<br />          
           </>
         );
       case "DB":
@@ -206,52 +200,123 @@ const otherSkill = [
       case "SNS API":
         return(
           <>
-            Twitter/ Instagram<br />
-            
+            Twitter/ Instagram<br />           
           </>
         );
       case "HTML/CSS/SASS":
         return(
           <>
-            <br />
+            疑似要素/ ポジション/ ransition/ animation/ filter<br />
+            リファレンスなしで基本的に実装可能
             
           </>
         );
       case "JavaScript":
         return(
           <>
-            <br />
-            
+            タブ/ アコーディオン/ スライダー/ プルダウン/ イベント/ 非同期 <br />
+            繰り返し/条件分岐/配列など基本は習得済
           </>
         );
       case "jQuery":
         return(
           <>
-            <br />
-            
+            jsと同じ理解度<br />
+                      
           </>
         );
       case "Google App Script":
         return(
           <>
-            <br />
-            
+            onOpen/ onEdit/ SpreadSheeptApp / Webアプリ <br />
+            jsで一番得意｡SpreadSheetsと連携し､WEBアプリ作成経験あり
           </>
         );
       case "React":
         return(
           <>
-            <br />
+           JSX/ Babel/ useState/ useEffect/ SPA/ Render<br />
+           クラスコンポーネントの理解もあるが､16.8以降基本はフックのみ使用
             
           </>
         );
-      case "HTML/":
+      case "React Native":
         return(
           <>
-            <br />
-            
+            一度触れたことがあるのみで経験はあまりないが､
+            ページの遷移など基本的な理解あり
           </>
         );
+      case "PHP":
+        return(
+          <>
+            一度フルスクラッチで､ユーザのCRUD処理を
+            一から実装経験あり(一応セキュリティ実装も)          
+          </>
+        );
+      case "Laravel":
+        return(
+          <>
+            <a href='https://hotelier-front.com/'>Hotelier</a>の
+            WEBアプリ構築経験あり     
+          </>
+        );
+      case "Wordpress":
+        return(
+          <>
+            自作テーマ作成の経験あり<br />
+            基本的なWP特有のPHPの書き方の理解
+          </>
+        );
+      case "mySQL":
+        return(
+          <>
+            SQL構文/ Laravel Eloquentの操作経験あり   
+          </>
+        );
+      case "firebase":
+        return(
+          <>
+            React NativeのDBとして連携経験あり   
+          </>
+        );
+      case "API":
+        return(
+          <>
+            Twitter/ Instagramのapi組み込み経験あり
+          </>
+        );
+      case "PSD":
+        return(
+          <>
+           レイヤーの理解､スライスなど基本的な操作理解あり
+          </>
+        );
+      case "XD":
+        return(
+          <>
+            アニメーション/レイヤー/コンポーネントなどある程度複雑な操作理解あり   
+          </>
+        );
+      case "AI":
+        return(
+          <>
+            PSDより操作経験なし
+          </>
+        );
+      case "gulp":
+        return(
+          <>
+            Frameworkなしの際､関数を作成しホットリロードやSass/jsコンパイルなどの理解あり 
+          </>
+        );
+      case "webpack":
+        return(
+          <>
+            gulpより理解は低いが､リファレンス見ながら操作経験あり   
+          </>
+        );
+         
       default:
     }
     
@@ -268,7 +333,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 5]} />
+            <PolarRadiusAxis domain={["auto", 5]} />
             <Radar
               name="jun"
               dataKey="A"
@@ -276,7 +341,6 @@ const otherSkill = [
               fill="#eee"
               fillOpacity={0.6}
             />
-            <Text  width={100} />
           </RadarChart>
         </ResponsiveContainer>
     )
@@ -315,7 +379,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 5]} />
+            <PolarRadiusAxis domain={["auto", 5]} />
             <Radar
               name="jun"
               dataKey="A"
@@ -338,7 +402,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 5]} />
+            <PolarRadiusAxis domain={["auto", 5]} />
             <Radar
               name="jun"
               dataKey="A"

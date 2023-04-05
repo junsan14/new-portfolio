@@ -38,7 +38,7 @@ function Header(){
 
 function SpMenuShow(){
   const [loadState, setLoadState]= useState(false);
-  console.log(loadState)
+  //console.log(loadState)
   $(function(){
     if(!loadState){
    

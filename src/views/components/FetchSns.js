@@ -27,14 +27,14 @@ function Instagram(){
       if(posted){
 
         let posts =posted.business_discovery.media.data;
-        
+       
         return(
           <>
             {posts.map((post,i,ary) => {
-              console.log(ary)
+              //console.log(test)
               return(
                 <div className='post' key={i}>
-                  <a href={post.permalink}>
+                  <a href="https://www.instagram.com/junsan_junsan14/" target='_black' rel="noopener noreferrer">
                     <img src={post.media_url} alt="" className="post_image" />
                     <div className="post_desc">
                       <img src={heart} alt="" className="post_desc_heart" />

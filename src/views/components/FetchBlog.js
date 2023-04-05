@@ -7,6 +7,7 @@ import $ from 'jquery';
 
 
 
+
 function formatDate(date){
   let formatDate = new Date(date).getFullYear()+ "/" 
           +(new Date(date).getMonth()+1).toString().padStart(2, '0')+ "/" 
@@ -80,13 +81,11 @@ function FetchAllPost() {
    return (
     <>
     <ul className="category_tab tab"> 
-      <li className="category_tab_li" tabIndex="-1" value="" onClick={(e)=>setCategory("")}>ALL</li>
-      <li className="category_tab_li" tabIndex="-1" value="9" onClick={(e)=>setCategory(e.target.value)}>DIRECTION</li>       
-      <li className="category_tab_li" tabIndex="-1" value="17" onClick={(e)=>setCategory(e.target.value)}>CODING</li>   
-      <li className="category_tab_li" tabIndex="-1" value="18" onClick={(e)=>setCategory(e.target.value)}>FRONT END</li>
-      <li className="category_tab_li" tabIndex="-1" value="19" onClick={(e)=>setCategory(e.target.value)}>BACK END</li>
-      <li className="category_tab_li" tabIndex="-1" value="16" onClick={(e)=>setCategory(e.target.value)}>DAILY LIFE</li>
-      <li className="category_tab_li" tabIndex="-1" value="15" onClick={(e)=>setCategory(e.target.value)}>OTHERS</li>
+      <li className="category_tab_li" tabIndex="-1" value="" onClick={(e)=>setCategory("")}>ALL</li>    
+      <li className="category_tab_li" tabIndex="-1" value="17" onClick={(e)=>setCategory(e.target.value)}>Coding</li> 
+      <li className="category_tab_li" tabIndex="-1" value="18" onClick={(e)=>setCategory(e.target.value)}>FrontEnd</li>
+      <li className="category_tab_li" tabIndex="-1" value="19" onClick={(e)=>setCategory(e.target.value)}>BackEnd</li>
+      <li className="category_tab_li" tabIndex="-1" value="15" onClick={(e)=>setCategory(e.target.value)}>Others</li>
     </ul>
     <div className="search_area">
       <input type="text" className="search_area_input" placeholder="記事検索ワード" onChange={(e)=>setKeyword(e.target.value)} />
@@ -248,7 +247,7 @@ function FetchPageData(){
               <div className="article" id={data.id} key={data.id}>
                 <div className="article_date">
                     <p className="article_date_publish">
-                        更新日: {upadtedate} 
+                        更新日: {upadtedate}
                     </p>
                     <p className="article_date_publish">
                         公開日: {publishDate}
