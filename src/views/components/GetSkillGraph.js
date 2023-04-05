@@ -12,27 +12,27 @@ const enginerSkill = [
   },
   {
     subject: 'FrontEnd',
-    A: 3.2,
+    A: 3.3,
     fullMark: 5,
   },
   {
     subject: 'BackEnd',
-    A: 2.4,
+    A: 3,
     fullMark: 5,
   },
   {
     subject: 'Mobile App',
-    A: 1,
+    A: 1.5,
     fullMark: 5,
   },
   {
     subject: 'CMS',
-    A: 2.5,
+    A: 4,
     fullMark: 5,
   },
   {
     subject: 'DB',
-    A: 2,
+    A: 2.75,
     fullMark: 5,
   },
   {
@@ -65,12 +65,12 @@ const frontSkill = [
     },
     {
       subject: 'React',
-      A: 2.5,
+      A: 3,
       fullMark: 5,
     },
     {
-      subject: 'React Native',
-      A: 1,
+      subject: 'RN',
+      A: 1.5,
       fullMark: 5,
     },
 
@@ -80,27 +80,27 @@ const frontSkill = [
 const backSkill = [
   {
     subject: 'PHP',
-    A: 2,
+    A: 2.5,
     fullMark: 5,
   },
   {
     subject: 'Laravel',
-    A: 2.5,
+    A: 3.5,
     fullMark: 5,
   },
   {
     subject: 'Wordpress',
-    A: 2.5,
+    A: 3.0,
     fullMark: 5,
   },
   {
     subject: 'mySQL',
-    A: 2,
+    A: 3,
     fullMark: 5,
   },
   {
     subject: 'firebase',
-    A: 1.5,
+    A: 2.5,
     fullMark: 5,
   },
   {
@@ -114,32 +114,32 @@ const backSkill = [
 const otherSkill = [
   {
     subject: 'PSD',
-    A: 2.5,
+    A: 3.0,
     fullMark: 5,
   },
   {
     subject: 'XD',
-    A: 3.5,
+    A: 4.0,
     fullMark: 5,
   },
   {
     subject: 'AI',
-    A: 2,
+    A: 2.5,
     fullMark: 5,
   },
   {
     subject: 'Git',
-    A: 3.5,
+    A: 4,
     fullMark: 5,
   },
   {
     subject: 'gulp',
-    A: 3.5,
+    A: 4,
     fullMark: 5,
   },
   {
     subject: 'webpack',
-    A: 2.5,
+    A: 3,
     fullMark: 5,
   },
 
@@ -165,13 +165,13 @@ const otherSkill = [
            HTML5/ CSS3/ SASS/ Responsive<br/>
           </>
         );
-      case "FrontEnd":
+      case "Front":
         return(
           <>
           JS/ jQuery/ Google Apps Script/ React <br/>  
           </>
         );
-      case "BackEnd":
+      case "Back":
         return (
           <>
             PHP/ Laravel<br />
@@ -240,7 +240,7 @@ const otherSkill = [
             
           </>
         );
-      case "React Native":
+      case "RN":
         return(
           <>
             一度触れたことがあるのみで経験はあまりないが､
@@ -316,6 +316,12 @@ const otherSkill = [
             gulpより理解は低いが､リファレンス見ながら操作経験あり   
           </>
         );
+      case "git":
+        return(
+          <>
+            sourcetree/コマンドどちらも操作経験あり。   
+          </>
+        );
          
       default:
     }
@@ -333,7 +339,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={["auto", 5]} />
+            <PolarRadiusAxis domain={[1, 5]} />
             <Radar
               name="jun"
               dataKey="A"
@@ -356,7 +362,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={[0, 5]} />
+            <PolarRadiusAxis domain={[1, 5]} />
             <Radar
               name="jun"
               dataKey="A"
@@ -379,7 +385,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={["auto", 5]} />
+            <PolarRadiusAxis domain={[1, 5]} />
             <Radar
               name="jun"
               dataKey="A"
@@ -402,7 +408,7 @@ const otherSkill = [
             <Tooltip content={<CustomTooltip />}/>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis domain={["auto", 5]} />
+            <PolarRadiusAxis domain={[1, 5]} />
             <Radar
               name="jun"
               dataKey="A"

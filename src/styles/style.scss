@@ -288,8 +288,8 @@ img{
 			border: 1px solid rgba(#eee,.8);
 			@include mq(tab){
 				line-height: 20px;
-				font-size: .5em;
-				padding: 10px;
+				font-size: .3em;
+				padding: 5px;
 			}
 			&:focus{
 				outline: $focus-style;
@@ -376,7 +376,8 @@ img{
 		margin-right: 5px;
 		@include mq(sp){
 			width: 100%;
-			margin: 0 auto 80px auto ;
+			margin: 0 auto 50px auto ;
+			justify-content: center;
 		}
 
 		li{
@@ -391,9 +392,11 @@ img{
 			margin-bottom: 30px;
 			background:rgba(#eee,.3);
 			@include mq(tab){
-				width: calc(100% / 5 - 1px);
+				width: calc(100% / 3 - 1px);
 				padding: 5px 0;
 				font-size: .7em;
+				margin-bottom: 20px;
+				
 			}
 
 			&.skill_tab_li{
