@@ -4,7 +4,7 @@ import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
-
+let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 
 
 
@@ -27,7 +27,7 @@ function FetchAllPost() {
   const [category, setCategory] = useState('')
 
    useEffect(() => {
-    let fetchURL = "https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?_embed";
+    let fetchURL = blogURL+"?_embed";
     if(keyword && category){
       fetchURL +=  "&search=" + keyword  + "&categories=" + category;
     }else if(keyword){
@@ -44,7 +44,7 @@ function FetchAllPost() {
   }, [keyword,category]);
 
   const Render = ()=>{
-    console.log(data)
+    //console.log(data)
     if(data.length >0){
       return(
         <>  
@@ -102,7 +102,7 @@ function FetchThreePost() {
   const [data, setData] = useState([]);
    useEffect(() => {
    axios
-     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts?per_page=4&_embed")
+     .get(blogURL + "?per_page=4&_embed")
      .then(response => setData(response.data))
      .catch(error => console.log(error));
   }, []);
@@ -188,7 +188,7 @@ function FetchPageData(){
 
    useEffect(() => {
    axios
-     .get("https://www.junsan.info/public/engineer/wp-json/wp/v2/posts/" +id)
+     .get(blogURL + "/" +id)
      .then(response => setData(response.data))
      .catch(error => console.log(error));
   }, [id]);

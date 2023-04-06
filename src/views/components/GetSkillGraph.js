@@ -11,12 +11,12 @@ const enginerSkill = [
     fullMark: 5,
   },
   {
-    subject: 'FrontEnd',
+    subject: 'Front',
     A: 3.3,
     fullMark: 5,
   },
   {
-    subject: 'BackEnd',
+    subject: 'Back',
     A: 3,
     fullMark: 5,
   },
@@ -128,7 +128,7 @@ const otherSkill = [
     fullMark: 5,
   },
   {
-    subject: 'Git',
+    subject: 'git',
     A: 4,
     fullMark: 5,
   },

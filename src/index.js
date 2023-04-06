@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 
 import {
   createBrowserRouter,
-  RouterProvider, 
+  RouterProvider
 } from "react-router-dom";
 
 import "./styles/style.scss"
