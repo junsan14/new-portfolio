@@ -151,7 +151,8 @@ function FetchPageData(){
   //記事のスタイル装飾
   $(function(){
     let $markupElements = $(".language-markup");
-    $("a").attr("target", "_blank")
+    $("a").attr("target", "_blank");
+    $("a").attr("rel", "noopener noreferrer");
     $markupElements.each((i,ele)=>{
       //console.log(ele)
      $(ele).css("position", "relative")
