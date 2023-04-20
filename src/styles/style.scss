@@ -852,6 +852,16 @@ img{
 						}
 					}
 				}
+				h3{
+					font-size: 1.1em;
+					margin-top: 60px;
+					padding: 5px 10px;
+					background: #eee;
+					border-radius: 5px;
+					@include mq(tab){
+						padding: 5px;
+					}
+				}
 				p{
 					margin-left: 20px;
 					margin-top: 20px;
