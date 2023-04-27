@@ -793,11 +793,21 @@ img{
 					}
 				}
 				img{
-					width: 30%;
+					display: inline;
+					width: 80%;
 					height: auto;
+					border-radius: 6px;
+					box-shadow: 0 10px 10px 0 rgba(#111,.3);
 					text-align: center;
-					@include mq(tab){
-						width: 80%;
+					margin-top: 20px;
+					margin-bottom: 20px;
+					margin-left: 5%;
+					display: flex;
+					justify-content: center;
+					
+					@include mq(sp){
+						width: 95%;
+						margin-left: 5%;
 					}		
 				}
 				h1 {
@@ -866,23 +876,25 @@ img{
 					text-decoration: underline;
 				}
 				p{
-					margin-left: 20px;
+					width: 95%;
+					margin-left: 5%;
 					margin-top: 20px;
-					@include mq(tab){
-						margin-left: 5px;
-					}
+					
 				}
+				
 	
 				pre{
 					background: rgba(#fff,1);
-					width: 80%;
+					width: 95%;
 					line-height: 0;
 					margin-block-start: 300px;
-					margin: 40px 20px;
+					margin: 40px 0;
+					margin-left: 5%;
 					max-height: 300px;
 					@include mq(tab){
-						width: 100%;
-						margin: 40px 5px;
+						width: 95%;
+						margin: 40px 0px;
+						margin-left: 5%;
 					}
 					code{
 						line-height: 20px;
