@@ -872,6 +872,15 @@ img{
 						padding: 8px;
 					}
 				}
+				h6{
+					font-size: .7em;
+					color: rgba(#111,.3);
+					float: right;
+					@include mq(sp){
+						font-size: .6em;
+					}
+					
+				}
 				a{
 					text-decoration: underline;
 				}
