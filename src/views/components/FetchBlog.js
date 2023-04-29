@@ -27,7 +27,7 @@ function FetchAllPost() {
   const [category, setCategory] = useState('')
 
    useEffect(() => {
-    let fetchURL = blogURL+"?_embed";
+    let fetchURL = blogURL+"?_embed&per_page=100";
     if(keyword && category){
       fetchURL +=  "&search=" + keyword  + "&categories=" + category;
     }else if(keyword){
@@ -35,7 +35,7 @@ function FetchAllPost() {
     }else if(category){
       fetchURL += "&categories=" + category;
     }
-    console.log(fetchURL)
+    //console.log(fetchURL)
     axios
     .get(fetchURL)
     .then(response => setData(response.data))
@@ -58,9 +58,9 @@ function FetchAllPost() {
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
-                    <p className="article_remarks_text">
+                    <div className="article_remarks_text">
                         {parse(item.excerpt.rendered)}
-                    </p>
+                    </div>
                     <p className="article_remarks_date">
                         更新日:　{upadtedate}<br/>
                     </p>
@@ -202,7 +202,7 @@ function FetchPageData(){
       let upadtedate = formatDate(data.modified);
       let prevPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
       let nextPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
-      console.log(data)
+      //console.log(data)
 
       const PrevPost = ()=>{
         if(prevPost){
@@ -222,7 +222,8 @@ function FetchPageData(){
         }
       }
       const NextPost = ()=>{
-        if(nextPost){console.log(nextPost)
+        if(nextPost){
+          //console.log(nextPost)
           return(
             <div className="article" id={nextPost.id} >
             <Link to={`/blog/page/${nextPost.id}`} >

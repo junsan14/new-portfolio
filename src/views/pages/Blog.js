@@ -14,7 +14,7 @@ function Blog() {
                 <div className="section_title_jp">投稿</div>
                 </h1>
                 <div className="section_content posts">
-                
+
                  
                   <FetchAllPost />
                 </div>
