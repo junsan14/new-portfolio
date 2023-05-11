@@ -1,5 +1,5 @@
 import {ScrollRestoration,Link } from 'react-router-dom';
-import {Instagram,Twitter} from '../components/FetchSns';
+import {Instagram,TwitterGet} from '../components/FetchSns';
 import {FetchThreePost} from '../components/FetchBlog'; 
 import {EnginerSkillGraph} from '../components/GetSkillGraph';
 
@@ -61,7 +61,7 @@ function Home() {
               </div>
               
               <div className="twitter">
-                <Twitter />
+                <TwitterGet />
               </div>
             </div>
           </section>

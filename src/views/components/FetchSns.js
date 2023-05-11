@@ -2,9 +2,23 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 
 import heart from '../../images/heart.png';
+import { Client } from "twitter-api-sdk";
+
+const client = new Client(process.env.REACT_APP_Twitter_BEARER_TOKEN);
+
+async function main() {
+  const stream = client.tweets.sampleStream({
+    "tweet.fields": ["author_id"],
+  });
+  for await (const tweet of stream) {
+    console.log(tweet.data?.author_id);
+  }
+}
+
+main();
+
 
 function Instagram(){
-
 
   const [posted,setPosted] = useState("");
   useEffect(()=>{
@@ -58,7 +72,8 @@ return(
  
 }
 
-function Twitter(){
+function TwitterGet(){
+  
   return(
     <div>
       <p>Twitter API停止中のため準備中です｡</p>
@@ -71,7 +86,7 @@ function Twitter(){
 
 
 
-export　{Instagram,Twitter};
+export　{Instagram,TwitterGet};
 
 
 
