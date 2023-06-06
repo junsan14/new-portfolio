@@ -2,20 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 
 import heart from '../../images/heart.png';
-import { Client } from "twitter-api-sdk";
 
-const client = new Client(process.env.REACT_APP_Twitter_BEARER_TOKEN);
-
-async function main() {
-  const stream = client.tweets.sampleStream({
-    "tweet.fields": ["author_id"],
-  });
-  for await (const tweet of stream) {
-    console.log(tweet.data?.author_id);
-  }
-}
-
-main();
 
 
 function Instagram(){
@@ -30,7 +17,7 @@ function Instagram(){
     //const url = `https://graph.facebook.com/v12.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`;
     axios
       .get(
-        `https://graph.facebook.com/v12.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`
+        `https://graph.facebook.com/v16.0/${user_id}?fields=business_discovery.username(${user_name}){id,followers_count,media_count,ig_id,media.limit(${get_count}){caption,media_url,like_count}}&access_token=${access_token}`
       )
       .then((res) => {
         setPosted(res.data)

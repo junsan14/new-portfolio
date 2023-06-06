@@ -391,7 +391,7 @@ img{
 			font-size: .8em;
 			text-align: center;
 			border-bottom: 1px solid rgba(#111,.2);
-			width: calc(100% / 5 - 4px);
+			width: calc(100% / 3 - 1px);
 			margin-bottom: 30px;
 			background:rgba(#eee,.3);
 			@include mq(tab){
@@ -1072,12 +1072,19 @@ img{
 		}
 	}
 }
+
+
+.error{
+	height: calc(100vh - 60px);
+	padding-top: 100px;
+}
+
 .footer{
 	width: $content-width;
 	height: 50px;
 	font-size: 1.2em;
 	padding: 10px;
-	line-height:50px;
+	line-height:40px;
 	text-align: center;
 
 

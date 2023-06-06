@@ -7,7 +7,6 @@ import $ from 'jquery';
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 
 
-
 function formatDate(date){
   let formatDate = new Date(date).getFullYear()+ "/" 
           +(new Date(date).getMonth()+1).toString().padStart(2, '0')+ "/" 
@@ -35,12 +34,12 @@ function FetchAllPost() {
     }else if(category){
       fetchURL += "&categories=" + category;
     }
-    //console.log(fetchURL)
+    
     axios
     .get(fetchURL)
-    .then(response => setData(response.data))
+    .then(response => setData(response.data) )
     .catch(error => console.log(error));
-   
+    
   }, [keyword,category]);
 
   const Render = ()=>{
@@ -54,7 +53,7 @@ function FetchAllPost() {
           let thumbnail = getThumbnail(item)
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/page/${item.id}`}>
+                <Link to={`/blog/${item.id}`}>
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
@@ -80,12 +79,10 @@ function FetchAllPost() {
   }
    return (
     <>
-    <ul className="category_tab tab"> 
-      <li className="category_tab_li" tabIndex="-1" value="" onClick={(e)=>setCategory("")}>ALL</li>    
-      <li className="category_tab_li" tabIndex="-1" value="17" onClick={(e)=>setCategory(e.target.value)}>Coding</li> 
-      <li className="category_tab_li" tabIndex="-1" value="18" onClick={(e)=>setCategory(e.target.value)}>FrontEnd</li>
-      <li className="category_tab_li" tabIndex="-1" value="19" onClick={(e)=>setCategory(e.target.value)}>BackEnd</li>
-      <li className="category_tab_li" tabIndex="-1" value="15" onClick={(e)=>setCategory(e.target.value)}>Others</li>
+    <ul className="category_tab tab">  
+      <li className="category_tab_li" tabIndex="-1" value="27" onClick={(e)=>setCategory(e.target.value)}>WORKS</li> 
+      <li className="category_tab_li" tabIndex="-1" value="28" onClick={(e)=>setCategory(e.target.value)}>TIPS</li>
+      <li className="category_tab_li" tabIndex="-1" value="29" onClick={(e)=>setCategory(e.target.value)}>DIARY</li>
     </ul>
     <div className="search_area">
       <input type="text" className="search_area_input" placeholder="記事検索ワード" onChange={(e)=>setKeyword(e.target.value)} />
@@ -118,7 +115,7 @@ function FetchThreePost() {
           let thumbnail = getThumbnail(item);
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/page/${item.id}`} >
+                <Link to={`/blog/${item.id}`} >
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
@@ -151,6 +148,7 @@ function FetchPageData(){
   //記事のスタイル装飾
   $(function(){
     let $markupElements = $(".language-markup");
+    let $h5 = $("h5");
     $("a").attr("target", "_blank");
     $("a").attr("rel", "noopener noreferrer");
     $markupElements.each((i,ele)=>{
@@ -169,6 +167,8 @@ function FetchPageData(){
      );
       
      });
+    $h5.css("display", "none")
+
      $(".markup-area-copy").on("click", function(){
       let that = $(this);
       let copiedText = that.prev().text();
@@ -273,6 +273,17 @@ function FetchPageData(){
         </>
 
       )
+    }else{
+      return(
+        <div className="error">
+        <p>
+          お探しの記事が存在しません｡<br/>
+          お手数ですがはじめからやり直しをお願いします｡<br/>
+        </p>
+        </div>
+        
+      )
+
     }
     
   }

@@ -17,6 +17,7 @@ import About from './views/pages/About';
 import Blog from './views/pages/Blog';
 import Page from './views/pages/Page';
 import Contact from './views/pages/Contact';
+import ErrorPage from './views/pages/ErrorPage';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -25,19 +26,25 @@ const router = createBrowserRouter([
     path: "/",
     element:(
       <>
-      <Header />
-      <Home />
+        <Header />
+        <Home />
       </>
       ),
+    errorElement:(
+      <>
+        <Header />
+        <ErrorPage />
+      </>
+    ),
   },
   {
     path: "about",
     element:(
       <>
-      <Header />
-      <About />
+        <Header />
+        <About />
       </>
-      ),
+      ),   
   },
   {
     path: "blog",
@@ -47,24 +54,31 @@ const router = createBrowserRouter([
       <Blog />
       </>
       ),
+      
   },
   {
     path: "contact",
     element:(
       <>
-      <Header />
-      <Contact />
+        <Header />
+        <Contact />
       </>
       ),
   },
   {
-    path: "blog/page/:id",
+    path: "blog/:id",
     element:(
       <>
-      <Header />
-      <Page />
+        <Header />
+        <Page />
       </>
       ),
+    errorElement:(
+      <>
+        <Header />
+        <ErrorPage />
+      </>
+    )
   },
 ]);
 

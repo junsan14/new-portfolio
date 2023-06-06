@@ -2,7 +2,7 @@ import title_contact from '../../images/title_contact.png';
 import {ScrollRestoration } from 'react-router-dom';
 import Form from '../components/GetForm';
 
-function Contact() {
+export default function Contact() {
   return (
     <>
     <div className="modal js-send-success">
@@ -31,4 +31,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+
