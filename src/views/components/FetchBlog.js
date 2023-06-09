@@ -99,7 +99,7 @@ function FetchThreePost() {
   const [data, setData] = useState([]);
    useEffect(() => {
    axios
-     .get(blogURL + "?per_page=4&_embed")
+     .get(blogURL + "?per_page=6&_embed")
      .then(response => setData(response.data))
      .catch(error => console.log(error));
   }, []);

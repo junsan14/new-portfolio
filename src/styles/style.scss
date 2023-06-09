@@ -513,12 +513,108 @@ img{
 		}
 
 		
-		& .instagramImg{
-			img{
-				width: 200px;
-				height: 300px;
-				object-fit: cover;
+		& .sns{	
+		 .instagram{
+
+			position: relative;
+			width: 100%;
+			height: auto;
+
+			&_wrapper{
+				display: flex;		
+				width: 100%;				
+				justify-content: space-between;
+				flex-wrap: wrap;
+				position:absolute;
+
 			}
+			& .post{
+				
+				img{
+					object-fit: cover;
+					box-shadow: 15px 15px 10px rgba(#111,.1);
+				}
+				margin-right:20px;
+				position: relative;
+				&:nth-child(1n){
+					width: 200px;
+					height: 240px;
+					
+				}
+				&:nth-child(2n){
+					width: 100px;
+					height: 120px;
+					margin-top: 50px;
+					
+				}
+				&:nth-child(3n){
+					width: 150px;
+					height: 180px;
+					
+				}
+				&:nth-child(4n){
+					width: 170px;
+					height: 205px;
+					
+				}
+				@include mq(tab){
+					width: 80%;
+				}
+				&:hover{
+					transition: all .5s;
+					transform: translateY(-5px);
+					filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+					cursor: pointer;
+				}
+				&_image{
+					filter: brightness(100%);
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					border-radius: 3px;
+					@include mq(tab){
+						height: 100%;
+						width: 100%;
+						margin-right: 300px;
+					}
+				}
+				&_desc{
+					
+					width: 100%;
+					height: 30px;
+					position: absolute;
+					bottom: 0px;
+					&_heart{
+						position: absolute;
+						width: 25px;
+						right: 20px;
+						bottom:3px;
+						opacity: .7;
+					}
+					&_like-count{
+						position:absolute;
+						right: 30px;
+						bottom: 11px;
+						color: #fff;
+						font-size: .5em;
+						text-align: center;
+					}
+					&_caption{
+						position:absolute;
+						left: 32px;
+						color: #fff;
+						bottom: 7px;
+					}	
+				}
+						
+			}
+		}
+		 .twitter{		
+			text-align: center;
+			
+			margin: 0px auto;	
+				
+		}
 		}
 
 		

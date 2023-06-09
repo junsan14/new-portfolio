@@ -57,9 +57,7 @@ export default function Home() {
             <div className="section_btn btn">
                <Link to={`/about`}>詳細</Link>
             </div>
-            <div className="instagramImg">
-              <img src={posts[0].media_url} alt=''></img>
-            </div>
+            
           </section>
           <section className="section">
             <h2 className="section_title">
@@ -76,18 +74,16 @@ export default function Home() {
           <section className="section">
             <h2 className="section_title">
               <img className="section_title_en" src={title_sns} alt="" />
-              <div className="section_title_jp">投稿</div>
+              <div className="section_title_jp">写真</div>
             </h2>
 
             <div className="section_content sns js-sns">
               <div className="instagram js-instagram">
                 <div className="instagram_wrapper js-instagram-wrapper">
-
+                  <Instagram />
                 </div>
                 
               </div>
-              
-
             </div>
           </section>
 
