@@ -216,6 +216,8 @@ img{
 .main{ 
 	width: $content-width;
 	background: $background-color;
+	opacity: 0;
+	transition: .9s ease;
 	@include mq(tab){
 		width: 100%;
 	}
@@ -235,7 +237,7 @@ img{
 			margin-bottom: 100px;
 			&_en{
 				width: auto;
-				height: 170px;
+				height: 100px;
 				@include mq(tab){
 					max-width:90%;
 					width: auto;
@@ -511,86 +513,12 @@ img{
 		}
 
 		
-		& .sns{	
-		 .instagram{
-			overflow-x: hidden;
-			position: relative;
-			width: 100%;
-			height: 500px;
-			
-			&_wrapper{		
-				width: 100%;				
-				justify-content: space-between;
-				position:absolute;
-				display: flex;
-				animation :infinity-scroll-left 20s infinite linear 0.5s both;			
-				@include mq(tab){
-					animation :infinity-scroll-left 10s infinite linear 0.5s both;
-				}
+		& .instagramImg{
+			img{
+				width: 200px;
+				height: 300px;
+				object-fit: cover;
 			}
-			& .post{
-				width: calc(100% /3);				
-				margin-right:20px;
-				position: relative;
-				@include mq(tab){
-					width: 80%;
-				}
-				&:hover{
-					transition: all .5s;
-					transform: translateY(-5px);
-					filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
-					cursor: pointer;
-				}
-				&_image{
-					filter: brightness(100%);
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					border-radius: 3px;
-					@include mq(tab){
-						height: 100%;
-						width: 100%;
-						margin-right: 300px;
-					}
-				}
-				&_desc{
-					
-					width: 100%;
-					background: rgba(#111,.3);
-					height: 30px;
-					position: absolute;
-					bottom: 0px;
-					&_heart{
-						position: absolute;
-						width: 25px;
-						right: 20px;
-						bottom:3px;
-						opacity: .7;
-					}
-					&_like-count{
-						position:absolute;
-						right: 30px;
-						bottom: 11px;
-						color: #fff;
-						font-size: .5em;
-						text-align: center;
-					}
-					&_caption{
-						position:absolute;
-						left: 32px;
-						color: #fff;
-						bottom: 7px;
-					}	
-				}
-						
-			}
-		}
-		 .twitter{		
-			text-align: center;
-			
-			margin: 0px auto;	
-				
-		}
 		}
 
 		

@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-
 import {
   createBrowserRouter,
   RouterProvider
@@ -19,7 +17,7 @@ import Page from './views/pages/Page';
 import Contact from './views/pages/Contact';
 import ErrorPage from './views/pages/ErrorPage';
 import reportWebVitals from './reportWebVitals';
-
+import { mainFadeIn } from './app';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +34,7 @@ const router = createBrowserRouter([
         <ErrorPage />
       </>
     ),
+
   },
   {
     path: "about",
@@ -92,8 +91,7 @@ root.render(
 
 );
 
-<React.StrictMode>
-</React.StrictMode>
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

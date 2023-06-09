@@ -1,8 +1,9 @@
 import {FetchPageData} from '../components/FetchBlog';
 import {ScrollRestoration } from 'react-router-dom';
-
+import {mainFadeIn} from "../../app.js";
 
 function Page() {
+	mainFadeIn();
 	return (
 	  <main className="main wrapper">
 		<ScrollRestoration />

@@ -208,7 +208,7 @@ function FetchPageData(){
         if(prevPost){
           return(
                 <div className="article" id={prevPost.id} >
-                      <Link to={`/blog/page/${prevPost.id}`} >
+                      <Link to={`/blog/${prevPost.id}`} >
                         <div className="article_image">
                           <p>関連投稿</p>
                           <img src={prevPost.img.src?prevPost.img.src:noImg} alt="" />
@@ -226,7 +226,7 @@ function FetchPageData(){
           //console.log(nextPost)
           return(
             <div className="article" id={nextPost.id} >
-            <Link to={`/blog/page/${nextPost.id}`} >
+            <Link to={`/blog/${nextPost.id}`} >
               <div className="article_image">
                 <p>関連投稿</p>
                 <img src={nextPost.img.src?nextPost.img.src:noImg}  alt="" />

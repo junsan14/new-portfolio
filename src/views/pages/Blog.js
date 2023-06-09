@@ -1,9 +1,12 @@
 import {FetchAllPost} from '../components/FetchBlog';
 import {ScrollRestoration } from 'react-router-dom';
 import title_blog from "../../images/title_blog.png";
+import {mainFadeIn} from "../../app";
 
-function Blog() {
+export default function Blog() {
 
+  mainFadeIn();
+ 
 	return (
 	  <main className="main wrapper">
 		<ScrollRestoration />
@@ -13,9 +16,7 @@ function Blog() {
                 <img className="section_title_en" src={title_blog} alt="" />
                 <div className="section_title_jp">投稿</div>
                 </h1>
-                <div className="section_content posts">
-
-                 
+                <div className="section_content posts">               
                   <FetchAllPost />
                 </div>
             </section>
@@ -27,4 +28,3 @@ function Blog() {
   }
 
 
-export default Blog;

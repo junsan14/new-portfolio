@@ -5,7 +5,9 @@ import {useState } from "react";
 import twitter from '../../images/twitter_icon.png';
 import instagram from '../../images/instagram_icon.png';
 
+
 function Header(){
+ 
   SpMenuShow();
   return(
     <header className="header">

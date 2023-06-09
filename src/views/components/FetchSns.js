@@ -1,13 +1,17 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-
 import heart from '../../images/heart.png';
+import { set } from 'react-hook-form';
+
+
+
 
 
 
 function Instagram(){
 
   const [posted,setPosted] = useState("");
+
   useEffect(()=>{
     const user_name = "junsan_junsan14" //ビジネスorクリエイターアカウントの必要あり
     const access_token = process.env.REACT_APP_Instagram_access_token_KEY;
@@ -23,13 +27,14 @@ function Instagram(){
         setPosted(res.data)
       });
   }, [])
-    
+
     const Render = ()=>{
       if(posted){
 
         let posts =posted.business_discovery.media.data;
        
         return(
+
           <>
             {posts.map((post,i,ary) => {
               //console.log(test)
@@ -53,14 +58,14 @@ function Instagram(){
     }
    
 
-return(
+return (
   <Render />
-)
+);
  
 }
 
 function TwitterGet(){
-  
+
   return(
     <div>
       <p>Twitter API停止中のため準備中です｡</p>

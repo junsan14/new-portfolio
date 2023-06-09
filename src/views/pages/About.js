@@ -3,11 +3,12 @@ import {FrontSKillGraph,BackSKillGraph,OtherSkillGraph} from "../components/GetS
 import logo from '../../images/logo.png';
 import {ScrollRestoration } from 'react-router-dom';
 import $ from 'jquery';
+import {mainFadeIn,graphShow} from "../../app";
 
-function About() {
+export default function About() {
 
   graphShow();
-
+  mainFadeIn();
 
   return (
     <main className="main wrapper">
@@ -114,23 +115,3 @@ function About() {
 }
 
 
-function graphShow(){
-  $(function(){
-    $('.js-tab-front').on('click', ()=>{
-      //console.log($(this))
-      $(this).css("background", "white")
-      $('.js-content').removeClass("show")
-      $('.js-content-front').addClass("show");
-    })
-    $('.js-tab-back').on('click', ()=>{
-      $('.js-content').removeClass("show")
-      $('.js-content-back').addClass("show");
-    })
-    $('.js-tab-other').on('click', ()=>{
-      $('.js-content').removeClass("show")
-      $('.js-content-other').addClass("show");
-    })
-  })
-}
-
-export default About;

@@ -1,9 +1,9 @@
 import { useRouteError,redirect } from "react-router-dom";
-
+import { mainFadeIn } from "../../app";
 
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
+  //console.error(error);
 
   return (
     <main className="main wrapper">
@@ -17,6 +17,6 @@ export default function ErrorPage() {
     </main>
     
   );
-
+  mainFadeIn();
 }
 
