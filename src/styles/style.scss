@@ -537,6 +537,7 @@ img{
 				top: 0;
 				bottom: 0;
 				position: fixed;
+				z-index: -100;
 				&.show{
 					background:rgba(#111,.8);
 					z-index: 200;
@@ -558,10 +559,13 @@ img{
 						transform: translate(-50%, -50%);
 						-webkit-transform: translate(-50%, -50%);
 						-ms-transform: translate(-50%, -50%);
-			
+						border-radius: 3px;
+						object-fit: cover;
+					
 						@include mq(tab){
 							width: 90%;
-							height: auto;
+							height: 70%;
+
 						}
 					}
 					& .left-arrow{
@@ -572,10 +576,9 @@ img{
 						display: block;
 						top:50%;
 						left: 200px;
-						z-index: 200;
+						z-index: 201;
 						@include mq(tab){
-							left: 30px;
-							top: 49%;
+							display: none;
 						}
 						&::before{
 							display: block;
@@ -606,10 +609,9 @@ img{
 						cursor: pointer;
 						top:50%;
 						display: block;
-						right:200px;
+						right:201px;
 						@include mq(tab){
-							right: 20px;
-							top: 49%;
+							display: none;
 						}
 						&::before{
 							display: block;

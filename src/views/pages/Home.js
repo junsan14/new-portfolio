@@ -1,5 +1,5 @@
 import {ScrollRestoration,Link } from 'react-router-dom';
-import {Instagram,TwitterGet} from '../components/FetchSns';
+import {Instagram} from '../components/FetchSns';
 import {FetchThreePost} from '../components/FetchBlog'; 
 import {EnginerSkillGraph} from '../components/GetSkillGraph';
 
@@ -64,6 +64,9 @@ export default function Home() {
               <div className="instagram js-instagram">
                 <div className="instagram_wrapper js-instagram-wrapper">
                   <Instagram />
+                </div>
+                <div className="section_btn btn">
+                  <a href='https://www.instagram.com/junsan_junsan14/'>Instagram</a>
                 </div>
                 
               </div>
