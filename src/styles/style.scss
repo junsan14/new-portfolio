@@ -227,7 +227,7 @@ img{
 	&.wrapper{
 		padding: 0 80px;
 		@include mq(sp){
-			padding: 0 40px;
+			padding: 0 20px;
 		}
 	}
 
@@ -264,10 +264,13 @@ img{
 		&_content{
 			&_title{
 				text-align: center;
-				font-size: 2em;
+				font-size: 1.6em;
 				margin-bottom: 80px;
 				margin-top: 80px;
-				
+				font-weight: bold;
+				@include mq(sp){
+					font-size: 1em;
+				}
 			}
 		}
 	}
@@ -459,6 +462,117 @@ img{
 	
 		
 }
+//modal
+.image_modal{
+	transition: .8s ease;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	position: fixed;
+	z-index: -100;
+	&.show{
+		background:rgba(#111,.8);
+		z-index: 200;
+		opacity: 1;
+		transition: .8s ease;
+		button{
+			color:#fff;
+			font-size: 2.5em;
+			position: absolute;
+			right: 30px;
+			top:20px;
+		}
+		& .modal-pic{
+			width: 50%;
+			height: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			border-radius: 3px;
+			object-fit: cover;
+		
+			@include mq(tab){
+				width: 90%;
+				height: 70%;
+
+			}
+		}
+		& .left-arrow{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			cursor: pointer;
+			display: block;
+			top:50%;
+			left: 200px;
+			z-index: 201;
+			@include mq(tab){
+				display: none;
+			}
+			&::before{
+				display: block;
+				content: "";
+				position: absolute;
+				top:11px;
+				width: 20px;
+				height: 1px;
+				border: 1px solid #fff;
+				transform: rotate(-45deg);
+			}
+			&::after{
+				display: block;
+				content: "";
+				position: absolute;
+				top:25px;
+				width: 20px;
+				height: 1px;
+				border: 1px solid #fff;
+				transform: rotate(45deg);
+			}
+
+		}
+		& .right-arrow{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			cursor: pointer;
+			top:50%;
+			display: block;
+			right:201px;
+			@include mq(tab){
+				display: none;
+			}
+			&::before{
+				display: block;
+				content: "";
+				position: absolute;
+				top:11px;
+				width: 20px;
+				height: 1px;
+				border: 1px solid #fff;
+				transform: rotate(45deg);
+			}
+			&::after{
+				display: block;
+				content: "";
+				position: absolute;
+				top:25px;
+				width: 20px;
+				height: 1px;
+				border: 1px solid #fff;
+				transform: rotate(-45deg);
+			}
+
+		}
+	}
+}
 
 //HOME
 .home{
@@ -527,116 +641,7 @@ img{
 				flex-wrap: wrap;
 
 			}
-			& .image_modal{
-				transition: .8s ease;
-				opacity: 0;
-				width: 100%;
-				height: 100%;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				position: fixed;
-				z-index: -100;
-				&.show{
-					background:rgba(#111,.8);
-					z-index: 200;
-					opacity: 1;
-					transition: .8s ease;
-					button{
-						color:#fff;
-						font-size: 2.5em;
-						position: absolute;
-						right: 30px;
-						top:20px;
-					}
-					& .modal-pic{
-						width: 50%;
-						height: auto;
-						position: absolute;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%, -50%);
-						-webkit-transform: translate(-50%, -50%);
-						-ms-transform: translate(-50%, -50%);
-						border-radius: 3px;
-						object-fit: cover;
-					
-						@include mq(tab){
-							width: 90%;
-							height: 70%;
-
-						}
-					}
-					& .left-arrow{
-						position: absolute;
-						width: 40px;
-						height: 40px;
-						cursor: pointer;
-						display: block;
-						top:50%;
-						left: 200px;
-						z-index: 201;
-						@include mq(tab){
-							display: none;
-						}
-						&::before{
-							display: block;
-							content: "";
-							position: absolute;
-							top:11px;
-							width: 20px;
-							height: 1px;
-							border: 1px solid #fff;
-							transform: rotate(-45deg);
-						}
-						&::after{
-							display: block;
-							content: "";
-							position: absolute;
-							top:25px;
-							width: 20px;
-							height: 1px;
-							border: 1px solid #fff;
-							transform: rotate(45deg);
-						}
-
-					}
-					& .right-arrow{
-						position: absolute;
-						width: 40px;
-						height: 40px;
-						cursor: pointer;
-						top:50%;
-						display: block;
-						right:201px;
-						@include mq(tab){
-							display: none;
-						}
-						&::before{
-							display: block;
-							content: "";
-							position: absolute;
-							top:11px;
-							width: 20px;
-							height: 1px;
-							border: 1px solid #fff;
-							transform: rotate(45deg);
-						}
-						&::after{
-							display: block;
-							content: "";
-							position: absolute;
-							top:25px;
-							width: 20px;
-							height: 1px;
-							border: 1px solid #fff;
-							transform: rotate(-45deg);
-						}
-
-					}
-				}
-			}
+			
 			& .post{
 				width: calc(100% / 4 - 20px);
 				height: 150px;
@@ -669,7 +674,7 @@ img{
 					@include mq(tab){
 						height: 100%;
 						width: 100%;
-						margin-right: 30px;
+						
 					}
 				}
 				&_desc{
@@ -878,6 +883,9 @@ img{
 		.article{
 			&_date{
 				font-size: .8em;
+				@include mq(sp){
+					font-size: .5em;
+				}
 				&_publish{
 					text-align: right;
 					margin-bottom: 5px;
@@ -913,17 +921,16 @@ img{
 					width: 80%;
 					height: auto;
 					border-radius: 6px;
-					box-shadow: 0 10px 10px 0 rgba(#111,.3);
+					box-shadow: 0 5px 5px 0 rgba(#111,.3);
 					text-align: center;
 					margin-top: 20px;
 					margin-bottom: 20px;
-					margin-left: 5%;
 					display: flex;
 					justify-content: center;
 					
 					@include mq(sp){
-						width: 95%;
-						margin-left: 5%;
+						width: 100%;
+
 					}		
 				}
 				h1 {
@@ -979,14 +986,19 @@ img{
 					}
 				}
 				h3{
-					font-size: 1.1em;
-					margin-top: 60px;
-					padding: 5px 10px;
-					background: #eee;
-					border-radius: 5px;
-					@include mq(tab){
-						padding: 8px;
+					font-size: 1.1em;			
+					font-weight: bolder;
+					margin: 40px 0;
+					
+					&::after{
+						display: block;
+						content: "";
+						width: 100%;
+						height: 1px;
+						margin-top: 5px;
+						border-bottom: 1px dotted #505A5F;
 					}
+					
 				}
 				h6{
 					font-size: .7em;
@@ -1001,26 +1013,25 @@ img{
 					text-decoration: underline;
 				}
 				p{
-					width: 95%;
-					margin-left: 5%;
+					
 					margin-top: 20px;
 					
 				}
 				
 	
 				pre{
-					background: rgba(#fff,1);
-					width: 95%;
+					background: rgba(#eee,.4);
+					width: 100%;
 					line-height: 0;
 					margin-block-start: 300px;
-					margin: 40px 0;
-					margin-left: 5%;
+					margin: 10px 0;
+					
 					max-height: 300px;
 					border-radius: 6px;
 					@include mq(tab){
-						width: 95%;
-						margin: 40px 0px;
-						margin-left: 5%;
+						
+						margin: 20px 0px;
+				
 					}
 					code{
 						line-height: 20px;
@@ -1038,12 +1049,11 @@ img{
 					
 					.markup-area-copy{
 						position: absolute;						
-						top:-23px;
+						top:0px;
 						right: 0px;						
-						background: rgba(#111,.4);					
-						transition: .5s ease;
-						border:$no-focus-style;	
-						background: #fff;	
+						background: rgba(#eee,.4);					
+						transition: .3s ease;
+						border-radius: 3px;
 						width: auto;
 						height: auto;
 						padding: 10px;
@@ -1051,12 +1061,12 @@ img{
 									
 						&.copied{
 							opacity: .5;
+							background: #fff;	
 						}
 						&:hover{
 							cursor: pointer;
-							transition: .5s ease;
-							border: $focus-style;
-							
+							transition: .3s ease;
+							background: #fff;	
 						}
 						
 						

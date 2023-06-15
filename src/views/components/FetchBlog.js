@@ -4,6 +4,7 @@ import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
+import { modalShow } from "../../app";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 
 
@@ -51,6 +52,7 @@ function FetchAllPost() {
           //let publishDate = formatDate(item.date);
           let upadtedate = formatDate(item.modified); 
           let thumbnail = getThumbnail(item)
+
             return(
               <div className="article" id={item.id} key={item.id}>
                 <Link to={`/blog/${item.id}`}>
@@ -145,10 +147,22 @@ function FetchThreePost() {
 
 
 function FetchPageData(){
+  
   //記事のスタイル装飾
   $(function(){
     let $markupElements = $(".language-markup");
     let $h5 = $("h5");
+
+    $("img").each((i,ele)=>{
+      if(String($(ele).attr("class")).indexOf("wp-image") !== 0){
+        console.log(ele)
+      }
+     
+    })
+ 
+    
+    
+    modalShow($(".post"));
     $("a").attr("target", "_blank");
     $("a").attr("rel", "noopener noreferrer");
     $markupElements.each((i,ele)=>{

@@ -126,7 +126,6 @@ function Instagram(){
               //console.log(posts[0].media_url)
               return(
                 <div className='post js-show-modal' id="grid" data-posts={posts} data-url={post.media_url} data-index={i} key={i}>
-                    <input type='hidden' value={posts} className='js-prev-url'/>
                     <img src={post.media_url} alt="" className="post_image" data-url={post.media_url} data-index={i}/>
                     <div className="post_desc">
                       <img src={heart} alt="" className="post_desc_heart" />
