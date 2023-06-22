@@ -240,6 +240,7 @@ img{
 			&_en{
 				width: auto;
 				height: 100px;
+				opacity: .5;
 				@include mq(tab){
 					max-width:90%;
 					width: auto;
@@ -250,8 +251,9 @@ img{
 				font-size: 3em;
 				text-align: center;
 				margin-top: -70px;
-				margin-left: 50px;
-				letter-spacing: 50px;
+				
+				letter-spacing: 40px;
+				font-style: italic;
 				@include mq(tab){
 					font-size: 2.0em;
 					letter-spacing: 25px;
@@ -313,6 +315,7 @@ img{
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			align-items: center;
 			.article{
 				width: 46%;
 				@include mq(tab){
@@ -331,7 +334,10 @@ img{
 				border:$no-focus-style;
 				border-radius: 5px;
 				min-height: 100px;
-				max-height: 200px;
+				height: 130px;
+				@include mq(sp){
+					height: 100px;
+				}
 				&:hover{
 					transition: all .5s;
 					transform: translateY(-5px);
@@ -463,6 +469,19 @@ img{
 		
 }
 //modal
+.js-show-modal{
+	text-align: center;
+	img{
+		cursor: pointer;
+		transition: all .5s;
+		&:hover{
+			transition: all .5s;
+			transform: translateY(-5px);
+			filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+			cursor: pointer;
+		}
+	}
+}
 .image_modal{
 	transition: .8s ease;
 	opacity: 0;
@@ -487,7 +506,7 @@ img{
 			top:20px;
 		}
 		& .modal-pic{
-			width: 50%;
+			width: 60%;
 			height: auto;
 			position: absolute;
 			top: 50%;
@@ -500,7 +519,7 @@ img{
 		
 			@include mq(tab){
 				width: 90%;
-				height: 70%;
+				height: auto;
 
 			}
 		}
@@ -511,8 +530,14 @@ img{
 			cursor: pointer;
 			display: block;
 			top:50%;
-			left: 200px;
+			transform: translate(-50%, -50%);
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			left: 5%;
 			z-index: 201;
+			&.hide{
+				display: none;
+			}
 			@include mq(tab){
 				display: none;
 			}
@@ -545,7 +570,13 @@ img{
 			cursor: pointer;
 			top:50%;
 			display: block;
-			right:201px;
+			right:5%;
+			transform: translate(-50%, -50%);
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			&.hide{
+				display: none;
+			}
 			@include mq(tab){
 				display: none;
 			}
@@ -570,6 +601,12 @@ img{
 				transform: rotate(-45deg);
 			}
 
+		}
+		& .slide-number{
+			position: absolute;
+			color: #fff;
+			bottom: 10%;
+			right: 10%;
 		}
 	}
 }
@@ -648,6 +685,7 @@ img{
 				text-align: center;
 				position: relative;
 				margin-bottom: 40px;
+				
 				img{
 					object-fit: cover;
 					box-shadow: 15px 15px 10px rgba(#111,.1);
@@ -900,6 +938,7 @@ img{
 				font-size: .9em;
 				margin-top: 50px;
 				line-height: 30px;
+			
 				@include mq(tab){
 					font-size: 0.8em;
 					line-height: 23px;
@@ -917,17 +956,17 @@ img{
 					}
 				}
 				img{
-					display: inline;
-					width: 80%;
+					display: inline-block;
+					width: 75%;
 					height: auto;
+					max-height: 500px;
+					object-fit: cover;
 					border-radius: 6px;
 					box-shadow: 0 5px 5px 0 rgba(#111,.3);
 					text-align: center;
 					margin-top: 20px;
 					margin-bottom: 20px;
-					display: flex;
-					justify-content: center;
-					
+
 					@include mq(sp){
 						width: 100%;
 
@@ -999,6 +1038,9 @@ img{
 						border-bottom: 1px dotted #505A5F;
 					}
 					
+				}
+				h5{
+					opacity: 0;
 				}
 				h6{
 					font-size: .7em;

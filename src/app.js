@@ -1,4 +1,6 @@
 import $ from "jquery";
+import React, {useEffect, useState} from "react";
+
  
 function mainFadeIn(){
     $(function(){
@@ -34,24 +36,26 @@ function graphShow(){
   }
   
 
-function modalShow(posted){
+function ModalShow(posted,srcType){
+  let images;
+
   $(function(){
-    let index = 0;
-    let posts;
     let $imageModal = $(".js-image-modal");
+    let $showModal = $(".js-show-modal");
   
-    $(".post").on("click", function(){
- 
+    $showModal.on("click", function(){
       let $url = $(this).children().attr("src");
-      console.log($imageModal.children(".js-modal-pic") )
-      let $index = $(this).data("index");
+      let index = $(this).data("index");
       $imageModal.addClass("show");
       $imageModal.children(".js-modal-pic").attr("src", $url);     
-      index = $(this).data("index")
-      posts = posted;  
-     
+      images = posted;  
+      if(images.length === 1){
+        $(".js-left-arrow").addClass("hide");
+        $(".js-right-arrow").addClass("hide");
+      }
+      $(".js-slide-number").text(`${index+1}/${images.length}`)
       $("body").addClass("noscroll");
-
+      
       //モバイルスワイプ処理
       const minimumDistance = 30
       let startX = 0
@@ -79,43 +83,44 @@ function modalShow(posted){
             // スワイプ後の動作
             //console.log('右');
             if(index === 0){
-              index = posts.length-1;
+              index = images.length-1;
             }else{
               index = index - 1;
             }
             isTouch = false;
           }else if(endX < startX && distanceX > minimumDistance){
             //console.log('左');
-            if(index === posts.length-1){
+            if(index === images.length-1){
               index = 0;
             }else{
               index = index + 1;
             }
             isTouch = false;
           }
-          $imageModal.children(".js-modal-pic").attr("src", posts[index].media_url); 
+          $imageModal.children(".js-modal-pic").attr("src", srcType==="wordpress"?$(images[index]).children().attr("src"):images[index].media_url); 
+          $(".js-slide-number").text(`${index+1}/${images.length}`)
         }
-
- 
       })
       //モバイルスワイプ処理終了
 
-      //スライダークローズ処理
+      //スライダー処理
       $(".js-close-image-modal-btn, .js-image-modal").on("click", function(e){ 
         if($(e.target).hasClass("js-left-arrow")){
           if(index === 0){
-            index = posts.length-1;
+            index = images.length-1;
           }else{
             index = index - 1;
           }
-          $imageModal.children(".js-modal-pic").attr("src", posts[index].media_url); 
+          $imageModal.children(".js-modal-pic").attr("src", srcType==="wordpress"?$(images[index]).children().attr("src"):images[index].media_url);
+          $(".js-slide-number").text(`${index+1}/${images.length}`) 
         }else if($(e.target).hasClass("js-right-arrow")){
-          if(index === posts.length-1){
+          if(index === images.length-1){
             index = 0;
           }else{
             index = index + 1;
           }
-          $imageModal.children(".js-modal-pic").attr("src", posts[index].media_url); 
+          $imageModal.children(".js-modal-pic").attr("src", srcType==="wordpress"?$(images[index]).children().attr("src"):images[index].media_url); 
+          $(".js-slide-number").text(`${index+1}/${images.length}`)
         }else if(!$(e.target).hasClass("js-modal-pic")){
          
           $(".js-close-image-modal-btn").parent().removeClass("show");
@@ -126,8 +131,21 @@ function modalShow(posted){
       })
       //スライダークローズ処理
     })
-  })
+    
+  });
+
+  return(
+    <>
+      <div className="image_modal js-image-modal">
+          <span className='js-left-arrow left-arrow'></span>
+          <button className="js-close-image-modal-btn">✕</button>
+          <img className="js-modal-pic modal-pic" src="" alt="" />
+          <span className='js-right-arrow right-arrow'></span> 
+          <span className='js-slide-number slide-number'></span> 
+      </div>
+    </>
+  )
+
 }
 
-
-export {mainFadeIn,graphShow,modalShow};
+export {mainFadeIn,graphShow,ModalShow};

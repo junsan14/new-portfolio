@@ -16,7 +16,7 @@ export default function Contact() {
           <section className="section">
             <h1 className="section_title">
               <img className="section_title_en" src={title_contact} alt=""/>
-              <div className="section_title_jp">問合せ</div>
+              <div className="section_title_jp">CONTACT</div>
             </h1>         
             <div className="section_content contact_content">
               <Form />

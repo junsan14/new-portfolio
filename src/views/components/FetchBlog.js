@@ -4,7 +4,7 @@ import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
-import { modalShow } from "../../app";
+import { ModalShow } from "../../app";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 
 
@@ -112,7 +112,7 @@ function FetchThreePost() {
       return(
         <>
           {data.map((item,i,data) => {
-            //console.log(i>0?data[i-1]:"なし")
+          
           let date = formatDate(item.date);
           let thumbnail = getThumbnail(item);
             return(
@@ -147,42 +147,47 @@ function FetchThreePost() {
 
 
 function FetchPageData(){
-  
+
+
   //記事のスタイル装飾
   $(function(){
     let $markupElements = $(".language-markup");
-    let $h5 = $("h5");
-
+    //setImgNum($(".js-show-modal").length)
+    //imgタグにモーダル用のクラス付与
     $("img").each((i,ele)=>{
-      if(String($(ele).attr("class")).indexOf("wp-image") !== 0){
-        console.log(ele)
-      }
-     
+
+      if(String($(ele).attr("class")).indexOf("wp-image") !== -1){
+        //画像URLリサイズなし調整
+        let originalurl = $(ele).attr("src").substring(0, $(ele).attr("src").indexOf("?resize"));
+        $(ele).attr("src", originalurl);
+       
+        $(ele).wrap(`<div class="js-show-modal" data-index="${i-2}"></div>`);
+        $(ele).append(`<div class="image_modal js-image-modal"></div>`); 
+        
+      }   
     })
- 
     
-    
-    modalShow($(".post"));
+
+    //モーダルjs呼び出し 
+    ModalShow($(".js-show-modal"), "wordpress");
+
+    //リンク
     $("a").attr("target", "_blank");
     $("a").attr("rel", "noopener noreferrer");
+    
+    //コピーエリア作成
     $markupElements.each((i,ele)=>{
-      //console.log(ele)
      $(ele).css("position", "relative")
-     $(ele).wrap(
-      `
-      `
-     );
-     $(ele).append(
-      `
-      <div class="markup-area-copy">
-       <div class="markup-area-copy_text">copy</div>
-      </div>
-      `
-     );
-      
+      $(ele).append(
+          `
+          <div class="markup-area-copy">
+          <div class="markup-area-copy_text">copy</div>
+          </div>
+          `
+      );
      });
-    $h5.css("display", "none")
 
+     //コピーボタン
      $(".markup-area-copy").on("click", function(){
       let that = $(this);
       let copiedText = that.prev().text();
@@ -209,18 +214,19 @@ function FetchPageData(){
   }, [id]);
 
 
-  
   const Render = ()=>{
+    
     if(data){
       let publishDate = formatDate(data.date);
       let upadtedate = formatDate(data.modified);
       let prevPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
       let nextPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
-      //console.log(data)
+
 
       const PrevPost = ()=>{
         if(prevPost){
           return(
+                
                 <div className="article" id={prevPost.id} >
                       <Link to={`/blog/${prevPost.id}`} >
                         <div className="article_image">

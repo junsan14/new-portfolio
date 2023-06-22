@@ -14,7 +14,7 @@ export default function Blog() {
             <section className="section">
                 <h1 className="section_title">
                 <img className="section_title_en" src={title_blog} alt="" />
-                <div className="section_title_jp">投稿</div>
+                <div className="section_title_jp">BLOG</div>
                 </h1>
                 <div className="section_content posts">               
                   <FetchAllPost />

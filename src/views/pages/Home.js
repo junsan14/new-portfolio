@@ -31,7 +31,7 @@ export default function Home() {
           <section className="section">
             <h2 className="section_title">
               <img className="section_title_en" src={title_about} alt="" />
-              <div className="section_title_jp">紹介</div>
+              <div className="section_title_jp">ABOUT</div>
             </h2>
             
             <div className="section_content about skill_graph">
@@ -45,7 +45,7 @@ export default function Home() {
           <section className="section">
             <h2 className="section_title">
               <img className="section_title_en" src={title_blog} alt="" />
-              <div className="section_title_jp">新着</div>
+              <div className="section_title_jp">BLOG</div>
             </h2>
             <div className="section_content posts">
               <FetchThreePost />
@@ -57,7 +57,7 @@ export default function Home() {
           <section className="section">
             <h2 className="section_title">
               <img className="section_title_en" src={title_sns} alt="" />
-              <div className="section_title_jp">写真</div>
+              <div className="section_title_jp">SNS</div>
             </h2>
 
             <div className="section_content sns js-sns">
