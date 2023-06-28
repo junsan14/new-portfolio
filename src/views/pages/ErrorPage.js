@@ -6,7 +6,7 @@ export default function ErrorPage() {
   //console.error(error);
 
   return (
-    <main className="main wrapper">
+    <main className="main wrapper" style={{opacity:1}}>
        <div className="error">
         <p>
           お探しのページが存在しません｡<br/>

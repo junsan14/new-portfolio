@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
 import { ModalShow } from "../../app";
+import { set } from "react-hook-form";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 
 
@@ -27,7 +28,7 @@ function FetchAllPost() {
   const [category, setCategory] = useState('')
 
    useEffect(() => {
-    let fetchURL = blogURL+"?_embed&per_page=100";
+    let fetchURL = blogURL+"?_embed&per_page=20";
     if(keyword && category){
       fetchURL +=  "&search=" + keyword  + "&categories=" + category;
     }else if(keyword){
@@ -55,7 +56,7 @@ function FetchAllPost() {
 
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/${item.id}`}>
+                <Link to={`/blog/${item.id}`} state={{content:item.content, test:"a"}}>
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
@@ -82,8 +83,8 @@ function FetchAllPost() {
    return (
     <>
     <ul className="category_tab tab">  
-      <li className="category_tab_li" tabIndex="-1" value="27" onClick={(e)=>setCategory(e.target.value)}>WORKS</li> 
       <li className="category_tab_li" tabIndex="-1" value="28" onClick={(e)=>setCategory(e.target.value)}>TIPS</li>
+      <li className="category_tab_li" tabIndex="-1" value="27" onClick={(e)=>setCategory(e.target.value)}>WORKS</li> 
       <li className="category_tab_li" tabIndex="-1" value="29" onClick={(e)=>setCategory(e.target.value)}>DIARY</li>
     </ul>
     <div className="search_area">
@@ -147,62 +148,6 @@ function FetchThreePost() {
 
 
 function FetchPageData(){
-
-
-  //記事のスタイル装飾
-  $(function(){
-    let $markupElements = $(".language-markup");
-    //setImgNum($(".js-show-modal").length)
-    //imgタグにモーダル用のクラス付与
-    $("img").each((i,ele)=>{
-
-      if(String($(ele).attr("class")).indexOf("wp-image") !== -1){
-        //画像URLリサイズなし調整
-        let originalurl = $(ele).attr("src").substring(0, $(ele).attr("src").indexOf("?resize"));
-        $(ele).attr("src", originalurl);
-       
-        $(ele).wrap(`<div class="js-show-modal" data-index="${i-2}"></div>`);
-        $(ele).append(`<div class="image_modal js-image-modal"></div>`); 
-        
-      }   
-    })
-    
-
-    //モーダルjs呼び出し 
-    ModalShow($(".js-show-modal"), "wordpress");
-
-    //リンク
-    $("a").attr("target", "_blank");
-    $("a").attr("rel", "noopener noreferrer");
-    
-    //コピーエリア作成
-    $markupElements.each((i,ele)=>{
-     $(ele).css("position", "relative")
-      $(ele).append(
-          `
-          <div class="markup-area-copy">
-          <div class="markup-area-copy_text">copy</div>
-          </div>
-          `
-      );
-     });
-
-     //コピーボタン
-     $(".markup-area-copy").on("click", function(){
-      let that = $(this);
-      let copiedText = that.prev().text();
-      that.children("div").text("copied");
-      that.addClass("copied");
-      //console.log(that.prev().text())
-      setTimeout(()=>{
-      that.children("div").text("copy"); 
-      that.removeClass("copied");
-      },3000)
-      return navigator.clipboard.writeText(copiedText);
-    })
-  });
-
-   //let { state } = useLocation(); 
    const [data, setData] = useState();
    const {id} = useParams();
 
@@ -214,15 +159,64 @@ function FetchPageData(){
   }, [id]);
 
 
-  const Render = ()=>{
-    
-    if(data){
+    console.log(data)
+    if(data){ console.log(data)
+      //記事のスタイル装飾
+      $(function(){
+        let $markupElements = $(".language-markup");
+        //setImgNum($(".js-show-modal").length)
+        //imgタグにモーダル用のクラス付与
+        $("img").each((i,ele)=>{
+          if(String($(ele).attr("class")).indexOf("wp-image") !== -1){
+            //画像URLリサイズなし調整
+            let originalurl = $(ele).attr("src").substring(0, $(ele).attr("src").indexOf("?resize"));
+            $(ele).attr("src", originalurl);
+        
+            $(ele).wrap(`<div class="js-show-modal" data-index="${i-2}"></div>`);
+            $(ele).append(`<div class="image_modal js-image-modal"></div>`); 
+            
+          }   
+        })
+        
+
+        //モーダルjs呼び出し 
+        ModalShow($(".js-show-modal"), "wordpress");
+
+        //リンク
+        $("a").attr("target", "_blank");
+        $("a").attr("rel", "noopener noreferrer");
+        
+        //コピーエリア作成
+        $markupElements.each((i,ele)=>{
+        $(ele).css("position", "relative")
+          $(ele).append(
+              `
+              <div class="markup-area-copy">
+              <div class="markup-area-copy_text">copy</div>
+              </div>
+              `
+          );
+        });
+
+        //コピーボタン
+        $(".markup-area-copy").on("click", function(){
+          let that = $(this);
+          let copiedText = that.prev().text();
+          that.children("div").text("copied");
+          that.addClass("copied");
+          //console.log(that.prev().text())
+          setTimeout(()=>{
+          that.children("div").text("copy"); 
+          that.removeClass("copied");
+          },3000)
+          return navigator.clipboard.writeText(copiedText);
+        })
+      });
       let publishDate = formatDate(data.date);
       let upadtedate = formatDate(data.modified);
       let prevPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
       let nextPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
-
-
+      
       const PrevPost = ()=>{
         if(prevPost){
           return(
@@ -294,23 +288,10 @@ function FetchPageData(){
 
       )
     }else{
-      return(
-        <div className="error">
-        <p>
-          お探しの記事が存在しません｡<br/>
-          お手数ですがはじめからやり直しをお願いします｡<br/>
-        </p>
-        </div>
-        
-      )
-
+      return(<></>)
     }
     
-  }
-   return (
-      <Render />
-    
-   )
+
 
 }
 
