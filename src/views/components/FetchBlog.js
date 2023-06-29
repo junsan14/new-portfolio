@@ -5,7 +5,6 @@ import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
 import { ModalShow } from "../../app";
-import { set } from "react-hook-form";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 
 
@@ -59,7 +58,7 @@ function FetchAllPost() {
                 <Link to={`/blog/${item.id}`} state={{content:item.content, test:"a"}}>
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
-                    <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
+                    <h3 className="article_remarks_title">{item.title.rendered}</h3>
                     <div className="article_remarks_text">
                         {parse(item.excerpt.rendered)}
                     </div>
@@ -121,7 +120,7 @@ function FetchThreePost() {
                 <Link to={`/blog/${item.id}`} >
                   <img src={thumbnail} alt="" />
                   <div className="article_remarks">
-                    <h3 className="article_remarks_title">{parse(item.title.rendered)}</h3>
+                    <h3 className="article_remarks_title">{item.title.rendered}</h3>
                     <div className="article_remarks_text">
                         {parse(item.excerpt.rendered)}
                     </div>
@@ -259,7 +258,7 @@ function FetchPageData(){
 
       return(
         <>
-              <h1 className="section_content_title">{parse(data.title.rendered)}</h1>
+              <h1 className="section_content_title">{data.title.rendered}</h1>
               <div className="article" id={data.id} key={data.id}>
                 <div className="article_date">
                     <p className="article_date_publish">
