@@ -218,7 +218,7 @@ img{
 .main{ 
 	width: $content-width;
 	background: $background-color;
-	opacity: 0;
+
 	transition: all .7s ease-out;
 	@include mq(tab){
 		width: 100%;

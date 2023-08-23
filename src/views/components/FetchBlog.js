@@ -6,7 +6,7 @@ import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
 import { ModalShow } from "../../app";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
-
+let tagURL = "https://www.junsan.info/wp/wp-json/wp/v2/tags?_fields=id,name";
 
 function formatDate(date){
   let formatDate = new Date(date).getFullYear()+ "/" 
@@ -23,8 +23,11 @@ function getThumbnail(item){
 
 function FetchAllPost() {
   const [data, setData] = useState([]);
+  const [tags, setTags] = useState([]);
   const [keyword, setKeyword] = useState('');
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('');
+
+  let tagAry = [];
 
    useEffect(() => {
     let fetchURL = blogURL+"?_embed&per_page=20";
@@ -40,8 +43,15 @@ function FetchAllPost() {
     .get(fetchURL)
     .then(response => setData(response.data) )
     .catch(error => console.log(error));
+
+    axios
+    .get(tagURL)
+    .then(response => setTags(response.data) )
+    .catch(error => console.log(error));
     
   }, [keyword,category]);
+
+
 
   const Render = ()=>{
     //console.log(data)
@@ -79,6 +89,22 @@ function FetchAllPost() {
       )
     }
   }
+
+  const LoadTag = ()=>{
+    for(let i=0; i<tags.length;i++){
+      tagAry.push([tags[i]["id"],tags[i]["name"]])
+    }
+   // console.log(tagAry)
+    return(
+        tagAry.map((tag,i)=>{
+     
+          return(
+              <option value={tag[1]} key={tag[0]}>{tag[1]}</option>
+            )
+        })
+      )
+
+  }
    return (
     <>
     <ul className="category_tab tab">  
@@ -87,7 +113,15 @@ function FetchAllPost() {
       <li className="category_tab_li" tabIndex="-1" value="29" onClick={(e)=>setCategory(e.target.value)}>DIARY</li>
     </ul>
     <div className="search_area">
-      <input type="text" className="search_area_input" placeholder="記事検索ワード" onChange={(e)=>setKeyword(e.target.value)} />
+      <input list="tag-list"  className="search_area_input" id="tag-choice" name="tag-choice" placeholder="記事検索ワード" 
+        onChange={(e)=>{
+          
+          setKeyword(e.target.value)
+        }} 
+      />
+      <datalist id="tag-list">
+       <LoadTag />
+      </datalist>
     </div>
     <Render />
     </>

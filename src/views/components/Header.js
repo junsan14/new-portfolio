@@ -20,7 +20,7 @@ function Header(){
         <ul className="nav_ul">
           <li className="nav_ul_li js-nav-ul-li"><Link to="/" >HOME</Link></li>
            <li className="nav_ul_li js-nav-ul-li"><Link to="/about" >ABOUT</Link></li>
-           <li className="nav_ul_li js-nav-ul-li"><Link to="/blog">BLOG</Link></li>
+           <li className="nav_ul_li js-nav-ul-li"><Link to="/blog">BLOG</Link></li>     
            <li className="nav_ul_li js-nav-ul-li"><Link to="/contact">CONTACT</Link></li>
         </ul>
         <div className="nav_sns">

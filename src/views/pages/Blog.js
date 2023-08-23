@@ -1,12 +1,10 @@
 import {FetchAllPost} from '../components/FetchBlog';
 import {ScrollRestoration } from 'react-router-dom';
 import title_blog from "../../images/title_blog.png";
-import {mainFadeIn} from "../../app";
+
 
 export default function Blog() {
 
-  mainFadeIn();
- 
 	return (
 	  <main className="main wrapper">
 		<ScrollRestoration />

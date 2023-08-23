@@ -6,7 +6,6 @@ import {EnginerSkillGraph} from '../components/GetSkillGraph';
 import title_about from "../../images/title_about.png";
 import title_blog from "../../images/title_blog.png";
 import title_sns from "../../images/title_sns.png";
-import {mainFadeIn} from "../../app";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -14,12 +13,8 @@ import axios from 'axios';
 
 
 export default function Home() {
-  mainFadeIn();
-  
-
   return (
     <main className="main wrapper">
-      <ScrollRestoration />
       <div className="home">
           <div className="kv">
             <div className="kv_text">

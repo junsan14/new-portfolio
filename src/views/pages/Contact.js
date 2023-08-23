@@ -1,10 +1,8 @@
 import title_contact from '../../images/title_contact.png';
 import {ScrollRestoration } from 'react-router-dom';
 import Form from '../components/GetForm';
-import {mainFadeIn} from "../../app.js";
 
 export default function Contact() {
-  mainFadeIn();
   return (
    <>
     <div className="modal js-send-success">

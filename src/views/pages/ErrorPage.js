@@ -1,12 +1,11 @@
 import { useRouteError,redirect } from "react-router-dom";
-import { mainFadeIn } from "../../app";
 
 export default function ErrorPage() {
   const error = useRouteError();
   //console.error(error);
 
   return (
-    <main className="main wrapper" style={{opacity:1}}>
+    <main className="main wrapper">
        <div className="error">
         <p>
           お探しのページが存在しません｡<br/>
@@ -17,6 +16,6 @@ export default function ErrorPage() {
     </main>
     
   );
-  mainFadeIn();
+
 }
 

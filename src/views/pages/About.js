@@ -3,12 +3,11 @@ import {FrontSKillGraph,BackSKillGraph,OtherSkillGraph} from "../components/GetS
 import logo from '../../images/logo.png';
 import {ScrollRestoration } from 'react-router-dom';
 import $ from 'jquery';
-import {mainFadeIn,graphShow} from "../../app";
+import {graphShow} from "../../app";
 
 export default function About() {
 
   graphShow();
-  mainFadeIn();
 
   return (
     <main className="main wrapper">
