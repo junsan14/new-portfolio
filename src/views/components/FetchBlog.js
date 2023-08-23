@@ -26,17 +26,23 @@ function FetchAllPost() {
   const [tags, setTags] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('');
-
+  const [tagid,setTagid] = useState("");
   let tagAry = [];
 
    useEffect(() => {
-    let fetchURL = blogURL+"?_embed&per_page=20";
-    if(keyword && category){
+    let fetchURL = blogURL+"?_embed";
+
+    if(category && keyword){
       fetchURL +=  "&search=" + keyword  + "&categories=" + category;
+    }else if(category && tagid){
+      fetchURL +=  "&tags=" + tagid + "&categories=" + category;
     }else if(keyword){
       fetchURL +=  "&search=" + keyword;
     }else if(category){
       fetchURL += "&categories=" + category;
+    }else if(tagid){
+      console.log(tagid)
+      fetchURL += "&tags=" + tagid;
     }
     
     axios
@@ -49,7 +55,7 @@ function FetchAllPost() {
     .then(response => setTags(response.data) )
     .catch(error => console.log(error));
     
-  }, [keyword,category]);
+  }, [keyword,category,tagid]);
 
 
 
@@ -94,10 +100,8 @@ function FetchAllPost() {
     for(let i=0; i<tags.length;i++){
       tagAry.push([tags[i]["id"],tags[i]["name"]])
     }
-   // console.log(tagAry)
     return(
         tagAry.map((tag,i)=>{
-     
           return(
               <option value={tag[1]} key={tag[0]}>{tag[1]}</option>
             )
@@ -115,8 +119,14 @@ function FetchAllPost() {
     <div className="search_area">
       <input list="tag-list"  className="search_area_input" id="tag-choice" name="tag-choice" placeholder="記事検索ワード" 
         onChange={(e)=>{
-          
-          setKeyword(e.target.value)
+          console.log(tagAry.map(x=>x[1]).indexOf(e.target.value)); 
+          let id = tagAry.map(x=>x[1]).indexOf(e.target.value);
+          if(id !==-1){
+            setTagid(tagAry[id][0])
+           
+          }else{
+            setKeyword(e.target.value);
+          }
         }} 
       />
       <datalist id="tag-list">
@@ -221,14 +231,18 @@ function FetchPageData(){
         
         //コピーエリア作成
         $markupElements.each((i,ele)=>{
-        $(ele).css("position", "relative")
-          $(ele).append(
-              `
-              <div class="markup-area-copy">
-              <div class="markup-area-copy_text">copy</div>
+                    $(ele).replaceWith(function() {
+            $(this).replaceWith(`
+              <div class="language-markup" style="position:relative;">
+                <p class="code">${$(this).text()}</p>
+                <div class="markup-area-copy">
+                <div class="markup-area-copy_text">copy</div>
+                </div>
               </div>
-              `
-          );
+            `)
+          });
+
+
         });
 
         //コピーボタン

@@ -43,6 +43,9 @@ body{
   }
 
 }
+pre{
+	font-family: 'Murecho', sans-serif;
+}
 a{
   color: #333;
   text-decoration: none;
@@ -1055,13 +1058,11 @@ img{
 				}
 				
 	
-				pre{
+				.language-markup{
 					background: rgba(#eee,.4);
 					width: 100%;
 					line-height: 0;
-					margin-block-start: 300px;
 					margin: 10px 0;
-					
 					max-height: 300px;
 					border-radius: 6px;
 					@include mq(tab){
@@ -1069,7 +1070,7 @@ img{
 						margin: 20px 0px;
 				
 					}
-					code{
+					.code{
 						line-height: 20px;
 						display: block;
 						width: 100%;
@@ -1077,10 +1078,10 @@ img{
 						max-height: 300px;
 						overflow-x: scroll;
 						position: relative;
-						font-size: .9em;
+						font-size: 1.0em;
 						padding: 20px;
-						
-						
+						white-space:pre;
+
 					}
 					
 					.markup-area-copy{
