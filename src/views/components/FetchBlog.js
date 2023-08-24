@@ -26,11 +26,12 @@ function FetchAllPost() {
   const [tags, setTags] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('');
-  const [tagid,setTagid] = useState("");
+  const [tagid,setTagid] = useState('');
+  let categoryTag = [];
   let tagAry = [];
 
    useEffect(() => {
-    let fetchURL = blogURL+"?_embed";
+    let fetchURL = blogURL+"?_embed&per_page=100";
 
     if(category && keyword){
       fetchURL +=  "&search=" + keyword  + "&categories=" + category;
@@ -54,25 +55,25 @@ function FetchAllPost() {
     .get(tagURL)
     .then(response => setTags(response.data) )
     .catch(error => console.log(error));
+
     
   }, [keyword,category,tagid]);
 
 
 
   const Render = ()=>{
-    //console.log(data)
     if(data.length >0){
       return(
         <>  
           {data.map((item,i) => {
           //let publishDate = formatDate(item.date);
           let upadtedate = formatDate(item.modified); 
-          let thumbnail = getThumbnail(item)
+          let thumbnail = getThumbnail(item);
 
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/${item.id}`} state={{content:item.content, test:"a"}}>
-                  <img src={thumbnail} alt="" />
+                <Link to={`/blog/${item.id}`} >
+                  <img className="thumbnail" src={thumbnail} alt="" />
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{item.title.rendered}</h3>
                     <div className="article_remarks_text">
@@ -95,11 +96,32 @@ function FetchAllPost() {
       )
     }
   }
-
+  const reset = ()=>{
+     $(".search_area_input").val("");
+      setTagid("");
+      setKeyword("");
+  }
   const LoadTag = ()=>{
+      data.forEach((item,i)=>{
+        if(item.tags.length>1){
+            item.tags.forEach((ele,i)=>{
+            categoryTag.push(ele)
+            })
+        }else if(item.tags.length === 1){
+            categoryTag.push(item.tags[0])
+        }
+      })
+        //重複チェック
+        const set = new Set(categoryTag);
+        const newArr = [...set];
+ 
     for(let i=0; i<tags.length;i++){
-      tagAry.push([tags[i]["id"],tags[i]["name"]])
+      if(newArr.indexOf(tags[i]["id"]) !== -1){
+        tagAry.push([tags[i]["id"],tags[i]["name"]]);
+      }
     }
+
+
     return(
         tagAry.map((tag,i)=>{
           return(
@@ -107,19 +129,35 @@ function FetchAllPost() {
             )
         })
       )
-
   }
    return (
     <>
     <ul className="category_tab tab">  
-      <li className="category_tab_li" tabIndex="-1" value="28" onClick={(e)=>setCategory(e.target.value)}>TIPS</li>
-      <li className="category_tab_li" tabIndex="-1" value="27" onClick={(e)=>setCategory(e.target.value)}>WORKS</li> 
-      <li className="category_tab_li" tabIndex="-1" value="29" onClick={(e)=>setCategory(e.target.value)}>DIARY</li>
+      <li className="category_tab_li" tabIndex="-1" value="28" onClick={(e)=>{
+        setCategory(e.target.value);
+        reset();
+        }}>Wiki
+      </li>
+      <li className="category_tab_li" tabIndex="-1" value="1" onClick={(e)=>{
+        setCategory(e.target.value);
+        reset();
+        }}>Note
+      </li>
+      <li className="category_tab_li" tabIndex="-1" value="50" onClick={(e)=>{
+        setCategory(e.target.value);
+        reset();
+        }}>Tool
+        </li> 
+      <li className="category_tab_li" tabIndex="-1" value="29" onClick={(e)=>{
+        setCategory(e.target.value);
+        reset();
+        }}>Diary
+      </li>
     </ul>
     <div className="search_area">
+      <button type="button" className="search_area_reset" value="RESET" onClick={reset}>Clear</button>
       <input list="tag-list"  className="search_area_input" id="tag-choice" name="tag-choice" placeholder="記事検索ワード" 
         onChange={(e)=>{
-          console.log(tagAry.map(x=>x[1]).indexOf(e.target.value)); 
           let id = tagAry.map(x=>x[1]).indexOf(e.target.value);
           if(id !==-1){
             setTagid(tagAry[id][0])
@@ -156,7 +194,7 @@ function FetchThreePost() {
       return(
         <>
           {data.map((item,i,data) => {
-          
+      
           let date = formatDate(item.date);
           let thumbnail = getThumbnail(item);
             return(
@@ -202,11 +240,14 @@ function FetchPageData(){
   }, [id]);
 
 
-    console.log(data)
-    if(data){ console.log(data)
+ 
+    if(data){ 
       //記事のスタイル装飾
       $(function(){
         let $markupElements = $(".language-markup");
+        let $subContent = $("h3");
+        
+
         //setImgNum($(".js-show-modal").length)
         //imgタグにモーダル用のクラス付与
         $("img").each((i,ele)=>{
@@ -226,15 +267,22 @@ function FetchPageData(){
         ModalShow($(".js-show-modal"), "wordpress");
 
         //リンク
-        $("a").attr("target", "_blank");
-        $("a").attr("rel", "noopener noreferrer");
+        $("a").each((i,ele)=>{
+            console.log($(ele).attr("href"))
+            if($(ele).attr("href").indexOf("https://junsan.info/") ===-1){
+              console.log($(ele).parent())
+              $(ele).attr("target", "_blank");
+            }
+            $(ele).attr("rel", "noopener noreferrer");
+        });
+
         
         //コピーエリア作成
         $markupElements.each((i,ele)=>{
-                    $(ele).replaceWith(function() {
+            $(ele).replaceWith(function() {
             $(this).replaceWith(`
               <div class="language-markup" style="position:relative;">
-                <p class="code">${$(this).text()}</p>
+                <pre class="code">${$(this).html()}</pre>
                 <div class="markup-area-copy">
                 <div class="markup-area-copy_text">copy</div>
                 </div>
@@ -242,8 +290,10 @@ function FetchPageData(){
             `)
           });
 
-
         });
+        $subContent.each((i,ele)=>{
+          $($(ele).nextAll().not("h3").not("h2")).addClass("sub_content");
+        })
 
         //コピーボタン
         $(".markup-area-copy").on("click", function(){

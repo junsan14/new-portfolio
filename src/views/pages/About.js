@@ -1,8 +1,7 @@
-import title_about from "../../images/title_about.png";
+
 import {FrontSKillGraph,BackSKillGraph,OtherSkillGraph} from "../components/GetSkillGraph";
 import logo from '../../images/logo.png';
 import {ScrollRestoration } from 'react-router-dom';
-import $ from 'jquery';
 import {graphShow} from "../../app";
 
 export default function About() {
@@ -15,7 +14,6 @@ export default function About() {
       <div className="about">
           <section className="section">
             <h1 className="section_title">
-              <img className="section_title_en" src={title_about} alt="" />
               <div className="section_title_jp">ABOUT</div>
             </h1>
                     

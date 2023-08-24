@@ -1,13 +1,8 @@
-import {ScrollRestoration,Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import {Instagram} from '../components/FetchSns';
 import {FetchThreePost} from '../components/FetchBlog'; 
 import {EnginerSkillGraph} from '../components/GetSkillGraph';
 
-import title_about from "../../images/title_about.png";
-import title_blog from "../../images/title_blog.png";
-import title_sns from "../../images/title_sns.png";
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 
 
@@ -25,7 +20,6 @@ export default function Home() {
           </div>
           <section className="section">
             <h2 className="section_title">
-              <img className="section_title_en" src={title_about} alt="" />
               <div className="section_title_jp">ABOUT</div>
             </h2>
             
@@ -39,7 +33,6 @@ export default function Home() {
           </section>
           <section className="section">
             <h2 className="section_title">
-              <img className="section_title_en" src={title_blog} alt="" />
               <div className="section_title_jp">BLOG</div>
             </h2>
             <div className="section_content posts">
@@ -51,10 +44,8 @@ export default function Home() {
           </section>
           <section className="section">
             <h2 className="section_title">
-              <img className="section_title_en" src={title_sns} alt="" />
               <div className="section_title_jp">SNS</div>
             </h2>
-
             <div className="section_content sns js-sns">
               <div className="instagram js-instagram">
                 <div className="instagram_wrapper js-instagram-wrapper">
@@ -63,7 +54,6 @@ export default function Home() {
                 <div className="section_btn btn">
                   <a href='https://www.instagram.com/junsan_junsan14/'>Instagram</a>
                 </div>
-                
               </div>
             </div>
           </section>

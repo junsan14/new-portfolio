@@ -37,7 +37,7 @@ $focus-style:1px solid rgba(#111,.8);
 body{
   font-size: 100%;
   font-family: 'Murecho', sans-serif;
-  color: #505A5F;
+  color:#505050;;
  &.noscroll{
 	overflow: hidden;
   }
@@ -240,28 +240,11 @@ img{
 			position: relative;
 			text-align: center;
 			margin-bottom: 100px;
-			&_en{
-				width: auto;
-				height: 100px;
-				opacity: .5;
-				@include mq(tab){
-					max-width:90%;
-					width: auto;
-					height: 80px;
-				}
-			}
 			&_jp{
 				font-size: 3em;
-				text-align: center;
-				margin-top: -70px;
-				
-				letter-spacing: 40px;
-				font-style: italic;
+				text-align: center;		
 				@include mq(tab){
 					font-size: 2.0em;
-					letter-spacing: 25px;
-					margin-left: 25px;
-					margin-top: -50px;
 				}
 			}
 		}
@@ -339,7 +322,7 @@ img{
 				min-height: 100px;
 				height: 130px;
 				@include mq(sp){
-					height: 100px;
+					height: 50px;
 				}
 				&:hover{
 					transition: all .5s;
@@ -352,6 +335,13 @@ img{
 				img{
 					width: 30%;			
 					object-fit: cover;
+
+					@include mq(tab){
+						width:20%;
+					}
+					@include mq(sp){
+						width:30%;
+					}
 					
 				}
 				.article_remarks{
@@ -406,12 +396,12 @@ img{
 			transition: .5s all;
 			font-size: .8em;
 			text-align: center;
-			border-bottom: 1px solid rgba(#111,.2);
-			width: calc(100% / 3 - 1px);
+			
+			width: calc(100% / 4 - 1px);
 			margin-bottom: 30px;
-			background:rgba(#eee,.3);
+			background:rgba(#eee,.5);
 			@include mq(tab){
-				width: calc(100% / 3 - 1px);
+
 				padding: 5px 0;
 				font-size: .7em;
 				margin-bottom: 20px;
@@ -896,10 +886,12 @@ img{
 .blog{
 	.search_area{
 		width: 100%;
-		
+		position:relative;
+		height:100px;
 		&_input{
 			width: 40%;
-			float: right;
+			position:absolute;
+			right:0;
 			height: 50px;
 			border:$no-focus-style;
 			border-radius: 5px;
@@ -914,15 +906,28 @@ img{
 				border-radius: 4px;
 			}
 		}
+		&_reset{
+			font-size:.8em;
+			position:absolute;
+			top:55px;
+			right:3px;
+			transtion: .5s ease;
+			&:hover{
+				transtion: .5s ease;
+				text-decoration:underline;
+			}
+
+		}
 		
 	}
+
 }
 //Page
 
 .page{
 	.section_content_title{
 		margin-top: 0px;
-		font-style: italic;
+		
 	}
 	&_content{
 
@@ -982,58 +987,46 @@ img{
 					}		
 				}
 				h1 {
-					padding: 0.5em;/*文字周りの余白*/
-					background: #eee;/*背景色*/
-					//border-left: solid 5px rgba(#111,.1);/*左線（実線 太さ 色）*/
-					font-size: 1.2em;
-					position: relative;
-					padding-left: 40px;
-					@include mq(sp){
-						padding-left: 25px;
+					font-size: 1.1em;			
+					font-weight: bolder;
+					margin: 5px 0;
+					&::after{
+						display: block;
+						content: "";
+						width: 100%;
+						height: 1px;
+						margin-top: 2px;
+						border-bottom: 1px solid #505A5F;
 					}
-					&:before{
-						position: absolute;
-						content: '';
-						background-image: url("../images/question_icon.png");
-						background-size: 100%;
-						background-repeat: no-repeat;
-						top: 0px;
-						left: 10px;
-						width: 20px;
-						height:40px;
-						@include mq(sp){
-							left: 0px;
-						}
 
+					@include mq(sp){
+						margin:0px 0;
 					}
+					
 				}
 				h2 {
 					font-size: 1.1em;			
 					font-weight: bolder;
-					margin: 40px 0;
+					margin: 40px 0 0 0;
+					
 					&::after{
 						display: block;
 						content: "";
 						width: 100%;
-						height: 1px;
-						margin-top: 5px;
-						border-bottom: 1px solid #505A5F;
+						height: 2px;
+						margin-top: 1px;
+						border-bottom: 1px dotted #505A5F;
 					}
 				}
 				h3{
-					font-size: 1.1em;			
-					font-weight: bolder;
-					margin: 40px 0;
-					
-					&::after{
-						display: block;
-						content: "";
-						width: 100%;
-						height: 1px;
-						margin-top: 5px;
-						border-bottom: 1px dotted #505A5F;
-					}
-					
+					margin: 20px 0 0 10px;
+					padding: 0.25em 0.5em;
+				  
+				  background: transparent;
+				  border-left: solid 4px rgba(#111,.1);
+				}
+				.sub_content{
+					margin: 5px 0 0 20px;
 				}
 				h5{
 					opacity: 0;
@@ -1053,21 +1046,21 @@ img{
 				}
 				p{
 					
-					margin-top: 20px;
+					margin-top: 10px;
 					
 				}
 				
 	
 				.language-markup{
 					background: rgba(#eee,.4);
-					width: 100%;
+					
 					line-height: 0;
 					margin: 10px 0;
 					max-height: 300px;
 					border-radius: 6px;
 					@include mq(tab){
 						
-						margin: 20px 0px;
+					margin:20px 10px;
 				
 					}
 					.code{
@@ -1080,7 +1073,13 @@ img{
 						position: relative;
 						font-size: 1.0em;
 						padding: 20px;
-						white-space:pre;
+
+						
+						code{
+							 font-family: 'Murecho', sans-serif;
+						}
+						
+
 
 					}
 					
