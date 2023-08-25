@@ -182,6 +182,7 @@ img{
 				img{
 					text-align: center;
 					width: 30px;
+					height:100%;
 				}
 			}
 		}
@@ -216,6 +217,66 @@ img{
 		}
 		
 	}
+}
+
+//ページ読み込み処理
+.loading {
+  width: calc(100vw - 15%);
+  height: 100vh;
+  transition: all 1s;
+  background-color: rgba(#111,0.4);
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 200;
+  @include mq(tab){
+  	width:100vw;
+  }
+	  &_icon {
+		  width: 100px;
+		  height: 100px;
+		  position:absolute;
+		  top:calc(50% - 50px);
+		  left:calc(50% - 50px);
+		  background-color: #fff;
+		  border-radius: 100%;
+		  animation: sk-scaleout 1.0s infinite ease-in-out;
+		}
+		&_text{
+			text-align:center;
+			color:#fff;
+			position:absolute;
+			top:calc(50% + 50px);
+			left:50%;
+			line-height:30px;
+			transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+
+		}
+}
+ 
+/* ローディングアニメーション */
+@keyframes sk-scaleout {
+  0% {
+    transform: scale(0);
+    
+  } 100% {
+    transform: scale(.5);
+    opacity: 0;
+  }
+}
+ 
+/* コンテンツ部分の装飾 */
+.gallery {
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 //共通
 .main{ 
@@ -302,6 +363,13 @@ img{
 			flex-wrap: wrap;
 			justify-content: space-between;
 			align-items: center;
+			padding-bottom:20vh;
+			transition:2s ease;
+			opacity:1;
+			&.hide{
+				opacity: 0;
+				transition:2s ease;
+			}
 			.article{
 				width: 46%;
 				@include mq(tab){
@@ -320,9 +388,9 @@ img{
 				border:$no-focus-style;
 				border-radius: 5px;
 				min-height: 100px;
-				height: 130px;
+				
 				@include mq(sp){
-					height: 50px;
+					
 				}
 				&:hover{
 					transition: all .5s;
@@ -333,16 +401,9 @@ img{
 		
 				}		
 				img{
-					width: 30%;			
+					width:30%;
+					height:50%;			
 					object-fit: cover;
-
-					@include mq(tab){
-						width:20%;
-					}
-					@include mq(sp){
-						width:30%;
-					}
-					
 				}
 				.article_remarks{
 					width: 70%;	
@@ -682,6 +743,7 @@ img{
 				img{
 					object-fit: cover;
 					box-shadow: 15px 15px 10px rgba(#111,.1);
+
 				}
 				
 				
@@ -720,6 +782,7 @@ img{
 						right: 20px;
 						bottom:3px;
 						opacity: .7;
+						height:auto;
 					}
 					&_like-count{
 						position:absolute;
@@ -769,6 +832,7 @@ img{
 				}
 				&_img{
 					width: 120px;
+					height:auto;
 					text-align: center;
 					margin-bottom: 20px;
 
@@ -981,7 +1045,7 @@ img{
 					margin-top: 20px;
 					margin-bottom: 20px;
 
-					@include mq(sp){
+					@include mq(tab){
 						width: 100%;
 
 					}		
@@ -1143,8 +1207,7 @@ img{
 							position: absolute;
 							left: 0;
 							top: -29px;
-							background:rgba(#111,.2);
-							
+							background:rgba(#111,.2);					
 							width: auto;
 							padding: 5px 10px;
 							width: 100%;

@@ -90,9 +90,17 @@ function FetchAllPost() {
         </>
 
       )
-    }else{
+    }else if(keyword){
       return(
         <p>{keyword}の検索では記事がありません</p>
+      )
+    }else{
+      return(
+        <div className="loading">
+          <div className="loading_icon"></div>
+          <p className="loading_text">読み込んでいます｡</p>
+        </div>
+        
       )
     }
   }
