@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { Radar,RadarChart, PolarGrid,Tooltip, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { LineChart ,CartesianGrid,XAxis,YAxis,Legend,Line } from 'recharts';
+
 
 
 const enginerSkill = [
@@ -322,7 +324,67 @@ const otherSkill = [
             sourcetree/コマンドどちらも操作経験あり。   
           </>
         );
-         
+
+      case "2011":
+        return(
+          <>
+            情報システム工学科入学 
+          </>
+        );
+      case "2013":
+        return(
+          <>
+            留学に行きたい気持ちが強まる
+          </>
+        );
+      case "2014":
+        return(
+          <>
+            一人で再受験勉強
+          </>
+        );
+      case "2014":
+        return(
+          <>
+            国際教養学部合格
+          </>
+        );
+      case "2015":
+        return(
+          <>
+            念願の留学
+          </>
+        );
+      case "2016":
+        return(
+          <>
+            就活
+          </>
+        );
+      case "2018":
+        return(
+          <>
+            星野リゾート入社
+          </>
+        );
+      case "2020":
+        return(
+          <>
+            将来の不安を感じ始める
+          </>
+        );
+      case "2021":
+        return(
+          <>
+            転職活動
+          </>
+        );
+      case "2022":
+        return(
+          <>
+            転職
+          </>
+        );
       default:
     }
     
@@ -420,4 +482,81 @@ const otherSkill = [
         </ResponsiveContainer>
     )
   }
-export {EnginerSkillGraph,FrontSKillGraph,BackSKillGraph,OtherSkillGraph};
+
+const data = [
+
+  {
+    "year": "2011",
+    "Motivation": 80,
+  },
+  {
+    "year": "2012",
+    "Motivation": 100,
+  },
+
+  {
+    "year": "2013",
+    "Motivation": 70,
+  },
+  {
+    "year": "2014",
+    "Motivation": -50,
+  },
+  {
+    "year": "2015",
+    "Motivation": 90,
+  },
+  {
+    "year": "2016",
+    "Motivation": 50,
+  },
+  {
+    "year": "2017",
+    "Motivation": 30,
+  },
+
+
+  {
+    "year": "2018",
+    "Motivation": 30,
+  },
+  {
+    "year": "2019",
+    "Motivation": 80,
+  },
+  {
+    "year": "2020",
+    "Motivation": 70,
+  },
+  {
+    "year": "2021",
+    "Motivation": -60,
+  },
+  {
+    "year": "2022",
+    "Motivation": 80,
+  },
+  {
+    "year": "2023",
+    "Motivation": 30,
+  },
+]
+
+function BiographyChart(){
+  return(
+    <ResponsiveContainer width="100%" height={300} >
+      <LineChart width={730} height={250} data={data}
+        >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis  dataKey="year" interval={2}/>
+        <YAxis dataKey="" domain={[-100, 100]} />
+        <Tooltip content={<CustomTooltip />}/>
+        
+        <Line type="monotone" dataKey="Motivation" stroke="#8884d8" />
+      </LineChart>
+    </ResponsiveContainer>
+    )
+}
+
+
+export {EnginerSkillGraph,FrontSKillGraph,BackSKillGraph,OtherSkillGraph,BiographyChart};

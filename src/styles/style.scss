@@ -278,6 +278,20 @@ img {
   height: 200px;
   object-fit: cover;
 }
+
+.related-posts{
+	text-align:center;
+	margin:50px 0;
+	&::before{
+		content:"";
+		display:block;
+		width:100%;
+		height:1px;
+		border-top:1px dotted;
+		margin-bottom:50px;
+	}
+}
+
 //共通
 .main{ 
 	width: $content-width;
@@ -338,6 +352,10 @@ img {
 			}
 		
 		}
+		.recharts-cartesian-axis-tick-value{
+			font-size: 0.5em;
+			margin-right:200px;
+		}
 		.custom-tooltip{
 			background:rgba(#eee,.8);
 			padding: 20px;
@@ -363,13 +381,9 @@ img {
 			flex-wrap: wrap;
 			justify-content: space-between;
 			align-items: center;
-			padding-bottom:20vh;
 			transition:2s ease;
 			opacity:1;
-			&.hide{
-				opacity: 0;
-				transition:2s ease;
-			}
+			
 			.article{
 				width: 46%;
 				@include mq(tab){
@@ -719,6 +733,13 @@ img {
 			}
 		}
 
+		.about{
+			&_desc{
+				font-size:0.5em;
+				line-height:40px;
+
+			}
+		}
 		
 		& .sns{	
 		 .instagram{
@@ -835,7 +856,7 @@ img {
 					height:auto;
 					text-align: center;
 					margin-bottom: 20px;
-
+					filter: grayscale(90%);
 					@include mq(sp){
 						width: 150px;
 					}
@@ -1174,80 +1195,6 @@ img {
 				}
 				
 			}
-		}
-		.close_published_posts{
-			margin-top: 100px;
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			
-			&_prev, &_next{
-				width: 45%;
-				max-height: 100px;			
-				transition: all .5s;
-				position: relative;
-				@include mq(sp){
-					width: 100%;
-					margin-bottom: 80px;
-				}
-				&:hover{
-					transition: all .5s;
-					transform: translateY(-5px);
-					filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
-					cursor: pointer;
-				}
-				.article a{
-					display: flex;
-					width: 100%;
-					justify-content: center;
-					.article_image{
-						width: 30%;
-						
-						p{
-							position: absolute;
-							left: 0;
-							top: -29px;
-							background:rgba(#111,.2);					
-							width: auto;
-							padding: 5px 10px;
-							width: 100%;
-							@include mq(sp){
-								margin: 0 auto;
-								top:-20px;
-								height: 20px;
-								font-size: 0.7em;
-							}
-						}
-						img{
-							width: 100%;
-							height: auto;
-							max-height: 120px;
-						    
-							
-							
-						}
-						
-					}
-					
-					.article_remarks{
-						width: 70%;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						font-size: 0.8em;
-						padding: 0px 10px;
-						background:rgba(#111,.1);
-						color: #111;
-
-						@include mq(sp){
-							font-size: 0.8em;
-						}
-						
-				}
-				}
-				
-			}
-			
 		}
 	}
 }

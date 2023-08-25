@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import heart from '../../images/heart.png';
-import $ from "jquery";
 import { ModalShow } from '../../app';
 
 function Instagram(){  

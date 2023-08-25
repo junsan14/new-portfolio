@@ -1,19 +1,8 @@
 import $ from "jquery";
-import React, {useEffect, useState} from "react";
+
 
  
-function mainFadeIn(){
-    $(function(){
-        $("#root").on('DOMSubtreeModified propertychange', ()=>{
-            let $main = $(".main");
-          if($main.css("opacity") == 0){
-            $main.css("opacity", 1);
-            
-          };    
-             
-        })
-      })
-}
+
 
 
 function graphShow(){
@@ -148,4 +137,4 @@ function ModalShow(posted,srcType){
 
 }
 
-export {mainFadeIn,graphShow,ModalShow};
+export {graphShow,ModalShow};

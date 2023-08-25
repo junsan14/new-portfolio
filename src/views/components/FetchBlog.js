@@ -92,7 +92,11 @@ function FetchAllPost() {
       )
     }else if(keyword){
       return(
-        <p>{keyword}の検索では記事がありません</p>
+        <>
+          <p>{keyword}の検索では記事がありません</p>
+          <div className="article" >
+          </div>
+        </>
       )
     }else{
       return(
@@ -250,6 +254,7 @@ function FetchPageData(){
 
  
     if(data){ 
+      
       //記事のスタイル装飾
       $(function(){
         let $markupElements = $(".language-markup");
@@ -276,9 +281,9 @@ function FetchPageData(){
 
         //リンク
         $("a").each((i,ele)=>{
-            console.log($(ele).attr("href"))
+            
             if($(ele).attr("href").indexOf("https://junsan.info/") ===-1){
-              console.log($(ele).parent())
+              
               $(ele).attr("target", "_blank");
             }
             $(ele).attr("rel", "noopener noreferrer");
@@ -318,57 +323,47 @@ function FetchPageData(){
         })
       });
       let publishDate = formatDate(data.date);
-      let upadtedate = formatDate(data.modified);
-      let prevPost = data["jetpack-related-posts"][1]?data["jetpack-related-posts"][1]:0;
-      let nextPost = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
-      
-      const PrevPost = ()=>{
-        if(prevPost){
-          return(
-                
-                <div className="article" id={prevPost.id} >
-                      <Link to={`/blog/${prevPost.id}`} >
-                        <div className="article_image">
-                          <p>関連投稿</p>
-                          <img src={prevPost.img.src?prevPost.img.src:noImg} alt="" />
-                        </div>
-                        <div className="article_remarks">
-                          <h3 className="article_remarks_title">{parse(prevPost.title)}</h3>  
-                        </div>
-                      </Link>
-                </div>
-          )
-        }
+      let upadtedate = formatDate(data.modified) === formatDate(data.date)?"":"更新日: " +formatDate(data.modified);
+      let related_post = [];
+      for(let i=0; i<data["jetpack-related-posts"].length;i++){
+         related_post.push(data["jetpack-related-posts"][i])
       }
-      const NextPost = ()=>{
-        if(nextPost){
-          //console.log(nextPost)
-          return(
-            <div className="article" id={nextPost.id} >
-            <Link to={`/blog/${nextPost.id}`} >
-              <div className="article_image">
-                <p>関連投稿</p>
-                <img src={nextPost.img.src?nextPost.img.src:noImg}  alt="" />
-              </div>
-              <div className="article_remarks">
-                <h3 className="article_remarks_title">{parse(nextPost.title)}</h3>  
-              </div>
-            </Link>
-      </div>
-                
-          )
-        }
-      }
-
       
+      let related_post00 = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
 
+      const RelatedPost = ()=>{
+          return(
+            <>
+              {related_post.map((post,i)=>{
+                return(
+                  <div className="article" id={post.id} key={post.id}>
+                    <Link to={`/blog/${post.id}`} >
+                      <img src={post.img.src?post.img.src:noImg} alt="" />
+                      <div className="article_remarks">
+                        <h3 className="article_remarks_title">{parse(post.title)}</h3>
+                        <div className="article_remarks_text">
+                            {parse(post.excerpt)}
+                        </div>
+                        <p className="article_remarks_date">
+                         {parse(post.date)}
+                            <br/>
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                )
+              })}
+            </>
+            )        
+      }
+      
       return(
         <>
               <h1 className="section_content_title">{data.title.rendered}</h1>
               <div className="article" id={data.id} key={data.id}>
                 <div className="article_date">
                     <p className="article_date_publish">
-                        更新日: {upadtedate}
+                        {upadtedate}
                     </p>
                     <p className="article_date_publish">
                         公開日: {publishDate}
@@ -378,26 +373,13 @@ function FetchPageData(){
                         {parse(data.content["rendered"])}
                 </div>
               </div>
-              <div className="close_published_posts">
-                  <div className="close_published_posts_prev">
-                    <PrevPost />
-                  </div>
-       
-                  <div className="close_published_posts_next">
-                    <NextPost />
-                  </div>
-              </div>
-                   
-                
+              <p className="related-posts">関連投稿</p>
+              <div className="posts">
+                    <RelatedPost />                        
+              </div>                                
         </>
-
       )
-    }else{
-      return(<></>)
     }
-    
-
-
 }
 
 export {FetchAllPost,FetchThreePost,FetchPageData};
