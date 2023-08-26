@@ -315,6 +315,9 @@ img {
 			position: relative;
 			text-align: center;
 			margin-bottom: 100px;
+			@include mq(tab){
+				margin-bottom: 30px;
+			}
 			&_jp{
 				font-size: 3em;
 				text-align: center;		
@@ -460,7 +463,7 @@ img {
 		margin-right: 5px;
 		@include mq(sp){
 			width: 100%;
-			margin: 0 auto 50px auto ;
+			margin: 0 auto 10px auto ;
 			justify-content: center;
 		}
 
@@ -734,10 +737,15 @@ img {
 		}
 
 		.about{
-			&_desc{
-				font-size:0.5em;
-				line-height:40px;
-
+			&_chart{
+				display: flex;
+				align-items:center;
+				@include mq(tab){
+					display: block;
+				}
+			}
+			& .recharts-legend-item-text{
+				font-size: .5em;
 			}
 		}
 		
@@ -969,21 +977,66 @@ img {
 
 //blog
 .blog{
+
 	.search_area{
 		width: 100%;
 		position:relative;
-		height:100px;
+		height:120px;
+
+		transition:1s ease;
+	
+		&.fixed{
+		}
+		&_mask{
+			width: calc(40% - 15% + 80px);
+			height: 50px;
+			
+			position: fixed;
+			order-radius: 5px;
+			@include mq(sp){
+				width: calc(100% - 40px);
+				right: 20px;
+			}
+				&.fixed{
+					bottom: 0;
+				@include mq(sp){
+					transform:translateX(90%);
+					z-index: 400;
+				}
+			}
+		}
 		&_input{
-			width: 40%;
-			position:absolute;
+			width: calc(40% - 15% + 80px);
+			position: absolute;
 			right:0;
 			height: 50px;
 			border:$no-focus-style;
 			border-radius: 5px;
 			margin-bottom: 50px;
 			padding-left: 10px;
+			transition:1s ease;
+
+			z-index: 300;
 			@include mq(sp){
 				width: 100%;
+			
+			}
+			&.fixed{
+				background: rgba(#fff,1);
+				transition:1s ease;
+				bottom: 0;
+				opacity: 1;
+				@include mq(sp){
+					background: rgba(#111,.2);
+					transform:translateX(90%);
+					z-index: 200;
+				}
+				&.show{
+					@include mq(sp){
+					transition:1s ease;
+					transform:translateX(0);
+					}
+				}
 			}
 			&:focus{
 				outline: none;
@@ -994,9 +1047,12 @@ img {
 		&_reset{
 			font-size:.8em;
 			position:absolute;
-			top:55px;
-			right:3px;
+			top:60px;
+			right: 3px;
 			transtion: .5s ease;
+			@include mq(sp){
+				right: 3px;
+			}
 			&:hover{
 				transtion: .5s ease;
 				text-decoration:underline;

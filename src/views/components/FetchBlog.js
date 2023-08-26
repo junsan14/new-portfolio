@@ -4,7 +4,8 @@ import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
-import { ModalShow } from "../../app";
+
+import { ModalShow,fixedSearch } from "../../app";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 let tagURL = "https://www.junsan.info/wp/wp-json/wp/v2/tags?_fields=id,name";
 
@@ -22,6 +23,7 @@ function getThumbnail(item){
 }
 
 function FetchAllPost() {
+  fixedSearch();
   const [data, setData] = useState([]);
   const [tags, setTags] = useState([]);
   const [keyword, setKeyword] = useState('');
@@ -45,7 +47,7 @@ function FetchAllPost() {
       console.log(tagid)
       fetchURL += "&tags=" + tagid;
     }
-    
+
     axios
     .get(fetchURL)
     .then(response => setData(response.data) )
@@ -102,7 +104,7 @@ function FetchAllPost() {
       return(
         <div className="loading">
           <div className="loading_icon"></div>
-          <p className="loading_text">読み込んでいます｡</p>
+          <p className="loading_text">読み込んでいます</p>
         </div>
         
       )
@@ -166,19 +168,20 @@ function FetchAllPost() {
         }}>Diary
       </li>
     </ul>
-    <div className="search_area">
+    <div className="search_area ">
       <button type="button" className="search_area_reset" value="RESET" onClick={reset}>Clear</button>
-      <input list="tag-list"  className="search_area_input" id="tag-choice" name="tag-choice" placeholder="記事検索ワード" 
-        onChange={(e)=>{
-          let id = tagAry.map(x=>x[1]).indexOf(e.target.value);
-          if(id !==-1){
-            setTagid(tagAry[id][0])
-           
-          }else{
-            setKeyword(e.target.value);
-          }
-        }} 
-      />
+      <div className="search_area_mask "></div>
+        <input list="tag-list"  className="search_area_input " id="tag-choice" name="tag-choice" placeholder="記事検索ワード" 
+          onChange={(e)=>{
+            let id = tagAry.map(x=>x[1]).indexOf(e.target.value);
+            if(id !==-1){
+              setTagid(tagAry[id][0])
+             
+            }else{
+              setKeyword(e.target.value);
+            }
+          }} 
+        />
       <datalist id="tag-list">
        <LoadTag />
       </datalist>

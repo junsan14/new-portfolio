@@ -1,9 +1,8 @@
 import {Link } from 'react-router-dom';
 import {Instagram} from '../components/FetchSns';
 import {FetchThreePost} from '../components/FetchBlog'; 
-import {EnginerSkillGraph} from '../components/GetSkillGraph';
+import {EnginerSkillGraph,MotivationChart} from '../components/GetSkillGraph';
 import {ScrollRestoration } from 'react-router-dom';
-import {BiographyChart} from '../components/GetSkillGraph'
 
 
 export default function Home() {
@@ -23,10 +22,14 @@ export default function Home() {
               <div className="section_title_jp">ABOUT</div>
             </h2>     
             <div className="section_content about skill_graph">
-              <BiographyChart />
+            <div className="about_chart">
+              <MotivationChart />
+              
+              <EnginerSkillGraph />
+            </div>
             </div>
             <div className="section_btn btn">
-               <Link to={`/about`}>詳細</Link>
+               <Link to={`/about`}>MORE</Link>
             </div>
             
           </section>
@@ -38,7 +41,7 @@ export default function Home() {
               <FetchThreePost />
             </div>
             <div className="section_btn btn">
-               <Link to={`/blog`}>一覧</Link>
+               <Link to={`/blog`}>MORE</Link>
             </div>
           </section>
           <section className="section">

@@ -331,18 +331,18 @@ const otherSkill = [
             情報システム工学科入学 
           </>
         );
-      case "2013":
+      case "2012":
         return(
           <>
             留学に行きたい気持ちが強まる
           </>
         );
-      case "2014":
+      case "2013":
         return(
           <>
-            一人で再受験勉強
+            転学決意、再受験勉強
           </>
-        );
+        );  
       case "2014":
         return(
           <>
@@ -352,13 +352,19 @@ const otherSkill = [
       case "2015":
         return(
           <>
-            念願の留学
+            イギリスへ留学
           </>
         );
       case "2016":
         return(
           <>
-            就活
+            帰国
+          </>
+        );
+      case "2017":
+        return(
+          <>
+            就職活動、卒業論文
           </>
         );
       case "2018":
@@ -367,10 +373,16 @@ const otherSkill = [
             星野リゾート入社
           </>
         );
+      case "2019":
+        return(
+          <>
+            河口湖を満喫
+          </>
+        );
       case "2020":
         return(
           <>
-            将来の不安を感じ始める
+            将来の不安を感じ転職活動
           </>
         );
       case "2021":
@@ -382,7 +394,13 @@ const otherSkill = [
       case "2022":
         return(
           <>
-            転職
+            転職し、WEBエンジニアとして勤務
+          </>
+        );
+      case "2023":
+        return(
+          <>
+            人生について思考中
           </>
         );
       default:
@@ -402,8 +420,9 @@ const otherSkill = [
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
             <PolarRadiusAxis domain={[1, 5]} />
+            <Legend />
             <Radar
-              name="jun"
+              name="Skill"
               dataKey="A"
               stroke="#111"
               fill="#eee"
@@ -483,7 +502,7 @@ const otherSkill = [
     )
   }
 
-const data = [
+const bidographyData = [
 
   {
     "year": "2011",
@@ -504,21 +523,19 @@ const data = [
   },
   {
     "year": "2015",
-    "Motivation": 90,
+    "Motivation": 80,
   },
   {
     "year": "2016",
-    "Motivation": 50,
+    "Motivation": 100,
   },
   {
     "year": "2017",
     "Motivation": 30,
   },
-
-
   {
     "year": "2018",
-    "Motivation": 30,
+    "Motivation": 0,
   },
   {
     "year": "2019",
@@ -538,25 +555,25 @@ const data = [
   },
   {
     "year": "2023",
-    "Motivation": 30,
+    "Motivation": 20,
   },
 ]
 
-function BiographyChart(){
+function MotivationChart(){
   return(
     <ResponsiveContainer width="100%" height={300} >
-      <LineChart width={730} height={250} data={data}
+      <LineChart width={730} height={250} data={bidographyData}
         >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis  dataKey="year" interval={2}/>
-        <YAxis dataKey="" domain={[-100, 100]} />
+        <XAxis  dataKey="year" interval={2} padding={{ right: 20 }} />
+        <YAxis dataKey="" domain={[-100, 100]} name="test"/>
         <Tooltip content={<CustomTooltip />}/>
-        
-        <Line type="monotone" dataKey="Motivation" stroke="#8884d8" />
+        <Legend />
+        <Line type="monotone" dataKey="Motivation" stroke="#505050" />
       </LineChart>
     </ResponsiveContainer>
     )
 }
 
 
-export {EnginerSkillGraph,FrontSKillGraph,BackSKillGraph,OtherSkillGraph,BiographyChart};
+export {EnginerSkillGraph,FrontSKillGraph,BackSKillGraph,OtherSkillGraph,MotivationChart};

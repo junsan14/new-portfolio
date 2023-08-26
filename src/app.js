@@ -134,7 +134,48 @@ function ModalShow(posted,srcType){
       </div>
     </>
   )
+}
+
+function fixedSearch(){
+  let $searchBox = $(".js-search_area_input");
+  let $searchMask = $(".js-search_area_mask");
+  let $searchArea = $(".js-search_area");
+
+
+  $(window).on("scroll", ()=>{
+    let scrollHeight = $(window).height();
+    let currentHeight = $(window).scrollTop();
+    let searchBoxHeight = $searchBox.scrollTop();
+    //$searchBox.removeClass("show")
+    //console.log(searchBoxHeight)
+
+    if(scrollHeight/2 <currentHeight){
+      if(!$searchBox.hasClass("fixed")){
+        console.log($searchBox.hasClass("fixed"))
+         $searchMask.addClass("fixed");
+         $searchBox.addClass("fixed");
+         $searchArea.addClass("fixed"); 
+      }
+     
+    }
+    if(currentHeight === 0){
+
+      $searchMask.removeClass("fixed");
+      $searchBox.removeClass("fixed");
+      $searchArea.removeClass("fixed");
+    }
+
+  })
+
+
+   $searchMask.on("click", function(){
+        if($searchBox.hasClass("fixed")){
+        
+          $searchBox.addClass("show");
+        }
+      })
+  
 
 }
 
-export {graphShow,ModalShow};
+export {graphShow,ModalShow,fixedSearch};
