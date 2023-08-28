@@ -137,43 +137,59 @@ function ModalShow(posted,srcType){
 }
 
 function fixedSearch(){
-  let $searchBox = $(".js-search_area_input");
-  let $searchMask = $(".js-search_area_mask");
-  let $searchArea = $(".js-search_area");
+  $(function(){
+    let $searchBox = $(".js-search_area_input");
+    let $searchArea = $(".js-search_area");
+    let $resetBtn = $(".js-search_area_reset");
+    let $searchIcon = $(".js-search_area_icon");
+    $searchBox.on("focus", function(){    
+       $searchIcon.addClass("fixed");      
+    })
 
-
-  $(window).on("scroll", ()=>{
-    let scrollHeight = $(window).height();
-    let currentHeight = $(window).scrollTop();
-    let searchBoxHeight = $searchBox.scrollTop();
-    //$searchBox.removeClass("show")
-    //console.log(searchBoxHeight)
-
-    if(scrollHeight/2 <currentHeight){
-      if(!$searchBox.hasClass("fixed")){
-        console.log($searchBox.hasClass("fixed"))
-         $searchMask.addClass("fixed");
-         $searchBox.addClass("fixed");
-         $searchArea.addClass("fixed"); 
+    $searchBox.on("blur", function(){
+      if(!$(this).val()){
+        $searchIcon.removeClass("fixed");
       }
-     
-    }
-    if(currentHeight === 0){
+    })
 
-      $searchMask.removeClass("fixed");
-      $searchBox.removeClass("fixed");
-      $searchArea.removeClass("fixed");
-    }
+    $(window).on("scroll", ()=>{
+      //let scrollHeight = $(window).height();
+      let currentHeight = $(window).scrollTop();
+      //let searchBoxHeight = $searchBox.scrollTop();
+      //$searchBox.removeClass("show")
+      //console.log($searchArea.offset() )
 
-  })
-
-
-   $searchMask.on("click", function(){
-        if($searchBox.hasClass("fixed")){
-        
-          $searchBox.addClass("show");
+      if($searchArea.offset().top <currentHeight){
+        if(!$searchArea.hasClass("fixed")){
+          //console.log($searchBox.hasClass("fixed"))
+           $searchArea.addClass("fixed"); 
+           $resetBtn.addClass("fixed");
+           $searchIcon.removeClass("fixed");
+           //$searchBox.prop('disabled', true);
         }
-      })
+       
+      }
+      if(currentHeight < 60){
+        $searchArea.removeClass("fixed");
+         $searchArea.removeClass("show");
+         $resetBtn.removeClass("fixed");
+          $searchBox.prop('disabled', false);
+          
+      }
+
+    })
+
+
+     $searchArea.on("click", function(){
+     // console.log(11)
+          if($searchArea.hasClass("fixed")){
+            $searchArea.addClass("show");
+            $searchBox.prop('disabled', false);
+            $searchIcon.addClass("fixed");
+          }
+        })
+    })  
+
   
 
 }

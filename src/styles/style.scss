@@ -977,36 +977,63 @@ img {
 
 //blog
 .blog{
-
+	min-height:calc(100vh); 
+	@include mq(sp){
+		min-height:calc(100vh); 
+	}
 	.search_area{
 		width: 100%;
 		position:relative;
-		height:120px;
-
-		transition:1s ease;
-	
-		&.fixed{
+		height:100px;
+		z-index: 100;
+		border-radius: 5px;
+		@include mq(tab){
+			  transition:1.5s ease;
+				top:100px;
+				right:0px;
+				top:0px;
+				border-radius: 0
 		}
-		&_mask{
-			width: calc(40% - 15% + 80px);
-			height: 50px;
-			
-			position: fixed;
-			order-radius: 5px;
-			@include mq(sp){
-				width: calc(100% - 40px);
-				right: 20px;
+
+		&.fixed{
+			@include mq(tab){
+				transition:1.5s ease;
+				position:fixed;
+				top:10px;
+				bottom:10%;
+				height:50px;
+				left:20px;
+				width: 50px;
+				cursor: pointer;
 			}
-				&.fixed{
-					bottom: 0;
-				@include mq(sp){
-					transform:translateX(90%);
-					z-index: 400;
+		}
+		&.show{
+				@include mq(tab){
+					transition:1.5s ease;
+					width: calc(100% - 40px);
+					border-radius: 5px;
+					background:rgba(#fff,7);
 				}
+		}
+		&_icon{
+			width:30px;
+			height:auto;
+			position:absolute;
+			z-index:50;
+			transition:.5s ease;
+			top:10px;
+			right:calc(50% - 90px);
+			@include mq(tab){
+				top:10px;
+				left:10px;
+			}
+			&.fixed{
+				transition:.5s ease;
+				opacity:0;
 			}
 		}
 		&_input{
-			width: calc(40% - 15% + 80px);
+			width: calc(50% - 50px);
 			position: absolute;
 			right:0;
 			height: 50px;
@@ -1015,28 +1042,9 @@ img {
 			margin-bottom: 50px;
 			padding-left: 10px;
 			transition:1s ease;
-
-			z-index: 300;
-			@include mq(sp){
+			z-index: 100;
+			@include mq(tab){
 				width: 100%;
-			
-			}
-			&.fixed{
-				background: rgba(#fff,1);
-				transition:1s ease;
-				bottom: 0;
-				opacity: 1;
-				@include mq(sp){
-					background: rgba(#111,.2);
-					transform:translateX(90%);
-					z-index: 200;
-				}
-				&.show{
-					@include mq(sp){
-					transition:1s ease;
-					transform:translateX(0);
-					}
-				}
 			}
 			&:focus{
 				outline: none;
@@ -1053,6 +1061,9 @@ img {
 			@include mq(sp){
 				right: 3px;
 			}
+			&.fixed{
+				display:none;
+			}
 			&:hover{
 				transtion: .5s ease;
 				text-decoration:underline;
@@ -1064,7 +1075,6 @@ img {
 
 }
 //Page
-
 .page{
 	.section_content_title{
 		margin-top: 0px;

@@ -4,8 +4,9 @@ import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
 import $ from 'jquery';
-
+import search from '../../images/search.png';
 import { ModalShow,fixedSearch } from "../../app";
+import {Helmet} from "react-helmet";
 let blogURL = "https://www.junsan.info/wp/wp-json/wp/v2/posts";
 let tagURL = "https://www.junsan.info/wp/wp-json/wp/v2/tags?_fields=id,name";
 
@@ -58,7 +59,6 @@ function FetchAllPost() {
     .then(response => setTags(response.data) )
     .catch(error => console.log(error));
 
-    
   }, [keyword,category,tagid]);
 
 
@@ -114,6 +114,7 @@ function FetchAllPost() {
      $(".search_area_input").val("");
       setTagid("");
       setKeyword("");
+      $(".js-search_area_icon").removeClass("fixed");
   }
   const LoadTag = ()=>{
       data.forEach((item,i)=>{
@@ -168,10 +169,11 @@ function FetchAllPost() {
         }}>Diary
       </li>
     </ul>
-    <div className="search_area ">
-      <button type="button" className="search_area_reset" value="RESET" onClick={reset}>Clear</button>
-      <div className="search_area_mask "></div>
-        <input list="tag-list"  className="search_area_input " id="tag-choice" name="tag-choice" placeholder="記事検索ワード" 
+    <div className="search_area js-search_area">
+      <button type="button" className="search_area_reset js-search_area_reset" value="RESET" onClick={reset}>Clear</button>
+        <img src={search} alt="" className="search_area_icon js-search_area_icon" />
+        <input list="tag-list"  className="search_area_input js-search_area_input" id="tag-choice" 
+          name="tag-choice" placeholder=""  
           onChange={(e)=>{
             let id = tagAry.map(x=>x[1]).indexOf(e.target.value);
             if(id !==-1){
@@ -257,7 +259,7 @@ function FetchPageData(){
 
  
     if(data){ 
-      
+ 
       //記事のスタイル装飾
       $(function(){
         let $markupElements = $(".language-markup");
@@ -332,7 +334,7 @@ function FetchPageData(){
          related_post.push(data["jetpack-related-posts"][i])
       }
       
-      let related_post00 = data["jetpack-related-posts"][0]?data["jetpack-related-posts"][0]:0;
+     
 
       const RelatedPost = ()=>{
           return(
@@ -362,6 +364,10 @@ function FetchPageData(){
       
       return(
         <>
+              <Helmet>
+                <meta name="description" content={data.title.rendered+ "｜" + data.excerpt.rendered} />
+                <title>{"junsan14｜" +data.title.rendered}</title>
+              </Helmet>
               <h1 className="section_content_title">{data.title.rendered}</h1>
               <div className="article" id={data.id} key={data.id}>
                 <div className="article_date">

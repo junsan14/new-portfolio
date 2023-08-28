@@ -1,9 +1,13 @@
 import {ScrollRestoration } from 'react-router-dom';
 import Form from '../components/GetForm';
-
+import {Helmet} from "react-helmet";
 export default function Contact() {
   return (
    <>
+     <Helmet>
+        <meta name="description" content="WEBエンジニアとしてのポートフォリオ､またWEB制作やWEB開発に関わる知識を発信しています" />
+        <title>junsan14｜CONTACT</title>
+     </Helmet>
     <div className="modal js-send-success">
       <p className='modal_msg js-send-success-msg'></p>
     </div>

@@ -17,6 +17,7 @@ import Page from './views/pages/Page';
 import Contact from './views/pages/Contact';
 import ErrorPage from './views/pages/ErrorPage';
 import reportWebVitals from './reportWebVitals';
+import {Helmet} from "react-helmet";
 
 const router = createBrowserRouter([
   {
@@ -84,9 +85,14 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-      <>      
-        <RouterProvider router={router} />
-        <Footer />
+      <>
+        <Helmet>
+
+          <meta name="description" content="Nested component" />
+          <title>My Title</title>
+        </Helmet>
+          <RouterProvider router={router} />
+          <Footer />
       </>
 
 );
