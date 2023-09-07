@@ -164,7 +164,7 @@ function fixedSearch(){
           //console.log($searchBox.hasClass("fixed"))
            $searchArea.addClass("fixed"); 
            $resetBtn.addClass("fixed");
-           $searchIcon.removeClass("fixed");
+           
            //$searchBox.prop('disabled', true);
         }
        

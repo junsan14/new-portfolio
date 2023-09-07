@@ -995,7 +995,7 @@ img {
 		width: 100%;
 		position:relative;
 		height:100px;
-		z-index: 100;
+		z-index: 10;
 		border-radius: 5px;
 		@include mq(tab){
 			  transition:1.5s ease;
@@ -1020,7 +1020,7 @@ img {
 		&.show{
 				@include mq(tab){
 					transition:1.5s ease;
-					width: calc(100% - 40px);
+					width: calc(100% - 100px);
 					border-radius: 5px;
 					background:rgba(#fff,7);
 				}

@@ -47,7 +47,6 @@ function FetchAllPost() {
     }else if(category){
       fetchURL += "&categories=" + category;
     }else if(tagid){
-      console.log(tagid)
       fetchURL += "&tags=" + tagid;
     }
 
