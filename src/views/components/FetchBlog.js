@@ -3,6 +3,8 @@ import axios from "axios";
 import noImg from '../../images/no_image.png'
 import parse from 'html-react-parser';
 import {Link,useParams} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import $ from 'jquery';
 import search from '../../images/search.png';
 import { ModalShow,fixedSearch } from "../../app";
@@ -71,11 +73,12 @@ function FetchAllPost() {
           //let publishDate = formatDate(item.date);
           let upadtedate = formatDate(item.modified); 
           let thumbnail = getThumbnail(item);
-
             return(
               <div className="article" id={item.id} key={item.id}>
-                <Link to={`/blog/${item.id}`} >
-                  <img className="thumbnail" src={thumbnail} alt="" />
+                <Link to={`/blog/${item.id}`}  >
+                  <div className="article_img">
+                    <img className="thumbnail" src={thumbnail} alt="" />
+                  </div>
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{item.title.rendered}</h3>
                     <div className="article_remarks_text">
@@ -217,7 +220,9 @@ function FetchThreePost() {
             return(
               <div className="article" id={item.id} key={item.id}>
                 <Link to={`/blog/${item.id}`} >
-                  <img src={thumbnail} alt="" />
+                  <div className="article_img">
+                    <img src={thumbnail} alt="" />
+                  </div>
                   <div className="article_remarks">
                     <h3 className="article_remarks_title">{item.title.rendered}</h3>
                     <div className="article_remarks_text">
@@ -246,7 +251,7 @@ function FetchThreePost() {
 
 
 function FetchPageData(){
-   const [data, setData] = useState();
+   const [data, setData] = useState("");
    const {id} = useParams();
 
    useEffect(() => {
@@ -254,10 +259,10 @@ function FetchPageData(){
      .get(blogURL + "/" +id)
      .then(response => setData(response.data))
      .catch(error => console.log(error));
+     
   }, [id]);
 
 
- 
     if(data){ 
  
       //記事のスタイル装飾
@@ -278,6 +283,14 @@ function FetchPageData(){
             $(ele).append(`<div class="image_modal js-image-modal"></div>`); 
             
           }   
+        })
+
+        $("table").each((i,ele)=>{
+        
+            $(ele).wrap(`<div class="table_container"></div>`);
+    
+            
+          
         })
         
 
@@ -361,13 +374,22 @@ function FetchPageData(){
             </>
             )        
       }
-      
+console.log(data.excerpt.rendered.replace(/(<([^>]+)>)/gi, ''))
       return(
         <>
-              <Helmet>
-                <meta name="description" content={data.title.rendered+ "｜" + data.excerpt.rendered} />
-                <title>{"junsan14｜" +data.title.rendered}</title>
-              </Helmet>
+
+              <Helmet
+                title={"junsan14｜" +data.title.rendered}
+                meta={[
+                  { name: 'description', content: data.title.rendered+ "｜" + data.excerpt.rendered.replace(/(<([^>]+)>)/gi, '')},
+                  { property: 'og:title', content: "junsan14" },
+                  { property: 'og:type', content: 'website' },
+                  { property: 'og:url', content: data.guid.rendered },
+                  { property: 'og:image', content:data.jetpack_featured_media_url },
+                  { property: 'og:description', content:data.excerpt.rendered.replace(/(<([^>]+)>)/gi, '') }
+
+                ]}
+              />
               <h1 className="section_content_title">{data.title.rendered}</h1>
               <div className="article" id={data.id} key={data.id}>
                 <div className="article_date">
