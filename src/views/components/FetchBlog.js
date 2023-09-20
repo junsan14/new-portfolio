@@ -346,16 +346,20 @@ function FetchPageData(){
          related_post.push(data["jetpack-related-posts"][i])
       }
       
-     
+     console.log(data)
 
       const RelatedPost = ()=>{
+
           return(
             <>
               {related_post.map((post,i)=>{
+
                 return(
                   <div className="article" id={post.id} key={post.id}>
                     <Link to={`/blog/${post.id}`} >
-                      <img src={post.img.src?post.img.src:noImg} alt="" />
+                      <div className="article_img">
+                        <img src={post.img.src?post.img.src:noImg} alt="" />
+                      </div>
                       <div className="article_remarks">
                         <h3 className="article_remarks_title">{parse(post.title)}</h3>
                         <div className="article_remarks_text">
